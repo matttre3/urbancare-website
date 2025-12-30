@@ -15,12 +15,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
-      <HeaderBar />
-      <html lang="en">
-        <body className="h-full">{children}</body>
-      </html>
-      <footer>footer</footer>
-    </>
+    <html lang="en">
+      <body className={`${poppins.variable} h-full`}>
+        <HeaderBar />
+        {children}
+        <footer>footer</footer>
+      </body>
+    </html>
   );
 }

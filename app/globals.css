@@ -1,9 +1,14 @@
 @import "tailwindcss";
 
 @theme inline {
+  --color-urbancare-primary-blue: var(--urbancare-primary-blue);
+  --color-urbancare-secondary-blue: var(--urbancare-secondary-blue);  
+  --color-urbancare-tertiary-blue: var(--urbancare-tertiary-blue);
+  --color-urbancare-quaternary-blue: var(--urbancare-quaternary-blue);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
+  --font-poppins: var(--font-poppins);
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -46,6 +51,10 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
+  --urbancare-primary-blue: #203161;
+  --urbancare-secondary-blue: #4364C7;
+  --urbancare-tertiary-blue: #C4D3FF;
+  --urbancare-quaternary-blue: #DFE7FF;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -81,7 +90,7 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: oklch(38.682% 0.00542 16.946);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -121,4 +130,9 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@keyframes chevron-nudge-x {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(6px); }
 }

@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 import {
   NavigationMenu,
@@ -14,6 +15,8 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { Button } from "./ui/button";
+import { Text } from "../components/Text";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -55,62 +58,60 @@ const components: { title: string; href: string; description: string }[] = [
 
 export function HeaderBar() {
   const [open, setOpen] = useState(false);
-
+  const pathname = usePathname();
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur supports-backdrop-filter:bg-background/60 border-b">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-14 items-center justify-between">
+    <header className="fixed inset-x-0 top-0 z-50 bg-background/80 backdrop-blur supports-backdrop-filter:bg-background/60 shadow-md w-full">
+      <div className="w-full h-10 bg-linear-to-t from-urbancare-primary-blue to-urbancare-secondary-blue flex items-center justify-end px-4 sm:px-6 lg:px-8 gap-2 hidden lg:flex">
+        <Image
+          src="/icons/chevron-right-solid-full.svg"
+          alt="Arrow"
+          width={16}
+          height={16}
+          className="invert inline-block motion-safe:animate-[chevron-nudge-x_1.2s_ease-in-out_infinite]"
+        />
+
+        <Text size="p" className="text-white text-sm font-poppins font-medium">
+          Accedi alle tue spese condominiali:
+        </Text>
+        <Text
+          size="p"
+          weight="semibold"
+          className="text-urbancare-tertiary-blue underline cursor-pointer"
+        >
+          AREA PERSONALE
+        </Text>
+      </div>
+      <div className="mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="grid grid-cols-3 items-center h-16 ">
           <button
             type="button"
-            className="sm:hidden inline-flex relative items-center justify-center w-9 h-9 rounded-md  hover:bg-accent focus:outline-none "
+            className="col-start-1 lg:hidden inline-flex relative items-center justify-center w-9 h-9 rounded-md hover:bg-accent focus:outline-none"
             aria-label="Toggle menu"
             aria-controls="mobile-menu"
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
           >
             <span
-              className={`absolute block h-0.5 w-5 bg-current transition-transform duration-300 ease-in-out ${
+              className={`absolute block h-0.5 w-5 bg-current transition-transform text-urbancare-primary-blue duration-300 ease-in-out ${
                 open ? "translate-y-0 rotate-45" : "-translate-y-1.5"
               }`}
             />
             <span
-              className={`absolute block h-0.5 w-5 bg-current transition-opacity duration-300 ease-in-out ${
+              className={`absolute block h-0.5 w-5 bg-current transition-opacity text-urbancare-primary-blue duration-300 ease-in-out ${
                 open ? "opacity-0" : "opacity-100"
               }`}
             />
             <span
-              className={`absolute block h-0.5 w-5 bg-current transition-transform duration-300 ease-in-out ${
+              className={`absolute block h-0.5 w-5 bg-current transition-transform text-urbancare-primary-blue duration-300 ease-in-out ${
                 open ? "translate-y-0 -rotate-45" : "translate-y-1.5"
               }`}
             />
           </button>
 
-          <NavigationMenu className="hidden sm:flex">
-            <NavigationMenuList className="flex-wrap">
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link href="/docs">Docs</Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link href="/docs">Docs</Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link href="/docs">Docs</Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild>
-                  <Link href="/docs">Docs</Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
-
-          <Link href="/" className="font-semibold">
+          <Link
+            href="/"
+            className="col-start-2 justify-self-center lg:col-start-1 lg:justify-self-start font-semibold"
+          >
             <Image
               src="/horizontal-logo.svg"
               alt="UrbanCare  Logo"
@@ -118,44 +119,152 @@ export function HeaderBar() {
               height={100}
             />
           </Link>
+
+          <NavigationMenu className="hidden lg:flex col-start-2 justify-self-center h-full">
+            <NavigationMenuList className="items-end justify-center gap-12">
+              <NavigationMenuItem>
+                <NavigationMenuLink data-active={pathname === "/"} asChild>
+                  <Link href="/">Home</Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  data-active={pathname === "/servizi"}
+                  asChild
+                >
+                  <Link href="/servizi">Servizi</Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  data-active={pathname === "/contatti"}
+                  asChild
+                >
+                  <Link href="/contatti">Contatti</Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  data-active={pathname === "/lo-studio"}
+                  asChild
+                >
+                  <Link className="whitespace-nowrap" href="/lo-studio">
+                    Lo studio
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+
+          <Button className="hidden lg:block col-start-3 justify-self-end">
+            <p className="tracking-wider">Richiedi un preventivo</p>
+          </Button>
         </div>
       </div>
 
       <div
         id="mobile-menu"
-        className={`sm:hidden overflow-hidden transition-[max-height,opacity] duration-300 ease-out ${
+        className={`lg:hidden overflow-hidden transition-[max-height,opacity] duration-300 ease-out ${
           open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="px-4 pb-4 pt-2 space-y-2">
+        <div className="px-4 pb-4 pt-2 space-y-1">
           <Link
-            href="/docs"
+            href="/"
             onClick={() => setOpen(false)}
-            className="block rounded-md px-3 py-2 hover:bg-accent"
+            className={`block rounded-lg px-3 py-2 font-medium text-urbancare-primary-blue ${
+              pathname === "/"
+                ? "bg-urbancare-quaternary-blue"
+                : "hover:bg-urbancare-quaternary-blue"
+            }`}
           >
-            Docs
+            <Text
+              size="p"
+              weight={pathname === "/" ? "bold" : "medium"}
+              className="text-urbancare-primary-blue"
+            >
+              Home
+            </Text>
           </Link>
           <Link
-            href="/docs"
+            href="/servizi"
             onClick={() => setOpen(false)}
-            className="block rounded-md px-3 py-2 hover:bg-accent"
+            className={`block rounded-lg px-3 py-2 font-medium text-urbancare-primary-blue ${
+              pathname === "/servizi"
+                ? "bg-urbancare-quaternary-blue"
+                : "hover:bg-urbancare-quaternary-blue"
+            }`}
           >
-            Docs
+            <Text
+              size="p"
+              weight={pathname === "/servizi" ? "bold" : "medium"}
+              className="text-urbancare-primary-blue"
+            >
+              Servizi
+            </Text>
           </Link>
           <Link
-            href="/docs"
+            href="/contatti"
             onClick={() => setOpen(false)}
-            className="block rounded-md px-3 py-2 hover:bg-accent"
+            className={`block rounded-lg px-3 py-2 font-medium text-urbancare-primary-blue ${
+              pathname === "/contatti"
+                ? "bg-urbancare-quaternary-blue"
+                : "hover:bg-urbancare-quaternary-blue"
+            }`}
           >
-            Docs
+            <Text
+              size="p"
+              weight={pathname === "/contatti" ? "bold" : "medium"}
+              className="text-urbancare-primary-blue"
+            >
+              Contatti
+            </Text>
           </Link>
           <Link
-            href="/docs"
+            href="/lo-studio"
             onClick={() => setOpen(false)}
-            className="block rounded-md px-3 py-2 hover:bg-accent"
+            className={`block rounded-lg px-3 py-2 font-medium text-urbancare-primary-blue ${
+              pathname === "/lo-studio"
+                ? "bg-urbancare-quaternary-blue"
+                : "hover:bg-urbancare-quaternary-blue"
+            }`}
           >
-            Docs
+            <Text
+              size="p"
+              weight={pathname === "/lo-studio" ? "bold" : "medium"}
+              className="text-urbancare-primary-blue"
+            >
+              Lo studio
+            </Text>
           </Link>
+
+          <div className="my-3 border-t" />
+
+          <div className="flex flex-col gap-3">
+            <Button asChild size="lg" className="w-full">
+              <Link href="/contatti" onClick={() => setOpen(false)}>
+                <Text
+                  size="p"
+                  weight="semibold"
+                  className="tracking-wider text-white text-sm"
+                >
+                  Richiedi un preventivo
+                </Text>
+              </Link>
+            </Button>
+
+            <Button variant="secondary" asChild size="lg" className="w-full">
+              <Link href="/contatti" onClick={() => setOpen(false)}>
+                <Text
+                  size="p"
+                  weight="semibold"
+                  className="tracking-wider text-urbancare-primary-blue text-sm"
+                >
+                  Area Personale
+                </Text>
+              </Link>
+            </Button>
+          </div>
         </div>
       </div>
     </header>
