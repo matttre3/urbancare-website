@@ -1,14 +1,12 @@
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Home",
-  description: "",
-};
+import Hero from "@/components/Hero";
+import SingleStat from "@/components/SingleStat";
+import StatsSection from "@/components/StatsSection";
 
 export default function Home() {
   return (
-    <main>
-      <div className="min-h-screen">ciao</div>
+    <main className="min-h-screen">
+      <Hero />
+      <StatsSection />
     </main>
   );
 }

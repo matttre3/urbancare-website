@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.variable} h-full`}>
         <HeaderBar />
-        {children}
+        <div className="pt-[104px] min-h-screen">{children}</div>
         <footer>footer</footer>
       </body>
     </html>
