@@ -1,6 +1,7 @@
 import React from "react";
 import { Text } from "@/components/Text";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -18,15 +19,11 @@ export default function Hero() {
           ogni condominio.
         </Text>
 
-        <Button size="lg" className=" col-start-3 justify-self-end">
-          <Text
-            size="p"
-            weight="bold"
-            className="tracking-wider text-white text-sm"
-          >
-            Richiedi un preventivo
-          </Text>
-        </Button>
+        <Link href="/preventivo">
+          <Button className="col-start-3 justify-self-end">
+            <p className="tracking-wider">Richiedi un preventivo</p>
+          </Button>
+        </Link>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import SingleStat from "./SingleStat";
 const StatsSection = () => {
   return (
     <div className="bg-urbancare-primary-blue h-fit">
-      <div className="flex justify-center items-center gap-22 py-4">
+      <div className="flex md:flex-row flex-col justify-center items-center gap-6 md:gap-22 py-10">
         <SingleStat
           title="Documenti Gestiti"
           emoji="📄"

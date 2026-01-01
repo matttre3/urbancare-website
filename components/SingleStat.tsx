@@ -23,7 +23,7 @@ export default function SingleStat({
         <CountUp
           className="text-6xl! tracking-wide font-poppins text-urbancare-tertiary-blue font-semibold"
           to={number}
-          duration={1.5}
+          duration={0.5}
         />
 
         {rightText && (
@@ -32,7 +32,7 @@ export default function SingleStat({
           </Text>
         )}
       </div>
-      <Text size="p" className="text-white">
+      <Text size="p" align="center" className="text-white">
         {title}
       </Text>
     </div>

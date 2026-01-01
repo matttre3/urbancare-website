@@ -156,9 +156,11 @@ export function HeaderBar() {
             </NavigationMenuList>
           </NavigationMenu>
 
-          <Button className="hidden lg:block col-start-3 justify-self-end">
-            <p className="tracking-wider">Richiedi un preventivo</p>
-          </Button>
+          <Link href="/preventivo">
+            <Button className="hidden lg:block col-start-3 justify-self-end">
+              <p className="tracking-wider">Richiedi un preventivo</p>
+            </Button>
+          </Link>
         </div>
       </div>
 
