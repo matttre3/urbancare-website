@@ -10,7 +10,7 @@ export async function POST(req: Request) {
     const data = preventivoSchema.parse(body);
 
     await resend.emails.send({
-      from: "Preventivi <onboarding@resend.dev>",
+      from: "Preventivi <preventivi@urbancare-amministrazioni.com>",
       to: ["urbancaregest@gmail.com"],
       subject: "Nuova richiesta preventivo",
       replyTo: data.email,
