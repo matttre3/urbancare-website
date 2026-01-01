@@ -80,11 +80,11 @@ export default function Preventivo() {
           },
         })}
       </Script>
-      <div className="container mx-auto w-full max-w-3xl px-4 py-12">
+      <div className="container mx-auto w-full max-w-4xl px-4 py-12">
         <Form {...form}>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
             <Text size="h1" align="center" className="font-bold">
-              Preventivo amministratore condominiale a Milano
+              Preventivo amministratore condominiale a Milano e provincia
             </Text>
 
             <Text

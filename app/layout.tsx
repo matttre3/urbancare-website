@@ -4,7 +4,7 @@ import { HeaderBar } from "../components/HeaderBar";
 import Footer from "../components/Footer";
 import { ViewTransition } from "react";
 
-import localFont from "next/font/local";
+import localFont from "next/font/local;
 const poppins = localFont({
   src: [
     {
