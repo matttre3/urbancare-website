@@ -262,7 +262,7 @@ export function HeaderBar() {
 
             <Button variant="secondary" asChild size="lg" className="w-full">
               <Link
-                href="/https://condomini.baslab.it/auth/login/BAS20559"
+                href="https://condomini.baslab.it/auth/login/BAS20559"
                 onClick={() => setOpen(false)}
               >
                 <Text
