@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { HeaderBar } from "../components/HeaderBar";
 import Footer from "../components/Footer";
+import { ViewTransition } from "react";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -18,9 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${poppins.variable} h-full`}>
-        <HeaderBar />
-        <div className="pt-[104px] min-h-[calc(100vh-264px)]">{children}</div>
-        <Footer />
+        <ViewTransition>
+          <HeaderBar />
+          <div className="pt-[104px] min-h-[calc(100vh-264px)]">{children}</div>
+          <Footer />
+        </ViewTransition>
       </body>
     </html>
   );
