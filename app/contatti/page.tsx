@@ -26,8 +26,8 @@ export default function Contatti() {
             name: "Urbancare",
             areaServed: "Milano e provincia",
             serviceType: [
-              "Amministratore condominiale Milano",
-              "Gestione condominio Milano",
+              "Amministratore condominiale Milano e provincia",
+              "Gestione condominio Milano e provincia",
             ],
           },
         })}

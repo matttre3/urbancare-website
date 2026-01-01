@@ -33,7 +33,7 @@ export default function Footer() {
             </div>
             <div>
               <Text size="p" className="text-white/90">
-                <span className="font-semibold">P.IVA</span> 23123213231231231
+                <span className="font-semibold">P.IVA</span> 13746130965
               </Text>
             </div>
           </div>
