@@ -73,7 +73,10 @@ export function HeaderBar() {
         <Text size="p" className="text-white text-sm font-poppins font-medium">
           Accedi alle tue spese condominiali:
         </Text>
-        <Link href="https://condomini.baslab.it/auth/login/BAS20559">
+        <Link
+          target="_blank"
+          href="https://condomini.baslab.it/auth/login/BAS20559"
+        >
           <Text
             size="p"
             weight="semibold"
