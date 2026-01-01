@@ -18,7 +18,7 @@ function ContactCardPhone() {
           <Text
             size="p"
             weight="semibold"
-            className="text-urbancare-secondary-blue"
+            className="text-urbancare-primary-blue"
           >
             Dott. Romano Noele
           </Text>
@@ -45,7 +45,7 @@ function ContactCardEmail() {
           <Text
             size="p"
             weight="semibold"
-            className="text-urbancare-secondary-blue"
+            className="text-urbancare-primary-blue"
           >
             Dott. Romano Noele:{" "}
             <span className="font-normal text-muted-foreground">
@@ -55,7 +55,7 @@ function ContactCardEmail() {
           <Text
             size="p"
             weight="semibold"
-            className="text-urbancare-secondary-blue"
+            className="text-urbancare-primary-blue"
           >
             Dott. Romano Noele PEC:{" "}
             <span className="font-normal text-muted-foreground">

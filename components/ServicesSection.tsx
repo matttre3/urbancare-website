@@ -62,12 +62,16 @@ function ServiceCard({ icon, title, description, href }: Service) {
             href={href}
             className="text-muted-foreground hover:text-foreground"
           >
-            <Text size="p" weight="medium">
+            <Text size="p" weight="medium" className="underline">
               Scopri di più
             </Text>
           </Link>
         ) : (
-          <Text size="p" weight="medium" className="text-muted-foreground">
+          <Text
+            size="p"
+            weight="medium"
+            className="text-muted-foreground underline"
+          >
             Scopri di più
           </Text>
         )}
