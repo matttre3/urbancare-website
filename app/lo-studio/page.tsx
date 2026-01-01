@@ -16,14 +16,14 @@ export default function LoStudio() {
         </Text>
       </header>
 
-      <section className="grid grid-cols-1 md:grid-cols-[minmax(260px,420px)_1fr] gap-8 md:gap-12 items-center">
-        <div className="space-y-6 justify-self-center md:justify-self-start">
+      <section className="grid grid-cols-1 lg:grid-cols-[minmax(260px,420px)_1fr] gap-8 md:gap-12 items-center">
+        <div className="space-y-6 flex flex-col items-center justify-self-center lg:justify-self-start">
           <Image
             src="/horizontal-logo.svg"
             alt="Urbancare logo"
             width={260}
             height={80}
-            className="h-auto w-auto"
+            className="lg:h-auto lg:w-auto "
             priority
           />
 

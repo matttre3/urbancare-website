@@ -76,12 +76,19 @@ function ServiceCard({ icon, title, description, href }: Service) {
   );
 }
 
-export default function ServicesSection() {
+export default function ServicesSection({ isH1 = false }: { isH1?: boolean }) {
   return (
     <section className="px-5 sm:px-10 md:px-20 flex flex-col gap-4 sm:gap-9 items-center justify-center">
-      <Text size="h2" weight="bold" align="center">
-        I nostri servizi
-      </Text>
+      {isH1 ? (
+        <Text as="h1" size="h2" weight="bold" align="center">
+          I nostri servizi
+        </Text>
+      ) : (
+        <Text size="h2" weight="bold" align="center">
+          I nostri servizi
+        </Text>
+      )}
+
       <Text size="p" align="center" className="max-w-4xl text-muted-foreground">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus a
         nunc eu lacus dapibus iaculis id eu leo. Class aptent taciti sociosqu ad

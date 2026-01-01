@@ -244,7 +244,7 @@ export function HeaderBar() {
 
           <div className="flex flex-col gap-3">
             <Button asChild size="lg" className="w-full">
-              <Link href="/contatti" onClick={() => setOpen(false)}>
+              <Link href="/preventivo" onClick={() => setOpen(false)}>
                 <Text
                   size="p"
                   weight="semibold"

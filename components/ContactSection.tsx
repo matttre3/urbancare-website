@@ -1,6 +1,8 @@
 import React from "react";
 import { Text } from "./Text";
 import { Phone, Mail } from "lucide-react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 function ContactCardPhone() {
   return (
@@ -81,6 +83,12 @@ export default function ContactSection({ isH1 }: { isH1?: boolean }) {
         <ContactCardPhone />
         <ContactCardEmail />
       </div>
+
+      <Link href="/preventivo">
+        <Button className="col-start-3 justify-self-end">
+          <p className="tracking-wider">Richiedi un preventivo</p>
+        </Button>
+      </Link>
     </section>
   );
 }
