@@ -22,9 +22,10 @@ export const preventivoSchema = z.object({
 
   message: z.string().optional(),
 
-  privacyAccepted: z.coerce
-    .boolean()
-    .refine((v) => v === true, { message: "Devi accettare il GDPR" }),
+  privacyAccepted: z.coerce.boolean().refine((v) => v === true, {
+    message:
+      "Devi accettare il consenso al trattamento dei dati ai sensi del GDPR",
+  }),
 });
 
 export type RequestQuoteData = z.infer<typeof preventivoSchema>;

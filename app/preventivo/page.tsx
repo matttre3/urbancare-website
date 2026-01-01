@@ -289,7 +289,8 @@ export default function Preventivo() {
                   </FormControl>
                   <div className="space-y-1 leading-none">
                     <FormLabel>
-                      Acconsento al trattamento dei dati personali *
+                      Acconsento al trattamento dei dati personali ai sensi del
+                      GDPR *
                     </FormLabel>
                   </div>
                   <FormMessage />

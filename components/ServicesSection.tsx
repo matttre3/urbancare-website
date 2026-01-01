@@ -16,29 +16,29 @@ const services: Service[] = [
     icon: <Building2 className="text-urbancare-primary-blue" />,
     title: "Amministrazione Condominiale",
     description:
-      "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.",
-    href: "/servizi#amministrazione-condominiale",
+      "Gestione chiara e senza sorprese: scopri come valorizzare il tuo condominio.",
+    href: "/servizi/amministrazione-condominiale",
   },
   {
     icon: <FileText className="text-urbancare-primary-blue" />,
-    title: "Consulenza condominiale",
+    title: "Consulenza Condominiale",
     description:
-      "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.",
-    href: "/servizi#consulenza-condominiale",
+      "Supporto esperto per affrontare dubbi e situazioni complesse in sicurezza.",
+    href: "/servizi/consulenza-condominiale",
   },
   {
     icon: <Globe2 className="text-urbancare-primary-blue" />,
     title: "Il tuo condominio è online",
     description:
-      "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.",
-    href: "/servizi#condominio-online",
+      "Tutte le informazioni a portata di click: comunicazione veloce e trasparente per tutti i condomini.",
+    href: "/servizi/condominio-online",
   },
   {
     icon: <BriefcaseBusiness className="text-urbancare-primary-blue" />,
-    title: "Gestione Contabile",
+    title: "Gestione Contabile Condominiale",
     description:
-      "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.",
-    href: "/servizi#gestione-contabile",
+      "Conti trasparenti e ordine assicurato: semplifica la contabilità del tuo condominio.",
+    href: "/servizi/gestione-contabile",
   },
 ];
 
