@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/form";
 import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
+import { Text } from "../../components/Text";
 
 export default function Preventivo() {
   const form = useForm<RequestQuoteData>({
@@ -63,7 +64,18 @@ export default function Preventivo() {
       <div className="container mx-auto w-full max-w-3xl px-4 py-12">
         <Form {...form}>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-            <h1 className="text-3xl font-semibold">Richiedi un preventivo</h1>
+            <Text size="h1" align="center" className="font-bold">
+              Richiedi un preventivo
+            </Text>
+
+            <Text
+              size="p"
+              align="center"
+              className="text-muted-foreground text-center"
+            >
+              Compila il modulo qui sotto per richiedere un preventivo
+              personalizzato.
+            </Text>
 
             {/* Nome */}
             <FormField
