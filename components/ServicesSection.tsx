@@ -88,11 +88,10 @@ export default function ServicesSection({ isH1 = false }: { isH1?: boolean }) {
       </Text>
 
       <Text size="p" align="center" className="max-w-4xl text-muted-foreground">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus a
-        nunc eu lacus dapibus iaculis id eu leo. Class aptent taciti sociosqu ad
-        litora torquent per conubia nostra, per inceptos himenaeos. Sed velit
-        velit, mollis in tortor vitae, scelerisque blandit tortor. Vivamus ut
-        semper libero, eget gravida dolor.
+        Offriamo servizi completi di amministrazione condominiale a Milano e
+        provincia: gestione ordinaria e straordinaria, consulenza dedicata,
+        contabilità trasparente e strumenti digitali per una comunicazione
+        chiara con i condomini.
       </Text>
 
       <div className="grid w-full grid-cols-1 sm:grid-cols-2 gap-6">
