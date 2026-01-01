@@ -11,13 +11,29 @@ const poppins = Poppins({
   weight: "400",
 });
 
+export const metadata: Metadata = {
+  title: {
+    default: "Urbancare – Amministratore condominiale Milano",
+    template: "%s | Urbancare – Amministratore condominiale Milano",
+  },
+  description:
+    "Amministratore condominiale a Milano e provincia. Gestione condominio trasparente, interventi rapidi, supporto dedicato. Richiedi un preventivo gratuito.",
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: "/",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="it">
       <body className={`${poppins.variable} h-full`}>
         <ViewTransition>
           <HeaderBar />

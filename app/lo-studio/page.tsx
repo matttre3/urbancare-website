@@ -2,10 +2,43 @@ import React from "react";
 import Image from "next/image";
 import { Text } from "@/components/Text";
 import MethodologySection from "@/components/MethodologySection";
+import type { Metadata } from "next";
+import Script from "next/script";
+
+export const metadata: Metadata = {
+  title: "Lo studio – Amministratore condominiale Milano",
+  description:
+    "Conosci Urbancare e Noele Romano, amministratore condominiale a Milano. Metodo trasparente, supporto continuo e gestione condominio professionale.",
+  alternates: { canonical: "/lo-studio" },
+  robots: { index: true, follow: true },
+};
 
 export default function LoStudio() {
   return (
     <main className="px-5 sm:px-10 md:px-20 flex flex-col gap-2 sm:gap-4 md:gap-6 items-center pt-10">
+      <Script id="ld-aboutpage" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          name: "Lo studio Urbancare",
+          description:
+            "Informazioni su Urbancare – Amministratore condominiale a Milano e provincia",
+          about: {
+            "@type": "LocalBusiness",
+            name: "Urbancare",
+            areaServed: "Milano e provincia",
+            serviceType: [
+              "Amministratore condominiale Milano",
+              "Gestione condominio Milano",
+            ],
+            employee: {
+              "@type": "Person",
+              name: "Noele Romano",
+              jobTitle: "Amministratore di condominio",
+            },
+          },
+        })}
+      </Script>
       <header className="flex flex-col items-center gap-3">
         <Text size="h1" weight="bold" align="center">
           Lo studio
@@ -20,7 +53,7 @@ export default function LoStudio() {
         <div className="space-y-6 flex flex-col items-center justify-self-center lg:justify-self-start">
           <Image
             src="/horizontal-logo.svg"
-            alt="Urbancare logo"
+            alt="Urbancare – amministratore condominiale a Milano (logo)"
             width={260}
             height={80}
             className="lg:h-auto lg:w-auto "
@@ -29,7 +62,7 @@ export default function LoStudio() {
 
           <Image
             src="/amministratore-noele-romano.png"
-            alt="Noele Romano"
+            alt="Noele Romano – amministratore condominiale a Milano"
             width={420}
             height={520}
             className="rounded-lg object-cover"

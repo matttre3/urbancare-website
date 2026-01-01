@@ -1,6 +1,16 @@
 import Link from "next/link";
 import { Text } from "@/components/Text";
 import { Button } from "@/components/ui/button";
+import type { Metadata } from "next";
+import Script from "next/script";
+
+export const metadata: Metadata = {
+  title: "Gestione contabile condominiale a Milano",
+  description:
+    "Gestione contabile condominiale a Milano e provincia: bilanci, ripartizione spese e controllo dei conti con trasparenza.",
+  alternates: { canonical: "/servizi/gestione-contabile" },
+  robots: { index: true, follow: true },
+};
 
 export default function GestioneContabileCondominialePage() {
   return (
@@ -8,12 +18,23 @@ export default function GestioneContabileCondominialePage() {
       <section className="px-5 sm:px-10 md:px-20 py-10 sm:py-12 md:py-16 flex flex-col gap-6 sm:gap-8">
         <header className="flex flex-col items-center text-center gap-3">
           <Text size="h1" weight="bold">
-            Gestione Contabile Condominiale
+            Gestione contabile condominiale a Milano
           </Text>
           <Text size="p" className="max-w-3xl text-muted-foreground">
             Ordine e trasparenza nei conti
           </Text>
         </header>
+
+        <Script id="ld-service-gestione-contabile" type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: "Gestione contabile condominiale Milano",
+            areaServed: "Milano e provincia",
+            provider: { "@type": "LocalBusiness", name: "Urbancare" },
+            serviceType: "Gestione contabile condominiale",
+          })}
+        </Script>
 
         <div className="grid grid-cols-1 gap-8 md:gap-10 max-w-5xl mx-auto">
           <section className="space-y-3">

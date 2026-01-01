@@ -21,6 +21,7 @@ import {
 import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
 import { Text } from "../../components/Text";
+import Script from "next/script";
 
 export default function Preventivo() {
   const form = useForm<RequestQuoteData>({
@@ -61,11 +62,29 @@ export default function Preventivo() {
 
   return (
     <main className="min-h-screen flex gap-40 flex-col">
+      <Script id="ld-webpage-preventivo" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Richiedi un preventivo – Amministratore condominiale Milano",
+          description:
+            "Modulo per richiedere un preventivo per l'amministrazione condominiale a Milano e provincia",
+          about: {
+            "@type": "LocalBusiness",
+            name: "Urbancare",
+            areaServed: "Milano e provincia",
+            serviceType: [
+              "Amministratore condominiale Milano",
+              "Gestione condominio Milano",
+            ],
+          },
+        })}
+      </Script>
       <div className="container mx-auto w-full max-w-3xl px-4 py-12">
         <Form {...form}>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
             <Text size="h1" align="center" className="font-bold">
-              Richiedi un preventivo
+              Preventivo amministratore condominiale a Milano
             </Text>
 
             <Text
@@ -73,8 +92,8 @@ export default function Preventivo() {
               align="center"
               className="text-muted-foreground text-center"
             >
-              Compila il modulo qui sotto per richiedere un preventivo
-              personalizzato.
+              Compila il modulo per richiedere un preventivo personalizzato per
+              la gestione del tuo condominio a Milano e provincia.
             </Text>
 
             {/* Nome */}
