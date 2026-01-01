@@ -73,13 +73,15 @@ export function HeaderBar() {
         <Text size="p" className="text-white text-sm font-poppins font-medium">
           Accedi alle tue spese condominiali:
         </Text>
-        <Text
-          size="p"
-          weight="semibold"
-          className="text-urbancare-tertiary-blue underline cursor-pointer"
-        >
-          AREA PERSONALE
-        </Text>
+        <Link href="https://condomini.baslab.it/auth/login/BAS20559">
+          <Text
+            size="p"
+            weight="semibold"
+            className="text-urbancare-tertiary-blue underline cursor-pointer"
+          >
+            AREA PERSONALE
+          </Text>
+        </Link>
       </div>
       <div className="mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-3 items-center h-16 ">
@@ -256,7 +258,10 @@ export function HeaderBar() {
             </Button>
 
             <Button variant="secondary" asChild size="lg" className="w-full">
-              <Link href="/contatti" onClick={() => setOpen(false)}>
+              <Link
+                href="/https://condomini.baslab.it/auth/login/BAS20559"
+                onClick={() => setOpen(false)}
+              >
                 <Text
                   size="p"
                   weight="semibold"
