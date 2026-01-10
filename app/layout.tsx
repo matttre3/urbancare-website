@@ -28,9 +28,6 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  alternates: {
-    canonical: "/",
-  },
 };
 
 export default function RootLayout({

@@ -6,6 +6,13 @@ import ServicesSection from "@/components/ServicesSection";
 import AdministratorSection from "@/components/AdministratorSection";
 import ContactSection from "@/components/ContactSection";
 import Script from "next/script";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Home",
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
+};
 
 export default function Home() {
   return (
