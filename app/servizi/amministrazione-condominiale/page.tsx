@@ -1,16 +1,16 @@
 import Link from "next/link";
 import { Text } from "@/components/Text";
 import { Button } from "@/components/ui/button";
-import type { Metadata } from "next";
-import Script from "next/script";
+import { JsonLd } from "@/components/JsonLd";
+import { createPageMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Amministrazione condominiale a Milano",
   description:
     "Servizio di amministrazione condominiale a Milano e provincia: gestione condominio professionale, trasparente e orientata ai condomini.",
-  alternates: { canonical: "/servizi/amministrazione-condominiale" },
-  robots: { index: true, follow: true },
-};
+  path: "/servizi/amministrazione-condominiale",
+});
 
 export default function AmministrazioneCondominialePage() {
   return (
@@ -26,16 +26,16 @@ export default function AmministrazioneCondominialePage() {
           </Text>
         </header>
 
-        <Script id="ld-service-amministrazione" type="application/ld+json">
-          {JSON.stringify({
+        <JsonLd
+          data={{
             "@context": "https://schema.org",
             "@type": "Service",
             name: "Amministrazione condominiale Milano",
             areaServed: "Milano e provincia",
-            provider: { "@type": "LocalBusiness", name: "Urbancare" },
+            provider: { "@type": "LocalBusiness", name: siteConfig.name },
             serviceType: "Amministrazione condominiale",
-          })}
-        </Script>
+          }}
+        />
 
         <div className="grid grid-cols-1 gap-8 md:gap-10 max-w-5xl mx-auto">
           <section className="space-y-3">
@@ -94,11 +94,11 @@ export default function AmministrazioneCondominialePage() {
           </section>
 
           <div className="pt-2">
-            <Link href="/preventivo">
-              <Button size="lg">
+            <Button asChild size="lg">
+              <Link href="/preventivo">
                 <p className="tracking-wider">Richiedi un preventivo</p>
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         </div>
       </section>

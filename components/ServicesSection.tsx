@@ -44,26 +44,31 @@ const services: Service[] = [
 
 function ServiceCard({ icon, title, description, href }: Service) {
   return (
-    <div className="rounded-xl bg-accent p-5 sm:p-6 md:p-7 border border-border/60">
+    <div className="rounded-lg bg-accent p-5 transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-urbancare-tertiary-blue hover:shadow-sm sm:p-6 md:p-7 border border-border/60">
       <div className="flex items-start gap-3">
         <div className="size-8 shrink-0 rounded-md bg-urbancare-quaternary-blue grid place-items-center">
           {icon}
         </div>
-        <Text size="h6" weight="bold" className="text-urbancare-primary-blue">
+        <Text
+          as="h3"
+          size="h6"
+          weight="bold"
+          className="min-w-0 text-urbancare-primary-blue"
+        >
           {title}
         </Text>
       </div>
       <Text size="p" className="mt-3 text-muted-foreground">
         {description}
       </Text>
-      <div className="mt-6 text-right">
+      <div className="mt-6">
         {href ? (
           <Link
             href={href}
             className="text-muted-foreground hover:text-foreground"
           >
             <Text size="p" weight="medium" className="underline">
-              Scopri di più
+              Scopri {title.toLowerCase()}
             </Text>
           </Link>
         ) : (
@@ -100,11 +105,11 @@ export default function ServicesSection({ isH1 = false }: { isH1?: boolean }) {
         ))}
       </div>
 
-      <Link href="/preventivo">
-        <Button className="mt-4">
+      <Button asChild className="mt-4">
+        <Link href="/preventivo">
           <p className="tracking-wider">Richiedi un preventivo</p>
-        </Button>
-      </Link>
+        </Link>
+      </Button>
     </section>
   );
 }

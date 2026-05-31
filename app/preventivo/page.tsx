@@ -21,7 +21,9 @@ import {
 import { Toaster } from "@/components/ui/sonner";
 import { toast } from "sonner";
 import { Text } from "../../components/Text";
-import Script from "next/script";
+import Link from "next/link";
+import { JsonLd } from "@/components/JsonLd";
+import { siteConfig } from "@/lib/site";
 
 export default function Preventivo() {
   const form = useForm<RequestQuoteData>({
@@ -35,7 +37,7 @@ export default function Preventivo() {
       parking: undefined,
       elevator: false,
       centralHeating: false,
-      situation: "",
+      situation: undefined,
       message: "",
       privacyAccepted: false,
     },
@@ -43,27 +45,34 @@ export default function Preventivo() {
   const {
     control,
     handleSubmit,
+    reset,
     formState: { isSubmitting },
   } = form;
 
   const onSubmit = async (data: RequestQuoteData) => {
-    const res = await fetch("/api/request-quote", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
+    try {
+      const res = await fetch("/api/request-quote", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
 
-    if (res.ok) {
+      if (!res.ok) {
+        toast.error("Errore nell'invio. Prova a contattarci via email.");
+        return;
+      }
+
       toast.success("Richiesta inviata con successo");
-    } else {
-      toast.error("Errore nell'invio");
+      reset();
+    } catch {
+      toast.error("Connessione non riuscita. Prova a contattarci via email.");
     }
   };
 
   return (
     <main className="min-h-screen flex gap-40 flex-col">
-      <Script id="ld-webpage-preventivo" type="application/ld+json">
-        {JSON.stringify({
+      <JsonLd
+        data={{
           "@context": "https://schema.org",
           "@type": "WebPage",
           name: "Richiedi un preventivo – Amministratore condominiale Milano",
@@ -73,13 +82,15 @@ export default function Preventivo() {
             "@type": "LocalBusiness",
             name: "Urbancare",
             areaServed: "Milano e provincia",
+            email: siteConfig.email,
+            telephone: siteConfig.phone,
             serviceType: [
               "Amministratore condominiale Milano e provincia",
               "Gestione condominio Milano e provincia",
             ],
           },
-        })}
-      </Script>
+        }}
+      />
       <div className="container mx-auto w-full max-w-3xl px-4 py-12">
         <Form {...form}>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
@@ -104,7 +115,11 @@ export default function Preventivo() {
                 <FormItem>
                   <FormLabel>Nome e cognome *</FormLabel>
                   <FormControl>
-                    <Input placeholder="Nome e cognome *" {...field} />
+                    <Input
+                      placeholder="Nome e cognome *"
+                      autoComplete="name"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -119,7 +134,12 @@ export default function Preventivo() {
                 <FormItem>
                   <FormLabel>Email *</FormLabel>
                   <FormControl>
-                    <Input placeholder="Email *" type="email" {...field} />
+                    <Input
+                      placeholder="Email *"
+                      type="email"
+                      autoComplete="email"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -134,7 +154,12 @@ export default function Preventivo() {
                 <FormItem>
                   <FormLabel>Telefono *</FormLabel>
                   <FormControl>
-                    <Input placeholder="Telefono *" {...field} />
+                    <Input
+                      placeholder="Telefono *"
+                      autoComplete="tel"
+                      inputMode="tel"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -171,6 +196,8 @@ export default function Preventivo() {
                   <FormControl>
                     <Input
                       type="number"
+                      min={1}
+                      inputMode="numeric"
                       placeholder="Numero di unità abitative"
                       {...field}
                     />
@@ -190,6 +217,8 @@ export default function Preventivo() {
                   <FormControl>
                     <Input
                       type="number"
+                      min={0}
+                      inputMode="numeric"
                       placeholder="Numero di box / posti auto"
                       {...field}
                     />
@@ -254,7 +283,7 @@ export default function Preventivo() {
                     <RadioGroup
                       className="grid grid-cols-1 gap-4 sm:grid-cols-3"
                       onValueChange={field.onChange}
-                      value={field.value}
+                      value={field.value ?? ""}
                     >
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="cambio_amministratore" id="s1" />
@@ -297,7 +326,7 @@ export default function Preventivo() {
               control={control}
               name="privacyAccepted"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center space-x-3 space-y-0 rounded-md border p-4">
+                <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
                   <FormControl>
                     <Checkbox
                       checked={field.value}
@@ -306,10 +335,14 @@ export default function Preventivo() {
                       }
                     />
                   </FormControl>
-                  <div className="space-y-1 leading-none">
+                  <div className="min-w-0 space-y-1 leading-none">
                     <FormLabel>
                       Acconsento al trattamento dei dati personali ai sensi del
-                      GDPR *
+                      GDPR e dichiaro di aver letto la{" "}
+                      <Link href="/privacy-policy" className="underline">
+                        Privacy Policy
+                      </Link>
+                      . *
                     </FormLabel>
                   </div>
                   <FormMessage />

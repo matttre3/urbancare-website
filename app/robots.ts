@@ -1,8 +1,7 @@
 import { MetadataRoute } from "next";
+import { absoluteUrl, siteConfig } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-
   return {
     rules: [
       {
@@ -10,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: `${siteUrl}/sitemap.xml`,
-    host: siteUrl.replace(/\/$/, ""),
+    sitemap: absoluteUrl("/sitemap.xml"),
+    host: siteConfig.url,
   };
 }

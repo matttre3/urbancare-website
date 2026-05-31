@@ -2,22 +2,22 @@ import React from "react";
 import Image from "next/image";
 import { Text } from "@/components/Text";
 import MethodologySection from "@/components/MethodologySection";
-import type { Metadata } from "next";
-import Script from "next/script";
+import { JsonLd } from "@/components/JsonLd";
+import { createPageMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Lo studio – Amministratore condominiale Milano",
   description:
     "Conosci Urbancare e Noele Romano, amministratore condominiale a Milano. Metodo trasparente, supporto continuo e gestione condominio professionale.",
-  alternates: { canonical: "/lo-studio" },
-  robots: { index: true, follow: true },
-};
+  path: "/lo-studio",
+});
 
 export default function LoStudio() {
   return (
     <main className="px-5 sm:px-10 md:px-20 flex flex-col gap-2 sm:gap-4 md:gap-6 items-center pt-10">
-      <Script id="ld-aboutpage" type="application/ld+json">
-        {JSON.stringify({
+      <JsonLd
+        data={{
           "@context": "https://schema.org",
           "@type": "AboutPage",
           name: "Lo studio Urbancare",
@@ -27,6 +27,8 @@ export default function LoStudio() {
             "@type": "LocalBusiness",
             name: "Urbancare",
             areaServed: "Milano e provincia",
+            email: siteConfig.email,
+            telephone: siteConfig.phone,
             serviceType: [
               "Amministratore condominiale Milano e provincia",
               "Gestione condominio Milano e provincia",
@@ -37,8 +39,8 @@ export default function LoStudio() {
               jobTitle: "Amministratore di condominio",
             },
           },
-        })}
-      </Script>
+        }}
+      />
       <header className="flex flex-col items-center gap-3">
         <Text size="h1" weight="bold" align="center">
           Lo studio

@@ -3,15 +3,16 @@ import { Text } from "./Text";
 import { Phone, Mail } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/lib/site";
 
 function ContactCardPhone() {
   return (
-    <div className="rounded-xl bg-accent p-6 md:p-7 border border-border/60 flex items-start gap-4">
+    <div className="rounded-lg bg-accent p-6 md:p-7 border border-border/60 flex items-start gap-4">
       <div className="size-10 shrink-0 rounded-md bg-urbancare-quaternary-blue grid place-items-center">
         <Phone className="text-urbancare-primary-blue" />
       </div>
-      <div className="flex-1">
-        <Text size="h6" weight="bold" className="text-urbancare-primary-blue">
+      <div className="min-w-0 flex-1">
+        <Text as="h3" size="h6" weight="bold" className="text-urbancare-primary-blue">
           Chiamaci al telefono
         </Text>
         <div className="mt-3 space-y-1">
@@ -20,11 +21,16 @@ function ContactCardPhone() {
             weight="semibold"
             className="text-urbancare-primary-blue"
           >
-            Dott. Romano Noele
+            Dott. Noele Romano
           </Text>
-          <Text size="p" className="text-muted-foreground">
-            +39 327 530 6234
-          </Text>
+          <a
+            href={siteConfig.phoneHref}
+            className="text-muted-foreground underline-offset-4 hover:underline"
+          >
+            <Text size="p" className="text-muted-foreground">
+              {siteConfig.phone}
+            </Text>
+          </a>
         </div>
       </div>
     </div>
@@ -33,12 +39,12 @@ function ContactCardPhone() {
 
 function ContactCardEmail() {
   return (
-    <div className="rounded-xl bg-accent p-6 md:p-7 border border-border/60 flex items-start gap-4">
+    <div className="rounded-lg bg-accent p-6 md:p-7 border border-border/60 flex items-start gap-4">
       <div className="size-10 shrink-0 rounded-md bg-urbancare-quaternary-blue grid place-items-center">
         <Mail className="text-urbancare-primary-blue" />
       </div>
-      <div className="flex-1">
-        <Text size="h6" weight="bold" className="text-urbancare-primary-blue">
+      <div className="min-w-0 flex-1">
+        <Text as="h3" size="h6" weight="bold" className="text-urbancare-primary-blue">
           Scrivici via e-mail
         </Text>
         <div className="mt-3 space-y-1">
@@ -47,21 +53,31 @@ function ContactCardEmail() {
             weight="semibold"
             className="text-urbancare-primary-blue"
           >
-            Dott. Romano Noele:{" "}
-            <span className="font-normal text-muted-foreground">
-              urbancareregest@gmail.com
-            </span>
+            Dott. Noele Romano
           </Text>
+          <a
+            className="block text-muted-foreground underline-offset-4 hover:underline break-all"
+            href={`mailto:${siteConfig.email}`}
+          >
+            <Text size="p" className="text-muted-foreground">
+              {siteConfig.email}
+            </Text>
+          </a>
           <Text
             size="p"
             weight="semibold"
             className="text-urbancare-primary-blue"
           >
-            Dott. Romano Noele PEC:{" "}
-            <span className="font-normal text-muted-foreground">
-              urbancare@legalmail.it
-            </span>
+            Dott. Noele Romano PEC
           </Text>
+          <a
+            className="block text-muted-foreground underline-offset-4 hover:underline break-all"
+            href={`mailto:${siteConfig.pec}`}
+          >
+            <Text size="p" className="text-muted-foreground">
+              {siteConfig.pec}
+            </Text>
+          </a>
         </div>
       </div>
     </div>
@@ -75,8 +91,8 @@ export default function ContactSection({ isH1 }: { isH1?: boolean }) {
         Richiedi supporto o informazioni
       </Text>
       <Text size="p" align="center" className="max-w-3xl text-muted-foreground">
-        Compila il form qui sotto e verrai ricontattato al più presto con una
-        proposta personalizzata.
+        Chiamaci o scrivici: ti ricontattiamo al più presto con informazioni
+        chiare e una proposta personalizzata.
       </Text>
 
       <div className="grid w-full grid-cols-1 md:grid-cols-2 gap-6">
@@ -84,11 +100,11 @@ export default function ContactSection({ isH1 }: { isH1?: boolean }) {
         <ContactCardEmail />
       </div>
 
-      <Link href="/preventivo">
-        <Button className="col-start-3 justify-self-end">
+      <Button asChild className="col-start-3 justify-self-end">
+        <Link href="/preventivo">
           <p className="tracking-wider">Richiedi un preventivo</p>
-        </Button>
-      </Link>
+        </Link>
+      </Button>
     </section>
   );
 }

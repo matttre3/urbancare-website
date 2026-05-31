@@ -1,16 +1,16 @@
 import Link from "next/link";
 import { Text } from "@/components/Text";
 import { Button } from "@/components/ui/button";
-import type { Metadata } from "next";
-import Script from "next/script";
+import { JsonLd } from "@/components/JsonLd";
+import { createPageMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Condominio online a Milano",
   description:
     "Piattaforma digitale per il condominio: documenti, comunicazioni e segnalazioni online per i condomini di Milano e provincia.",
-  alternates: { canonical: "/servizi/condominio-online" },
-  robots: { index: true, follow: true },
-};
+  path: "/servizi/condominio-online",
+});
 
 export default function CondominioOnlinePage() {
   return (
@@ -25,16 +25,16 @@ export default function CondominioOnlinePage() {
           </Text>
         </header>
 
-        <Script id="ld-service-condominio-online" type="application/ld+json">
-          {JSON.stringify({
+        <JsonLd
+          data={{
             "@context": "https://schema.org",
             "@type": "Service",
             name: "Condominio online Milano",
             areaServed: "Milano e provincia",
-            provider: { "@type": "LocalBusiness", name: "Urbancare" },
+            provider: { "@type": "LocalBusiness", name: siteConfig.name },
             serviceType: "Piattaforma condominio online",
-          })}
-        </Script>
+          }}
+        />
 
         <div className="grid grid-cols-1 gap-8 md:gap-10 max-w-5xl mx-auto">
           <section className="space-y-3">
@@ -83,11 +83,11 @@ export default function CondominioOnlinePage() {
           </section>
 
           <div className="pt-2">
-            <Link href="/preventivo">
-              <Button size="lg">
+            <Button asChild size="lg">
+              <Link href="/preventivo">
                 <p className="tracking-wider">Richiedi un preventivo</p>
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         </div>
       </section>

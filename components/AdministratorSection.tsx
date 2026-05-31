@@ -19,7 +19,6 @@ export default function AdministratorSection() {
             width={380}
             height={420}
             className="object-cover"
-            priority
           />
         </div>
 
@@ -37,13 +36,13 @@ export default function AdministratorSection() {
           </Text>
 
           <div>
-            <Link href="/lo-studio">
-              <Button variant="secondary" size="lg" className="px-8">
+            <Button asChild variant="secondary" size="lg" className="px-8">
+              <Link href="/lo-studio">
                 <Text size="p" weight="medium" className="tracking-wide">
                   Scopri di più
                 </Text>
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         </div>
       </div>

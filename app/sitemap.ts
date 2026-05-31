@@ -1,8 +1,7 @@
 import { MetadataRoute } from "next";
+import { absoluteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-
   const routes = [
     "/",
     "/servizi",
@@ -16,11 +15,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/privacy-policy",
   ];
 
-  const now = new Date();
+  const lastModified = new Date("2026-05-29T00:00:00Z");
 
   return routes.map((path) => ({
-    url: `${siteUrl}${path}`,
-    lastModified: now,
+    url: absoluteUrl(path),
+    lastModified,
     changeFrequency: "monthly",
     priority: path === "/" ? 1 : 0.7,
   }));

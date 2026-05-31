@@ -1,12 +1,9 @@
-"use client";
-
 import React from "react";
 import { Text } from "./Text";
 import SingleStep from "./SingleStep";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { CheckCircle2, XCircle } from "lucide-react";
-import { motion, easeOut } from "framer-motion";
 
 export default function MethodologySection() {
   const steps = [
@@ -37,52 +34,34 @@ export default function MethodologySection() {
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.30,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: easeOut },
-    },
-  };
-
   return (
-    <div className="px-5 sm:px-10 md:px-20 flex flex-col gap-4 sm:gap-9 items-center justify-center ">
+    <div className="flex flex-col items-center justify-center gap-4 px-5 sm:gap-9 sm:px-10 md:px-20">
       <Text size="h2" weight="bold" align="center">
         Come lavoriamo
       </Text>
-      <motion.div 
-        className="grid w-full grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-fr gap-6"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-      >
+      <div className="grid w-full grid-cols-1 gap-6 auto-rows-fr md:grid-cols-2 2xl:grid-cols-4">
         {steps.map((step) => (
-          <motion.div key={step.number} variants={itemVariants}>
+          <div
+            key={step.number}
+            className="transition-transform duration-200 hover:-translate-y-1"
+          >
             <SingleStep
               number={step.number}
               title={step.title}
               description={step.description}
             />
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
       <div className="w-full rounded-xl p-5 sm:p-6 md:p-8">
         <Text size="h3" weight="bold" align="center" className="mb-6">
           Il cambiamento inizia dal metodo
         </Text>
-        <Text size="p" align="center" className="mb-8 text-muted-foreground max-w-3xl mx-auto">
+        <Text
+          size="p"
+          align="center"
+          className="mx-auto mb-8 max-w-3xl text-muted-foreground"
+        >
           Sceglierci significa dire addio alla gestione tradizionale e abbracciare un approccio moderno, trasparente ed efficiente.
         </Text>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
@@ -195,11 +174,11 @@ export default function MethodologySection() {
         </div>
       </div>
 
-      <Link href="/preventivo">
-        <Button className="col-start-3 justify-self-end">
+      <Button asChild className="col-start-3 justify-self-end">
+        <Link href="/preventivo">
           <p className="tracking-wider">Richiedi un preventivo</p>
-        </Button>
-      </Link>
+        </Link>
+      </Button>
     </div>
   );
 }

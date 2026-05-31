@@ -1,30 +1,42 @@
 import React from "react";
+import Image from "next/image";
 import { Text } from "@/components/Text";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export default function Hero() {
   return (
-    <div className="bg-[url(/bg-hero.png)] bg-cover bg-center">
-      <div className=" px-5 sm:px-10 md:px-20 flex flex-col gap-4 sm:gap-9 items-center justify-center min-h-[calc(100dvh-104px)] ">
+    <section className="relative isolate overflow-hidden bg-white">
+      <Image
+        src="/bg-hero.png"
+        alt=""
+        fill
+        priority
+        fetchPriority="high"
+        sizes="100vw"
+        className="-z-20 scale-[1.02] object-cover object-center opacity-85 sm:opacity-95"
+      />
+      <div className="-z-10 absolute inset-0 bg-linear-to-b from-white/6 via-white/14 to-white/28" />
+      <div className="absolute inset-0 -z-10 bg-radial-[circle_at_center] from-transparent via-transparent to-white/10" />
+      <div className="flex min-h-[calc(88dvh-64px)] w-full flex-col items-center justify-center gap-4 px-5 py-16 sm:gap-9 sm:px-10 md:px-20 lg:min-h-[calc(90dvh-104px)]">
         <Text
           size="h1"
-          className="bg-linear-to-t font-bold tracking-normal from-urbancare-primary-blue to-urbancare-secondary-blue bg-clip-text text-transparent text-3xl! sm:text-4xl! md:text-6xl! max-w-[1060px]"
+          className="max-w-5xl bg-linear-to-t from-urbancare-primary-blue to-urbancare-secondary-blue bg-clip-text text-2xl! font-bold tracking-normal text-transparent sm:text-4xl! md:text-6xl!"
           align="center"
         >
           Gestione condominiale trasparente ed efficiente in Provincia di Milano
         </Text>
-        <Text size="p" align="center">
+        <Text size="p" align="center" className="max-w-3xl">
           Organizzazione chiara, comunicazioni costanti e strumenti digitali per
           ogni condominio.
         </Text>
 
-        <Link href="/preventivo">
-          <Button className="col-start-3 justify-self-end">
+        <Button asChild className="col-start-3 justify-self-end">
+          <Link href="/preventivo">
             <p className="tracking-wider">Richiedi un preventivo</p>
-          </Button>
-        </Link>
+          </Link>
+        </Button>
       </div>
-    </div>
+    </section>
   );
 }

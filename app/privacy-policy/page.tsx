@@ -1,14 +1,14 @@
 import React from "react";
-import type { Metadata } from "next";
 import { Text } from "@/components/Text";
+import { createPageMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Privacy Policy",
   description:
     "Informativa privacy ai sensi dell'art. 13 GDPR per i visitatori del sito Urbancare – Noele Romano. Dati trattati, finalità, basi giuridiche e diritti dell'interessato.",
-  alternates: { canonical: "/privacy-policy" },
-  robots: { index: true, follow: true },
-};
+  path: "/privacy-policy",
+});
 
 export default function PrivacyPolicyPage() {
   return (
@@ -59,10 +59,15 @@ export default function PrivacyPolicyPage() {
           </Text>
           <Text size="p" className="text-sm">
             Il Titolare del Trattamento è: Noele Romano – Urban Care. Email:
-            [inserisci email di contatto]. Sede: [facoltativo]. Il Titolare
-            tratta i dati personali secondo i principi di liceità, correttezza,
-            trasparenza, limitazione delle finalità e della conservazione,
-            minimizzazione dei dati, esattezza, integrità e riservatezza.
+            {" "}
+            <a href={`mailto:${siteConfig.email}`} className="underline">
+              {siteConfig.email}
+            </a>
+            . Sede operativa: {siteConfig.location} ({siteConfig.region}). Il
+            Titolare tratta i dati personali secondo i principi di liceità,
+            correttezza, trasparenza, limitazione delle finalità e della
+            conservazione, minimizzazione dei dati, esattezza, integrità e
+            riservatezza.
           </Text>
 
           <Text

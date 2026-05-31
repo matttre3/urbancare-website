@@ -13,16 +13,20 @@ export default function SingleStep({
   description,
 }: SingleStepProps) {
   return (
-    <div className="h-full flex justify-between flex-col rounded-lg bg-urbancare-tertiary-blue  p-8">
-      <div>
-        <Text className="text-5xl " weight="bold" size="p">
+    <div className="flex h-full flex-col rounded-lg bg-urbancare-tertiary-blue p-6 sm:p-8">
+      <div className="space-y-3">
+        <Text
+          className="text-4xl leading-none sm:text-5xl"
+          weight="bold"
+          size="p"
+        >
           {number}
         </Text>
-        <Text weight="bold" size="h4">
+        <Text as="h3" weight="bold" size="h4">
           {title}
         </Text>
       </div>
-      <Text size="p" className="mt-16">
+      <Text size="p" className="mt-8 text-pretty">
         {description}
       </Text>
     </div>

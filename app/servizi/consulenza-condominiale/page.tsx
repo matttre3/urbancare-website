@@ -1,16 +1,16 @@
 import Link from "next/link";
 import { Text } from "@/components/Text";
 import { Button } from "@/components/ui/button";
-import type { Metadata } from "next";
-import Script from "next/script";
+import { JsonLd } from "@/components/JsonLd";
+import { createPageMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Consulenza condominiale a Milano",
   description:
     "Consulenza condominiale a Milano e provincia: supporto normativo e strategico per amministratori e condomini.",
-  alternates: { canonical: "/servizi/consulenza-condominiale" },
-  robots: { index: true, follow: true },
-};
+  path: "/servizi/consulenza-condominiale",
+});
 
 export default function ConsulenzaCondominialePage() {
   return (
@@ -25,16 +25,16 @@ export default function ConsulenzaCondominialePage() {
           </Text>
         </header>
 
-        <Script id="ld-service-consulenza" type="application/ld+json">
-          {JSON.stringify({
+        <JsonLd
+          data={{
             "@context": "https://schema.org",
             "@type": "Service",
             name: "Consulenza condominiale Milano",
             areaServed: "Milano e provincia",
-            provider: { "@type": "LocalBusiness", name: "Urbancare" },
+            provider: { "@type": "LocalBusiness", name: siteConfig.name },
             serviceType: "Consulenza condominiale",
-          })}
-        </Script>
+          }}
+        />
 
         <div className="grid grid-cols-1 gap-8 md:gap-10 max-w-5xl mx-auto">
           <section className="space-y-3">
@@ -85,11 +85,11 @@ export default function ConsulenzaCondominialePage() {
           </section>
 
           <div className="pt-2">
-            <Link href="/preventivo">
-              <Button size="lg">
+            <Button asChild size="lg">
+              <Link href="/preventivo">
                 <p className="tracking-wider">Richiedi un preventivo</p>
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         </div>
       </section>

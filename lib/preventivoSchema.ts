@@ -1,5 +1,14 @@
 import { z } from "zod";
 
+const situationValues = [
+  "cambio_amministratore",
+  "prima_nomina",
+  "richiesta_info",
+] as const;
+
+const emptyToUndefined = (value: unknown) =>
+  value === "" || value === null ? undefined : value;
+
 export const preventivoSchema = z.object({
   fullName: z.string().min(3, "Nome obbligatorio"),
   email: z.string().email("Email non valida"),
@@ -7,18 +16,21 @@ export const preventivoSchema = z.object({
 
   area: z.string().min(2, "Comune o zona obbligatori"),
 
-  units: z.coerce.number().int().positive().optional(),
-  parking: z.coerce.number().int().nonnegative().optional(),
+  units: z.preprocess(
+    emptyToUndefined,
+    z.coerce.number().int().positive("Inserisci un numero maggiore di 0").optional()
+  ),
+  parking: z.preprocess(
+    emptyToUndefined,
+    z.coerce.number().int().nonnegative("Inserisci un numero positivo").optional()
+  ),
 
   elevator: z.boolean(),
   centralHeating: z.boolean(),
 
-  situation: z
-    .string()
-    .min(1, "Seleziona la situazione")
-    .pipe(
-      z.enum(["cambio_amministratore", "prima_nomina", "richiesta_info"]) as any
-    ),
+  situation: z.enum(situationValues, {
+    error: "Seleziona la situazione",
+  }),
 
   message: z.string().optional(),
 

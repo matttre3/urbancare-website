@@ -1,26 +1,30 @@
 import ServicesSection from "@/components/ServicesSection";
 import React from "react";
-import type { Metadata } from "next";
-import Script from "next/script";
+import { JsonLd } from "@/components/JsonLd";
+import { createPageMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Servizi – Amministratore condominiale Milano",
+export const metadata = createPageMetadata({
+  title: "Servizi di amministrazione condominiale",
   description:
     "Servizi di amministrazione condominiale a Milano e provincia: gestione condominio, preventivi, consulenza e supporto ai condomini.",
-  alternates: { canonical: "/servizi" },
-  robots: { index: true, follow: true },
-};
+  path: "/servizi",
+});
 
 export default function Servizi() {
   return (
     <div className="pt-10">
-      <Script id="ld-services" type="application/ld+json">
-        {JSON.stringify({
+      <JsonLd
+        data={{
           "@context": "https://schema.org",
           "@type": "CollectionPage",
           name: "Servizi Urbancare",
           description:
             "Servizi di amministrazione condominiale a Milano e provincia",
+          provider: {
+            "@type": "ProfessionalService",
+            name: siteConfig.name,
+          },
           hasPart: [
             {
               "@type": "Service",
@@ -33,8 +37,8 @@ export default function Servizi() {
               areaServed: "Milano e provincia",
             },
           ],
-        })}
-      </Script>
+        }}
+      />
       <ServicesSection isH1 />
     </div>
   );

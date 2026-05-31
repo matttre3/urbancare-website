@@ -1,12 +1,11 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Preventivo – Amministratore condominiale Milano",
   description:
     "Richiedi un preventivo per l'amministrazione condominiale a Milano e provincia. Gestione condominio trasparente e supporto dedicato.",
-  alternates: { canonical: "/preventivo" },
-  robots: { index: true, follow: true },
-};
+  path: "/preventivo",
+});
 
 export default function PreventivoLayout({
   children,

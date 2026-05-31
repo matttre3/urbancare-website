@@ -1,16 +1,16 @@
 import Link from "next/link";
 import { Text } from "@/components/Text";
 import { Button } from "@/components/ui/button";
-import type { Metadata } from "next";
-import Script from "next/script";
+import { JsonLd } from "@/components/JsonLd";
+import { createPageMetadata } from "@/lib/metadata";
+import { siteConfig } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Gestione contabile condominiale a Milano",
   description:
     "Gestione contabile condominiale a Milano e provincia: bilanci, ripartizione spese e controllo dei conti con trasparenza.",
-  alternates: { canonical: "/servizi/gestione-contabile" },
-  robots: { index: true, follow: true },
-};
+  path: "/servizi/gestione-contabile",
+});
 
 export default function GestioneContabileCondominialePage() {
   return (
@@ -25,16 +25,16 @@ export default function GestioneContabileCondominialePage() {
           </Text>
         </header>
 
-        <Script id="ld-service-gestione-contabile" type="application/ld+json">
-          {JSON.stringify({
+        <JsonLd
+          data={{
             "@context": "https://schema.org",
             "@type": "Service",
             name: "Gestione contabile condominiale Milano",
             areaServed: "Milano e provincia",
-            provider: { "@type": "LocalBusiness", name: "Urbancare" },
+            provider: { "@type": "LocalBusiness", name: siteConfig.name },
             serviceType: "Gestione contabile condominiale",
-          })}
-        </Script>
+          }}
+        />
 
         <div className="grid grid-cols-1 gap-8 md:gap-10 max-w-5xl mx-auto">
           <section className="space-y-3">
@@ -86,11 +86,11 @@ export default function GestioneContabileCondominialePage() {
           </section>
 
           <div className="pt-2">
-            <Link href="/preventivo">
-              <Button size="lg">
+            <Button asChild size="lg">
+              <Link href="/preventivo">
                 <p className="tracking-wider">Richiedi un preventivo</p>
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
