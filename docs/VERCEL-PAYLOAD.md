@@ -70,9 +70,9 @@ pnpm cms:seed
 
 L'importazione è ripetibile: non sovrascrive articoli esistenti. Crea solo **bozze**, perché i testi del concept devono essere verificati prima di pubblicarli. Gli otto articoli senza testo completo ricevono un promemoria editoriale, non contenuti inventati. Per i millesimi viene importato il testo modificabile e attivato il calcolatore.
 
-## Circolare
+## Bacheca del blog
 
-Il modulo del mock raccoglie email e consenso nel CMS. L'invio periodico delle circolari non è automatizzato: gli iscritti si gestiscono dalla collezione dedicata, accessibile agli amministratori. Il canale per rimuovere un consenso è il contatto dello studio indicato nella privacy. Prima di usare la circolare, verifica i testi dell'informativa e imposta il tuo processo di invio e cancellazione.
+La bacheca invita a contattare lo studio e rimanda a `/contatti`. Il modulo newsletter è stato rimosso e l’endpoint di iscrizione è disattivato. Eventuali consensi già raccolti restano nel CMS; nessun invio periodico è configurato.
 
 ## Passaggio alla produzione, quando approvi il rework
 

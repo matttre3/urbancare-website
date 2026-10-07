@@ -61,7 +61,7 @@ test('API rejects missing and stringified consent',async({request})=>{
     expect(r.status()).toBe(400)
   }
   const newsletter=await request.post('/api/newsletter',{data:{email:'mario@example.com',privacyAccepted:false}})
-  expect(newsletter.status()).toBe(400)
+  expect(newsletter.status()).toBe(410)
 })
 test('legacy quote URL redirects',async({page})=>{await page.goto('/preventivo');await expect(page).toHaveURL(/\/contatti#preventivo$/)})
 

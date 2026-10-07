@@ -332,7 +332,7 @@
     .empty b{display:block;font:800 28px/1.1 var(--f-display);color:var(--text);margin-bottom:8px}
     .grid.is-empty .empty{display:block}
 
-    /* ---------- notice board newsletter ---------- */
+    /* ---------- contact notice board ---------- */
     .board{background:var(--bg2);padding:clamp(70px,9vw,130px) var(--pad);background-image:radial-gradient(color-mix(in srgb,var(--text) 12%,transparent) 1px,transparent 1.2px);background-size:18px 18px}
     .board-inner{max-width:var(--max);margin:auto;display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,6vw,90px);align-items:center}
     .board h2{font-size:clamp(40px,4.6vw,72px);line-height:.95;font-weight:800;margin:20px 0 16px}
@@ -349,13 +349,10 @@
     .notice p{font-size:16px;line-height:1.7;margin:0 0 14px}
     .notice .sign{font:600 15px/1.3 var(--f-display);text-align:right;margin:22px 0 24px}
     .notice .sign span{display:block;font:italic 400 13px/1.4 var(--f-body);color:#6a6f7a}
-    .notice form{display:flex;gap:10px;flex-wrap:wrap}
-    .notice input{flex:1;min-width:200px;border:0;border-bottom:2px dashed #1d2330;background:transparent;padding:12px 2px;font-size:16px;outline:none;color:#1d2330}
-    .notice input::placeholder{color:#8b8f99}
-    .notice button{border:0;border-radius:999px;background:#1d2330;color:#fbf8ef;padding:14px 20px;font:700 14px/1 var(--f-display);cursor:pointer;transition:.25s}
-    .notice button:hover{background:var(--blue)}
-    .stamp{position:absolute;right:28px;bottom:84px;border:3px solid #2e8a73;color:#2e8a73;font:800 16px/1 var(--f-display);letter-spacing:.12em;text-transform:uppercase;padding:10px 14px;border-radius:8px;transform:rotate(-12deg) scale(1.6);opacity:0;transition:.4s cubic-bezier(.3,1.6,.5,1);pointer-events:none}
-    .notice.signed .stamp{opacity:.9;transform:rotate(-12deg) scale(1)}
+    .notice-contact{display:inline-flex;align-items:center;gap:16px;border-radius:12px;background:#1d2330;color:#fbf8ef;padding:16px 22px;font:700 14px/1.3 var(--f-display);transition:background .25s,transform .25s}
+    .notice-contact:hover{background:var(--blue);transform:translateY(-2px)}
+    .notice-contact span{transition:transform .25s}
+    .notice-contact:hover span{transform:translateX(3px)}
 
     @media (max-width:1050px){
       .blog-hero{grid-template-columns:1fr}

@@ -273,14 +273,7 @@
 
 
   observeReveals();
-  document.getElementById('signForm').addEventListener('submit', async e=>{
-    e.preventDefault(); const f=e.target,b=f.querySelector('button'),status=document.getElementById('newsletterStatus');
-    b.disabled=true; status.textContent='';
-    try { const r=await fetch('/api/newsletter',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:f.querySelector('input[type="email"]').value,privacyAccepted:f.querySelector('[name="privacy"]').checked,website:f.querySelector('[name="website"]').value})});
-      const data=await r.json();if(!r.ok)throw Error(data.error||'Invio non riuscito');
-      document.getElementById('notice').classList.add('signed'); b.textContent='Firmato ✓';status.textContent='Iscrizione ricevuta. Puoi cancellarti in qualsiasi momento.';
-    } catch(err){status.textContent=err.message} finally{b.disabled=false}
-  });
+
 })();
 (()=>{
  document.querySelectorAll('.cloth').forEach(el=>{el.setAttribute('tabindex','0');el.setAttribute('role','button');el.setAttribute('aria-label','Filtra categoria '+el.dataset.cat);el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();el.dispatchEvent(new MouseEvent('click',{bubbles:true}))}})});
