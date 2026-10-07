@@ -28,7 +28,7 @@ pnpm test:cms
 pnpm test:e2e
 ```
 
-Il comando di build Vercel applica le migrazioni prima di compilare Next.js. Preview e produzione devono avere database e store Blob distinti.
+Il comando di build Vercel applica le migrazioni prima di compilare Next.js. Locale, Preview e Production usano il database Neon `urbancare-cms` e lo store Blob `urbancare-cms-media` condivisi, come richiesto dal proprietario.
 
 ## Aggiornare il riferimento grafico
 
