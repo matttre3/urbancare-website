@@ -18,6 +18,7 @@ export function card(p: BlogPost) {
 export function blogHTML(posts: BlogPost[]) {
   const feat = posts.find(p => p.featured) || posts[0]
   let html = templates.blog
+  html = html.replace(/(<b id="statPosts">)\d+(<\/b>)/, (_, start, end) => `${start}${posts.length}${end}`)
   const featured = feat ? `<a class="feat-card lit-on-hover enter" style="--d:.55s" href="/blog/${encodeURIComponent(feat.id)}">${cover(feat, 'feat-cover')}<div class="feat-body"><div><div class="tagline"><span class="badge">In evidenza</span>${chip(feat)}<span class="post-meta">${feat.min} min di lettura</span></div><h2>${escapeHTML(feat.t).replace('bene.', '<span class="accent">bene.</span>')}</h2><p>${escapeHTML(feat.x)}</p></div><div style="display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap"><div class="author"><span class="avatar"><svg viewBox="0 0 304 291"><path d="M22 112 L152 22 L282 112" fill="none" stroke="#fff" stroke-width="34"/><path d="M78 128 V206 a74 74 0 0 0 148 0 V116" fill="none" stroke="#fff" stroke-width="40"/></svg></span><div><b>${escapeHTML(feat.author || 'Noele Romano')}</b><span>${fmtDate(feat.date)}</span></div></div><span class="btn primary">Leggi l’articolo <span class="round">→</span></span></div></div></a>` : ''
   html = html.replace(/(<section class="featured" id="featured">)[\s\S]*?(<\/section>)/, () => `<section class="featured" id="featured">${featured}</section>`)
   html = html.replace(/(<div class="empty"[^>]*>)/, (match) => posts.filter(p => p !== feat).map(card).join('') + match)
