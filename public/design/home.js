@@ -270,8 +270,16 @@
     // mini portal: new documents keep arriving
     (function(){
       const feed=document.getElementById('feed');if(!feed)return;
-      const items=[['📄','Rendiconto 2026 pubblicato','Nuovo'],['🗓️','Assemblea convocata · 14 ottobre','Avviso'],['🧾','Fattura manutenzione ascensore','Caricata'],['✅','Verbale assemblea firmato','PDF'],['💬','Risposta alla tua segnalazione','Letta'],['🔧','Intervento idraulico programmato','Oggi']];
-      let i=0;const push=()=>{const [ic,t,tag]=items[i++%items.length];feed.insertAdjacentHTML('afterbegin',`<div class="feed-item"><span class="fi">${ic}</span><span>${t}</span><em>${tag}</em></div>`);while(feed.children.length>4)feed.lastElementChild.remove()};
+      const icon=paths=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
+      const items=[
+        [icon('<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h6"/>'),'Rendiconto 2026 pubblicato','Nuovo'],
+        [icon('<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18M8 15h2M14 15h2"/>'),'Assemblea convocata · 14 ottobre','Avviso'],
+        [icon('<path d="M6 3l2 1 2-1 2 1 2-1 2 1 2-1v18l-2-1-2 1-2-1-2 1-2-1-2 1zM9 8h6M9 12h6M9 16h3"/>'),'Fattura manutenzione ascensore','Caricata'],
+        [icon('<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 15l3 3 5-6"/>'),'Verbale assemblea firmato','PDF'],
+        [icon('<path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2zM7 8h10M7 12h7"/>'),'Risposta alla tua segnalazione','Letta'],
+        [icon('<path d="M14.7 6.3a5 5 0 0 0-6.3 6.3L3 18a2.1 2.1 0 0 0 3 3l5.4-5.4a5 5 0 0 0 6.3-6.3l-3 3-3-3z"/>'),'Intervento idraulico programmato','Oggi'],
+      ];
+      let i=0;const push=()=>{const [ic,t,tag]=items[i++%items.length];feed.insertAdjacentHTML('afterbegin',`<div class="feed-item"><span class="fi" aria-hidden="true">${ic}</span><span>${t}</span><em>${tag}</em></div>`);while(feed.children.length>4)feed.lastElementChild.remove()};
       push();push();push();
       if(!matchMedia('(prefers-reduced-motion: reduce)').matches)setInterval(push,2600);
     })();
