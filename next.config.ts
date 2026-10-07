@@ -1,9 +1,12 @@
 import type { NextConfig } from "next";
+import { withPayload } from "@payloadcms/next/withPayload";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    viewTransition: true,
+  async redirects() {
+    return [
+      { source: "/preventivo", destination: "/contatti#preventivo", permanent: true },
+    ];
   },
 };
 
-export default nextConfig;
+export default withPayload(nextConfig);

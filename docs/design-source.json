@@ -1,0 +1,16 @@
+{
+  "source": "urbancare-sito.html",
+  "sha256": "b3b9b59c1900592a56faf0737430e4da597ab73b5a52f565e30d1988e46ba6a0",
+  "pages": [
+    "home",
+    "amministrazione",
+    "consulenza",
+    "online",
+    "contabilita",
+    "studio",
+    "contatti",
+    "blog",
+    "articolo"
+  ],
+  "approach": "Native SSR markup; original CSS and isolated animation scripts; no iframe."
+}

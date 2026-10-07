@@ -12,7 +12,7 @@ export function createPageMetadata({
   title,
   description,
   path,
-  robots = { index: true, follow: true },
+  robots = process.env.VERCEL_ENV && process.env.VERCEL_ENV !== "production" ? { index: false, follow: false } : { index: true, follow: true },
 }: PageMetadataInput): Metadata {
   const url = absoluteUrl(path);
 

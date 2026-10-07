@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# UrbanCare
 
-## Getting Started
+Rework Next.js + Payload CMS nella branch `codex/urbancare-rework`. Replica le nove pagine di `urbancare-sito.html` con markup renderizzato dal server, CSS e generatori SVG originali, temi chiaro/scuro e interazioni responsive.
 
-First, run the development server:
+- Node.js 24, pnpm 10.17.1, Next.js 16.4.0, React 19.3.0, Payload 3.90.2.
+- Neon Postgres per CMS e blog; Vercel Blob per le immagini; Resend per contatti e preventivi.
+- Pannello `/admin`, blog `/blog`, articoli `/blog/[slug]`.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
+La configurazione passo per passo è in [docs/VERCEL-PAYLOAD.md](docs/VERCEL-PAYLOAD.md). Copia `.env.example` in `.env` per collegare il CMS in locale. Senza database il sito mostra il mock, disponibile per la revisione grafica; i moduli non inviano email senza Resend.
+
+```sh
+pnpm install --frozen-lockfile
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Per il CMS configurato:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+pnpm cms:migrate
+pnpm cms:seed # facoltativo: crea bozze dal mock senza sovrascrivere dati
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```sh
+pnpm typecheck
+pnpm lint
+pnpm build
+pnpm test:cms
+pnpm test:e2e
+```
 
-## Learn More
+Il comando di build Vercel applica le migrazioni prima di compilare Next.js. Preview e produzione devono avere database e store Blob distinti.
 
-To learn more about Next.js, take a look at the following resources:
+## Aggiornare il riferimento grafico
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```sh
+python3 scripts/import-mock.py /percorso/urbancare-sito.html
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+L'importatore conserva CSS e animazioni, estrae l'immagine condivisa e aggiorna i template. Gli adattamenti per route, dati CMS, invio moduli e accessibilità sono versionati nello script; il riferimento è identificato da `docs/design-source.json`.

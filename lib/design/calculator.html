@@ -1,0 +1,13 @@
+      <div class="calc" id="calc">
+        <div class="label">Calcolatore</div>
+        <h3>Quanto mi tocca?</h3>
+        <div class="calc-grid">
+          <label class="field"><span>Spesa totale (€)</span><input type="number" id="cSpesa" value="12000" min="0" step="100"></label>
+          <label class="field"><span>I tuoi millesimi</span><input type="number" id="cMil" value="85" min="0" max="1000" step="1"></label>
+          <label class="field" style="grid-column:1/-1"><span>Oppure trascina</span><input type="range" id="cRange" min="0" max="300" value="85"></label>
+        </div>
+        <div class="calc-out">
+          <div><div class="big" id="cOut">1.020 €</div><small id="cHint">pari all’8,5% della spesa</small></div>
+          <div class="share-bar" aria-hidden="true"><i id="cBar" style="width:8.5%"></i></div>
+        </div>
+      </div>
