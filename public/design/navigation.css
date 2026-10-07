@@ -1,0 +1,46 @@
+/* Shared navigation: consistent spacing and disclosure behavior across pages. */
+.nav-wrap nav{gap:24px;padding-inline:24px 16px}
+.nav-wrap .nav-links{gap:22px}
+.nav-wrap .nav-links>a:not(.nav-cta){padding-block:12px}
+.nav-wrap .services-toggle{display:inline-flex;align-items:center;gap:9px;padding:12px 0;border:0;background:none;color:inherit;font:inherit;cursor:pointer;opacity:.8;transition:opacity .2s}
+.nav-wrap .services-toggle::after{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);transition:transform .3s}
+.nav-wrap .services-toggle:hover,.nav-wrap .services-toggle[aria-expanded="true"]{opacity:1}
+.nav-wrap .services-toggle[aria-expanded="true"]::after{transform:translateY(1px) rotate(225deg)}
+.nav-wrap .dd-menu,.nav-wrap .dd:hover .dd-menu,.nav-wrap .dd:focus-within .dd-menu{width:420px;padding:12px;top:calc(100% + 12px);opacity:0;visibility:hidden;pointer-events:none;transform:translate(-50%,10px) scale(.97);transform-origin:50% 0;transition:opacity .22s,transform .3s cubic-bezier(.2,.8,.2,1),visibility .3s}
+.nav-wrap .dd.is-open .dd-menu{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0) scale(1)}
+.nav-wrap .dd-menu::before{top:-14px;height:14px}
+.nav-wrap .dd-menu a{grid-template-columns:44px minmax(0,1fr);gap:14px;padding:14px 12px;align-items:start;transition:background .2s,transform .25s}
+.nav-wrap .dd-menu a:not(.all):hover{transform:translateX(3px)}
+.nav-wrap .dd-menu .ic{width:44px;height:44px;border-radius:13px;opacity:1}
+.nav-wrap .dd-menu b{line-height:1.3;margin:1px 0 5px}
+.nav-wrap .dd-menu a>div>span{display:block;font-size:12px;line-height:1.5}
+.nav-wrap .dd-menu .all{padding:17px 12px 9px;margin-top:8px;line-height:1.4}
+.nav-wrap .burger{width:44px;height:44px;border-radius:12px;position:relative;font-size:0!important;flex-shrink:0;cursor:pointer}
+.nav-wrap .burger::before,.nav-wrap .burger::after{content:"";position:absolute;left:11px;right:11px;height:2px;top:17px;background:currentColor;border-radius:2px;transition:transform .3s,top .3s}
+.nav-wrap .burger::after{top:25px}
+.nav-wrap.menu-open .burger::before{top:21px;transform:rotate(45deg)}
+.nav-wrap.menu-open .burger::after{top:21px;transform:rotate(-45deg)}
+@media(min-width:1051px){.nav-wrap .dd.is-open .dd-menu a{animation:nav-item-in .35s both}.nav-wrap .dd.is-open .dd-menu a:nth-child(2){animation-delay:.035s}.nav-wrap .dd.is-open .dd-menu a:nth-child(3){animation-delay:.07s}.nav-wrap .dd.is-open .dd-menu a:nth-child(4){animation-delay:.105s}}
+@keyframes nav-item-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:1200px) and (min-width:1051px){.nav-wrap .nav-links{gap:14px}.nav-wrap nav{padding-left:18px;gap:16px}}
+@media(max-width:1050px){
+ .nav-wrap nav{padding-inline:18px;gap:16px}
+ .nav-wrap .nav-links,.nav-wrap.menu-open .nav-links{display:flex;position:absolute;top:calc(100% + 8px);left:var(--pad,24px);right:var(--pad,24px);flex-direction:column;align-items:stretch;gap:4px;padding:16px;border-radius:20px;background:#0f1c30;color:#eef2fa;border:1px solid #ffffff14;max-height:calc(100svh - 135px);overflow-y:auto;box-shadow:0 24px 60px #0004;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-10px) scale(.98);transform-origin:top;transition:opacity .22s,transform .3s cubic-bezier(.2,.8,.2,1),visibility .3s}
+ .nav-wrap.menu-open .nav-links{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0) scale(1)}
+ .nav-wrap .nav-links>a:not(.nav-cta),.nav-wrap.menu-open .nav-links>a:not(.nav-cta){display:flex!important;padding:14px 12px;border-radius:10px;align-items:center}
+ .nav-wrap .nav-links>a::after{display:none}
+ .nav-wrap .dd{display:block}
+ .nav-wrap .services-toggle{display:flex;width:100%;justify-content:space-between;padding:14px 12px;border-radius:10px}
+ .nav-wrap .dd-menu,.nav-wrap.menu-open .dd-menu,.nav-wrap .dd:hover .dd-menu,.nav-wrap .dd:focus-within .dd-menu{display:block;position:static;width:100%;min-width:0;padding:0 4px;max-height:0;overflow:hidden;opacity:0;visibility:hidden;pointer-events:none;transform:none;background:transparent;box-shadow:none;border:0;border-radius:0;transition:max-height .35s,opacity .25s,visibility .35s}
+ .nav-wrap .dd.is-open .dd-menu{max-height:650px;opacity:1;visibility:visible;pointer-events:auto;transform:none}
+ .nav-wrap .dd-menu a{padding:12px 8px;grid-template-columns:38px minmax(0,1fr);gap:12px}
+ .nav-wrap .dd-menu .ic{width:38px;height:38px}
+ .nav-wrap .dd-menu .all{margin:4px 0 10px;padding:14px}
+ .nav-wrap .nav-links .area{margin-top:8px}
+ .nav-wrap .nav-links .theme-toggle{align-self:flex-start;margin:10px 12px}
+ .nav-wrap .nav-links .nav-cta,.nav-wrap.menu-open .nav-links .nav-cta{display:flex!important;justify-content:center;margin-top:8px;padding:16px}
+ html[data-theme="light"] .nav-wrap .nav-links,html[data-theme="light"] .nav-wrap.menu-open .nav-links{background:#fff;color:#08111f;border-color:#08111f12}
+ html[data-theme="light"] .nav-wrap .dd-menu{background:transparent}
+}
+@media(max-width:640px){.nav-wrap .nav-links,.nav-wrap.menu-open .nav-links{left:14px;right:14px}.nav-wrap nav{padding-inline:14px}}
+@media(prefers-reduced-motion:reduce){.nav-wrap .dd-menu,.nav-wrap .dd-menu a,.nav-wrap .nav-links,.nav-wrap .burger::before,.nav-wrap .burger::after,.nav-wrap .services-toggle::after{animation:none!important;transition:none!important}}
