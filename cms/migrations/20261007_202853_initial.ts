@@ -10,175 +10,175 @@ export async function up({ db }: MigrateUpArgs): Promise<void> {
   CREATE TYPE "public"."enum__posts_v_version_illustration" AS ENUM('facade', 'ringhiera', 'blocks', 'roofs', 'stairs', 'oculus');
   CREATE TYPE "public"."enum__posts_v_version_status" AS ENUM('draft', 'published');
   CREATE TABLE "users_sessions" (
-  	"_order" integer NOT NULL,
-  	"_parent_id" integer NOT NULL,
-  	"id" varchar PRIMARY KEY NOT NULL,
-  	"created_at" timestamp(3) with time zone,
-  	"expires_at" timestamp(3) with time zone NOT NULL
+    "_order" integer NOT NULL,
+    "_parent_id" integer NOT NULL,
+    "id" varchar PRIMARY KEY NOT NULL,
+    "created_at" timestamp(3) with time zone,
+    "expires_at" timestamp(3) with time zone NOT NULL
   );
-  
+
   CREATE TABLE "users" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"name" varchar NOT NULL,
-  	"role" "enum_users_role" DEFAULT 'admin' NOT NULL,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"email" varchar NOT NULL,
-  	"reset_password_token" varchar,
-  	"reset_password_expiration" timestamp(3) with time zone,
-  	"salt" varchar,
-  	"hash" varchar,
-  	"reset_password_requested_at" timestamp(3) with time zone,
-  	"login_attempts" numeric DEFAULT 0,
-  	"lock_until" timestamp(3) with time zone
+    "id" serial PRIMARY KEY NOT NULL,
+    "name" varchar NOT NULL,
+    "role" "enum_users_role" DEFAULT 'admin' NOT NULL,
+    "updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    "created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    "email" varchar NOT NULL,
+    "reset_password_token" varchar,
+    "reset_password_expiration" timestamp(3) with time zone,
+    "salt" varchar,
+    "hash" varchar,
+    "reset_password_requested_at" timestamp(3) with time zone,
+    "login_attempts" numeric DEFAULT 0,
+    "lock_until" timestamp(3) with time zone
   );
-  
+
   CREATE TABLE "media" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"alt" varchar NOT NULL,
-  	"caption" varchar,
-  	"prefix" varchar DEFAULT '',
-  	"_objectkey" varchar,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"url" varchar,
-  	"thumbnail_u_r_l" varchar,
-  	"filename" varchar,
-  	"mime_type" varchar,
-  	"filesize" numeric,
-  	"width" numeric,
-  	"height" numeric,
-  	"focal_x" numeric,
-  	"focal_y" numeric,
-  	"sizes_card_url" varchar,
-  	"sizes_card_width" numeric,
-  	"sizes_card_height" numeric,
-  	"sizes_card_mime_type" varchar,
-  	"sizes_card_filesize" numeric,
-  	"sizes_card_filename" varchar,
-  	"sizes_hero_url" varchar,
-  	"sizes_hero_width" numeric,
-  	"sizes_hero_height" numeric,
-  	"sizes_hero_mime_type" varchar,
-  	"sizes_hero_filesize" numeric,
-  	"sizes_hero_filename" varchar
+    "id" serial PRIMARY KEY NOT NULL,
+    "alt" varchar NOT NULL,
+    "caption" varchar,
+    "prefix" varchar DEFAULT '',
+    "_objectkey" varchar,
+    "updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    "created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    "url" varchar,
+    "thumbnail_u_r_l" varchar,
+    "filename" varchar,
+    "mime_type" varchar,
+    "filesize" numeric,
+    "width" numeric,
+    "height" numeric,
+    "focal_x" numeric,
+    "focal_y" numeric,
+    "sizes_card_url" varchar,
+    "sizes_card_width" numeric,
+    "sizes_card_height" numeric,
+    "sizes_card_mime_type" varchar,
+    "sizes_card_filesize" numeric,
+    "sizes_card_filename" varchar,
+    "sizes_hero_url" varchar,
+    "sizes_hero_width" numeric,
+    "sizes_hero_height" numeric,
+    "sizes_hero_mime_type" varchar,
+    "sizes_hero_filesize" numeric,
+    "sizes_hero_filename" varchar
   );
-  
+
   CREATE TABLE "posts" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"title" varchar,
-  	"slug" varchar,
-  	"excerpt" varchar,
-  	"category" "enum_posts_category" DEFAULT 'guide',
-  	"cover_id" integer,
-  	"illustration" "enum_posts_illustration" DEFAULT 'facade',
-  	"author" varchar DEFAULT 'Noele Romano',
-  	"read_time" numeric DEFAULT 5,
-  	"featured" boolean DEFAULT false,
-  	"published_at" timestamp(3) with time zone,
-  	"content" jsonb,
-  	"calculator" boolean DEFAULT false,
-  	"seo_title" varchar,
-  	"seo_description" varchar,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"_status" "enum_posts_status" DEFAULT 'draft'
+    "id" serial PRIMARY KEY NOT NULL,
+    "title" varchar,
+    "slug" varchar,
+    "excerpt" varchar,
+    "category" "enum_posts_category" DEFAULT 'guide',
+    "cover_id" integer,
+    "illustration" "enum_posts_illustration" DEFAULT 'facade',
+    "author" varchar DEFAULT 'Noele Romano',
+    "read_time" numeric DEFAULT 5,
+    "featured" boolean DEFAULT false,
+    "published_at" timestamp(3) with time zone,
+    "content" jsonb,
+    "calculator" boolean DEFAULT false,
+    "seo_title" varchar,
+    "seo_description" varchar,
+    "updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    "created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    "_status" "enum_posts_status" DEFAULT 'draft'
   );
-  
+
   CREATE TABLE "_posts_v" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"parent_id" integer,
-  	"version_title" varchar,
-  	"version_slug" varchar,
-  	"version_excerpt" varchar,
-  	"version_category" "enum__posts_v_version_category" DEFAULT 'guide',
-  	"version_cover_id" integer,
-  	"version_illustration" "enum__posts_v_version_illustration" DEFAULT 'facade',
-  	"version_author" varchar DEFAULT 'Noele Romano',
-  	"version_read_time" numeric DEFAULT 5,
-  	"version_featured" boolean DEFAULT false,
-  	"version_published_at" timestamp(3) with time zone,
-  	"version_content" jsonb,
-  	"version_calculator" boolean DEFAULT false,
-  	"version_seo_title" varchar,
-  	"version_seo_description" varchar,
-  	"version_updated_at" timestamp(3) with time zone,
-  	"version_created_at" timestamp(3) with time zone,
-  	"version__status" "enum__posts_v_version_status" DEFAULT 'draft',
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"latest" boolean,
-  	"autosave" boolean
+    "id" serial PRIMARY KEY NOT NULL,
+    "parent_id" integer,
+    "version_title" varchar,
+    "version_slug" varchar,
+    "version_excerpt" varchar,
+    "version_category" "enum__posts_v_version_category" DEFAULT 'guide',
+    "version_cover_id" integer,
+    "version_illustration" "enum__posts_v_version_illustration" DEFAULT 'facade',
+    "version_author" varchar DEFAULT 'Noele Romano',
+    "version_read_time" numeric DEFAULT 5,
+    "version_featured" boolean DEFAULT false,
+    "version_published_at" timestamp(3) with time zone,
+    "version_content" jsonb,
+    "version_calculator" boolean DEFAULT false,
+    "version_seo_title" varchar,
+    "version_seo_description" varchar,
+    "version_updated_at" timestamp(3) with time zone,
+    "version_created_at" timestamp(3) with time zone,
+    "version__status" "enum__posts_v_version_status" DEFAULT 'draft',
+    "created_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    "updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    "latest" boolean,
+    "autosave" boolean
   );
-  
+
   CREATE TABLE "subscribers" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"email" varchar NOT NULL,
-  	"consented_at" timestamp(3) with time zone NOT NULL,
-  	"consent_version" varchar NOT NULL,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+    "id" serial PRIMARY KEY NOT NULL,
+    "email" varchar NOT NULL,
+    "consented_at" timestamp(3) with time zone NOT NULL,
+    "consent_version" varchar NOT NULL,
+    "updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    "created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
   );
-  
+
   CREATE TABLE "payload_kv" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"key" varchar NOT NULL,
-  	"data" jsonb NOT NULL
+    "id" serial PRIMARY KEY NOT NULL,
+    "key" varchar NOT NULL,
+    "data" jsonb NOT NULL
   );
-  
+
   CREATE TABLE "payload_locked_documents" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"global_slug" varchar,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+    "id" serial PRIMARY KEY NOT NULL,
+    "global_slug" varchar,
+    "updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    "created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
   );
-  
+
   CREATE TABLE "payload_locked_documents_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"users_id" integer,
-  	"media_id" integer,
-  	"posts_id" integer,
-  	"subscribers_id" integer
+    "id" serial PRIMARY KEY NOT NULL,
+    "order" integer,
+    "parent_id" integer NOT NULL,
+    "path" varchar NOT NULL,
+    "users_id" integer,
+    "media_id" integer,
+    "posts_id" integer,
+    "subscribers_id" integer
   );
-  
+
   CREATE TABLE "payload_preferences" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"key" varchar,
-  	"value" jsonb,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+    "id" serial PRIMARY KEY NOT NULL,
+    "key" varchar,
+    "value" jsonb,
+    "updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    "created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
   );
-  
+
   CREATE TABLE "payload_preferences_rels" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"order" integer,
-  	"parent_id" integer NOT NULL,
-  	"path" varchar NOT NULL,
-  	"users_id" integer
+    "id" serial PRIMARY KEY NOT NULL,
+    "order" integer,
+    "parent_id" integer NOT NULL,
+    "path" varchar NOT NULL,
+    "users_id" integer
   );
-  
+
   CREATE TABLE "payload_migrations" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"name" varchar,
-  	"batch" numeric,
-  	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-  	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+    "id" serial PRIMARY KEY NOT NULL,
+    "name" varchar,
+    "batch" numeric,
+    "updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+    "created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
   );
-  
+
   CREATE TABLE "site_settings" (
-  	"id" serial PRIMARY KEY NOT NULL,
-  	"email" varchar DEFAULT 'urbancaregest@gmail.com' NOT NULL,
-  	"pec" varchar DEFAULT 'urbancare@legalmail.it' NOT NULL,
-  	"phone" varchar DEFAULT '+39 327 530 6234' NOT NULL,
-  	"location" varchar DEFAULT 'Garbagnate Milanese' NOT NULL,
-  	"portal_url" varchar DEFAULT 'https://condomini.baslab.it/auth/login/BAS20559',
-  	"updated_at" timestamp(3) with time zone,
-  	"created_at" timestamp(3) with time zone
+    "id" serial PRIMARY KEY NOT NULL,
+    "email" varchar DEFAULT 'urbancaregest@gmail.com' NOT NULL,
+    "pec" varchar DEFAULT 'urbancare@legalmail.it' NOT NULL,
+    "phone" varchar DEFAULT '+39 327 530 6234' NOT NULL,
+    "location" varchar DEFAULT 'Garbagnate Milanese' NOT NULL,
+    "portal_url" varchar DEFAULT 'https://condomini.baslab.it/auth/login/BAS20559',
+    "updated_at" timestamp(3) with time zone,
+    "created_at" timestamp(3) with time zone
   );
-  
+
   ALTER TABLE "users_sessions" ADD CONSTRAINT "users_sessions_parent_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "public"."users"("id") ON DELETE cascade ON UPDATE no action;
   ALTER TABLE "posts" ADD CONSTRAINT "posts_cover_id_media_id_fk" FOREIGN KEY ("cover_id") REFERENCES "public"."media"("id") ON DELETE set null ON UPDATE no action;
   ALTER TABLE "_posts_v" ADD CONSTRAINT "_posts_v_parent_id_posts_id_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."posts"("id") ON DELETE set null ON UPDATE no action;

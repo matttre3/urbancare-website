@@ -87,4 +87,7 @@ data=s[a:b]
 a=s.index('  // ---- cover generator ----');b=s.index('  const coverHTML=',a)
 (root/'lib/design/cover-generator.js').write_text(s[a:b]+'\nexport { coverSVG };\n')
 (root/'docs/design-source.json').write_text(json.dumps({'source':'urbancare-sito.html','sha256':hashlib.sha256(source.encode()).hexdigest(),'pages':list(pages),'approach':'Native SSR markup; original CSS and isolated animation scripts; no iframe.'},indent=2))
+# Normalize invisible whitespace without changing reference styling or behavior.
+for asset in [* (root/'public/design').glob('*.css'), * (root/'public/design').glob('*.js'), root/'lib/design/demo-data.js', root/'lib/design/cover-generator.js']:
+ asset.write_text('\n'.join(line.expandtabs(2).rstrip() for line in asset.read_text().splitlines())+'\n')
 print('Imported',len(result),'pages')

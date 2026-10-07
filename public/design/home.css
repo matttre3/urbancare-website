@@ -551,7 +551,7 @@
     .area svg{width:14px;height:14px}
     @media (max-width:1050px){.dd,.area{display:none}}
 
-  
+
 /* Accessibility and navigation additions; the reference visual design is preserved. */
 .mock-page{display:contents}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #6e8cff;outline-offset:5px}

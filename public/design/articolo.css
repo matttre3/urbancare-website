@@ -195,7 +195,7 @@
     .cta-band h2{font-size:clamp(40px,5.4vw,84px);font-weight:800;line-height:.95;max-width:880px}
     .cta-band p{margin:18px 0 0;color:#dbe3ff;font-size:18px;max-width:560px;line-height:1.55}
     .cta-band .btn{background:#fff;color:var(--ink)}
-    
+
     .cta-band .btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
 
     @media (max-width:1050px){
@@ -378,7 +378,7 @@
       .byline{gap:14px}
       .byline .dot{display:none}
     }
-  
+
 /* Accessibility and navigation additions; the reference visual design is preserved. */
 .mock-page{display:contents}
 a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #6e8cff;outline-offset:5px}
