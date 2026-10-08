@@ -211,14 +211,11 @@
 
 
     .portrait{position:relative;border-radius:34px;min-height:520px;overflow:hidden;background:radial-gradient(circle at 80% 0%,rgba(150,175,255,.35),transparent 45%),linear-gradient(160deg,#1c2c52,#0c1626);color:#fff;padding:30px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 50px 100px -40px rgba(20,40,110,.7)}
-    .portrait .pm{position:absolute;right:-14%;bottom:-12%;width:92%;opacity:.12;animation:floatY 10s ease-in-out infinite}
-    .portrait .pm path{fill:none;stroke:#fff;stroke-width:6;stroke-linejoin:round}
-    .portrait .ph{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:170px;height:170px;border-radius:50%;background:var(--brand-grad);display:grid;place-items:center;box-shadow:0 0 0 12px rgba(255,255,255,.06),0 0 0 26px rgba(255,255,255,.03)}
-    .portrait .ph svg{width:80px;color:#fff}
-    .portrait .ph::after{content:"Foto in arrivo";position:absolute;bottom:-44px;font:700 10px/1 var(--f-display);letter-spacing:.14em;text-transform:uppercase;opacity:.5;white-space:nowrap}
-    .portrait .badges{display:flex;gap:8px;flex-wrap:wrap;position:relative}
+    .portrait .portrait-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:52% 20%}
+    .portrait::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(5,12,22,.28),transparent 30%,transparent 55%,rgba(5,12,22,.85))}
+    .portrait .badges{display:flex;gap:8px;flex-wrap:wrap;position:relative;z-index:2}
     .portrait .badges span{font:700 11px/1 var(--f-display);letter-spacing:.08em;text-transform:uppercase;padding:9px 12px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18)}
-    .portrait .who{position:relative}
+    .portrait .who{position:relative;z-index:2}
     .portrait .who b{display:block;font:800 34px/1 var(--f-display);letter-spacing:-.02em}
     .portrait .who span{display:block;margin-top:8px;opacity:.75;font-size:14px}
     .quote-band{position:relative;border-radius:36px;padding:clamp(40px,6vw,80px);background:var(--brand-grad);color:#fff;overflow:hidden}
