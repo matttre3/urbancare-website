@@ -7,6 +7,7 @@ import { siteConfig } from '@/lib/site'
 /** Only checked-in design HTML and escaped / Lexical-rendered CMS data enter this component. */
 export async function MockPage({ page, html, posts, shellOnly = false, children }: { page: DesignPage; html?: string; posts?: BlogPost[]; shellOnly?: boolean; children?: React.ReactNode }) {
   let markup = html || template(page)
+  if (page !== 'home') markup = markup.replace('</nav>\n  </div>', '</nav>\n  </div><div class="nav-spacer" aria-hidden="true"></div>')
   markup = markup.replace(/(<div class="dd">)<a[^>]*>Servizi<\/a>/, '$1<button class="services-toggle" type="button" aria-expanded="false" aria-controls="services-menu">Servizi</button>')
     .replace('<div class="dd-menu">', '<div class="dd-menu" id="services-menu" inert>')
     .replace('<div class="nav-links">', '<div class="nav-links" id="navigation-links">')
