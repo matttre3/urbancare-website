@@ -5,6 +5,7 @@ import React from "react";
 import { Text } from "@/components/Text";
 import { createPageMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/site";
+import { getUmamiConfig } from "@/lib/umami";
 
 export const metadata = createPageMetadata({
   title: "Privacy Policy",
@@ -73,6 +74,24 @@ function PrivacyPolicyContent() {
             riservatezza.
           </Text>
 
+          {getUmamiConfig() && <>
+            <Text size="h3" weight="semibold" className="text-foreground mt-6 text-urbancare-primary-blue">
+              Statistiche di utilizzo del sito
+            </Text>
+            <Text size="p" className="text-sm">
+              Utilizziamo Umami Cloud, fornito da Umami Software, Inc., per misurare
+              le visite e migliorare il sito. Le statistiche comprendono pagine
+              visitate, sito di provenienza, browser, dispositivo e paese di
+              provenienza. Il tracker non utilizza cookie e non riceve nomi,
+              email, dati inseriti nei moduli o identificativi degli account.
+              I parametri e i frammenti degli URL sono esclusi; la preferenza
+              “Do Not Track” del browser viene rispettata. Lo storico delle
+              statistiche del piano gratuito è conservato per sei mesi.
+              Per informazioni sul servizio consulta la{' '}
+              <a href="https://umami.is/privacy" target="_blank" rel="noopener noreferrer" className="underline">privacy di Umami</a>.
+            </Text>
+          </>}
+
           <Text
             size="h3"
             weight="semibold"
@@ -86,6 +105,7 @@ function PrivacyPolicyContent() {
           </Text>
           <ul className="list-disc pl-6 text-sm">
             <li>consentire il corretto funzionamento tecnico del sito;</li>
+            {getUmamiConfig() && <li>misurare l’utilizzo del sito mediante statistiche aggregate per migliorarne i contenuti e la navigazione.</li>}
             <li>
               gestire le richieste di informazioni inviate dagli utenti tramite
               il modulo di contatto o tramite email.
