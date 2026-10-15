@@ -282,23 +282,6 @@
     .bar{display:block;height:6px;border-radius:9px;background:var(--brand-grad);margin-top:7px}
     tfoot td{font-weight:700;color:var(--text)}
 
-    /* calculator */
-    .calc{margin:34px 0 40px;border-radius:28px;padding:clamp(24px,3vw,36px);background:var(--ink);color:#eef2fa;position:relative;overflow:hidden}
-    html[data-theme="light"] .calc{background:#0e1b2d}
-    .calc::after{content:"";position:absolute;right:-60px;bottom:-80px;width:280px;height:270px;background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 304 291'%3E%3Cpath d='M22 112 L152 22 L282 112' fill='none' stroke='%236e8cff' stroke-opacity='.18' stroke-width='14'/%3E%3Cpath d='M78 128 V206 a74 74 0 0 0 148 0 V116' fill='none' stroke='%236e8cff' stroke-opacity='.18' stroke-width='14'/%3E%3C/svg%3E")}
-    .calc h3{font-size:26px;font-weight:800;margin:10px 0 22px}
-    .calc .label{color:#8ea0bb}
-    .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;position:relative;z-index:1}
-    .field{display:grid;gap:8px}
-    .field span{font:650 11px/1 var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:#8ea0bb}
-    .field input[type=number]{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:14px 16px;font:700 20px/1 var(--f-display);color:#fff;outline:none;width:100%}
-    .field input:focus{border-color:#8fa6ff}
-    .field input[type=range]{accent-color:#8fa6ff;width:100%}
-    .calc-out{position:relative;z-index:1;margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
-    .calc-out .big{font:800 clamp(40px,5vw,60px)/1 var(--f-display);letter-spacing:-.03em;background:var(--brand-grad-light);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .calc-out small{display:block;color:#8ea0bb;font-size:13px;margin-top:8px}
-    .share-bar{display:flex;align-items:center;gap:6px;height:14px;width:220px;border-radius:9px;background:rgba(255,255,255,.1);overflow:hidden}
-    .share-bar i{display:block;height:100%;background:var(--brand-grad-light);border-radius:9px;transition:width .4s cubic-bezier(.2,.7,.2,1)}
 
     /* aside */
     .a-aside{position:sticky;top:112px;display:grid;gap:18px}
@@ -326,11 +309,6 @@
     .author-box .avatar svg{width:34px;height:34px}
     .author-box b{font:800 20px/1.1 var(--f-display)}
     .author-box p{margin:8px 0 0;color:var(--muted);font-size:15px;line-height:1.6}
-    .reactions{display:flex;gap:10px;margin:40px 0 0;align-items:center;flex-wrap:wrap}
-    .reactions span{font:700 14px/1 var(--f-display);margin-right:6px}
-    .react{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:10px 14px;font:700 13px/1 var(--f-display);cursor:pointer;transition:.25s;display:inline-flex;gap:8px;align-items:center}
-    .react:hover{border-color:var(--accent)}
-    .react.on{background:var(--blue);border-color:var(--blue);color:#fff;transform:scale(1.04)}
 
     .related{max-width:var(--max);margin:auto;padding:clamp(70px,8vw,110px) var(--pad)}
     .related-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:28px;gap:20px}
@@ -371,7 +349,6 @@
     }
     @media (max-width:720px){
       .a-aside{grid-template-columns:1fr}
-      .calc-grid{grid-template-columns:1fr}
       .rel-grid{grid-template-columns:1fr}
       .hero-cover .cover{aspect-ratio:4/3;border-radius:24px}
       .prose{font-size:17.5px}

@@ -10,8 +10,7 @@ const payload = await getPayload({ config })
 try {
   const editorConfig = await editorConfigFactory.default({ config: payload.config })
   const article = templates.articolo.match(/<article class="prose" id="prose">([\s\S]*?)<\/article>/)?.[1] || ''
-  // The interactive calculator is an independent optional component.
-  const prose = article.replace(/<div class="table-wrap">[\s\S]*?<\/table>\s*<\/div>/, '').replace(/<div class="calc"[\s\S]*?(?=<p>Ricorda:)/, '')
+  const prose = article
   for (const p of POSTS) {
     const found = await payload.find({ collection: 'posts', where: { slug: { equals: p.id } }, limit: 1, draft: true })
     if (found.totalDocs) continue
@@ -19,7 +18,7 @@ try {
     await payload.create({ collection: 'posts', draft: true, data: {
       title: p.t, slug: p.id, excerpt: p.x, category: p.cat as 'guide', illustration: p.v as 'facade',
       readTime: p.min, featured: p.featured || false, author: 'Noele Romano', publishedAt: p.date + 'T12:00:00.000Z',
-      content: convertHTMLToLexical({ editorConfig, html, JSDOM }), calculator: p.id === 'millesimi', _status: 'draft',
+      content: convertHTMLToLexical({ editorConfig, html, JSDOM }), _status: 'draft',
     } })
   }
   console.log('Import completato. Articoli in bozza: verifica e pubblica da /admin. Nessun articolo esistente è stato sovrascritto.')

@@ -28,7 +28,7 @@ export const Posts: CollectionConfig = {
     { name: 'featured', label: 'In evidenza', type: 'checkbox', defaultValue: false },
     { name: 'publishedAt', label: 'Data di pubblicazione', type: 'date', required: true, defaultValue: () => new Date().toISOString() },
     { name: 'content', label: 'Contenuto', type: 'richText', required: true },
-    { name: 'calculator', label: 'Includi il calcolatore millesimi', type: 'checkbox', defaultValue: false },
+    { name: 'calculator', type: 'checkbox', defaultValue: false, admin: { hidden: true } },
     { name: 'seo', label: 'SEO', type: 'group', fields: [
       { name: 'title', label: 'Titolo per i motori di ricerca', type: 'text' },
       { name: 'description', label: 'Descrizione', type: 'textarea', maxLength: 160 },

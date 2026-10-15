@@ -100,29 +100,6 @@
 
   const heroWins=[...document.querySelectorAll('.big-cover .cw')];
   if(!matchMedia('(prefers-reduced-motion: reduce)').matches)setInterval(()=>{const w=heroWins[Math.floor(Math.random()*heroWins.length)];w&&w.classList.toggle('on')},650);
-  (()=>{if(!document.getElementById('calc'))return;
-  // ---- example table ----
-  const units=[['Scala A · 1° piano',62],['Scala A · 3° piano',85],['Scala B · 2° piano',74],['Negozio piano terra',120]];
-  const eur=n=>n.toLocaleString('it-IT',{style:'currency',currency:'EUR',maximumFractionDigits:0});
-  document.getElementById('exTable').innerHTML=units.map(([u,m])=>`<tr><td>${u}<span class="bar" style="width:${m/1.2}%"></span></td><td>${m}</td><td>${eur(12000*m/1000)}</td></tr>`).join('');
-  const sm=units.reduce((a,[,m])=>a+m,0);
-  document.getElementById('exMil').textContent=sm;
-  document.getElementById('exTot').textContent=eur(12000*sm/1000);
-
-  // ---- calculator ----
-  const cS=document.getElementById('cSpesa'),cM=document.getElementById('cMil'),cR=document.getElementById('cRange');
-  function calc(){
-    const s=Math.max(0,+cS.value||0),m=Math.min(1000,Math.max(0,+cM.value||0));
-    document.getElementById('cOut').textContent=eur(s*m/1000);
-    document.getElementById('cHint').textContent=`pari al ${(m/10).toLocaleString('it-IT',{maximumFractionDigits:1})}% della spesa`;
-    document.getElementById('cBar').style.width=Math.min(100,m/10*4)+'%';
-  }
-  cS.addEventListener('input',calc);
-  cM.addEventListener('input',()=>{cR.value=cM.value;calc()});
-  cR.addEventListener('input',()=>{cM.value=cR.value;calc()});
-  calc();
-
-  })();
   // ---- elevator TOC ----
   const heads=[...document.querySelectorAll('.prose h2')];
   heads.forEach((h,i)=>{h.id=h.id||'section-'+(i+1);h.dataset.floor=String(i+1);h.dataset.short=h.dataset.short||h.textContent;h.insertAdjacentHTML('afterbegin',`<span class="fl">P${h.dataset.floor}</span>`)});
@@ -151,13 +128,12 @@
   addEventListener('scroll',spy,{passive:true});
   list.querySelector('[data-id="top"]').classList.add('on');
 
-  // ---- share / reactions ----
+  // ---- share ----
   const toast=document.getElementById('toast');
   document.getElementById('copyLink').addEventListener('click',async()=>{
     try{await navigator.clipboard.writeText(location.href);toast.textContent='Link copiato'}catch(e){toast.textContent='Copia il link dalla barra degli indirizzi'}
     toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1800);
   });
-  document.querySelectorAll('.react').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.react').forEach(x=>x.classList.toggle('on',x===b));toast.textContent=b.textContent.includes('dubbio')?'Scrivici: ti rispondiamo noi':'Grazie! Ci fa piacere';toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1800)}));
   observeReveals();
   })();
 (()=>{const w=document.querySelector('[aria-label="Condividi su WhatsApp"]'),m=document.querySelector('[aria-label="Invia per email"]');if(w)w.href='https://wa.me/?text='+encodeURIComponent(document.title+' '+location.href);if(m)m.href='mailto:?subject='+encodeURIComponent(document.title)+'&body='+encodeURIComponent(location.href)})();

@@ -19,7 +19,7 @@ function normalize(p: Post): BlogPost {
   return {
     id: p.slug, cat: p.category, v: p.illustration || 'facade',
     date: p.publishedAt.slice(0, 10), min: p.readTime, featured: Boolean(p.featured),
-    t: p.title, x: p.excerpt, author: p.author,
+    t: p.title, x: p.excerpt.replace(' Con un calcolatore per provare subito.', ''), author: p.author,
     cover: cover?.sizes?.hero?.url || cover?.url || undefined, coverAlt: cover?.alt, document: p,
   }
 }

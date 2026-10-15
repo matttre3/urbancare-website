@@ -25,6 +25,8 @@ export function blogHTML(posts: BlogPost[]) {
   return html
 }
 export function articleHTML(p: BlogPost, posts: BlogPost[], content?: string) {
+  // Earlier CMS imports contain the instructions for the retired calculator.
+  content = content?.replace(/<h2\b[^>]*>Prova tu: calcola la tua quota<\/h2>[\s\S]*?(?=<h2\b|$)/, '')
   let html = templates.articolo
   if (p.document || p.id !== 'millesimi') {
     const title = p.id === 'millesimi' && p.t === 'Millesimi, spiegati bene.' ? 'Millesimi,<br>spiegati <span class="accent">bene.</span>' : escapeHTML(p.t)
