@@ -20,6 +20,11 @@ Le animazioni, il cambio tema e i filtri funzionano nel browser e non richiedono
 rendering sul server a ogni interazione. Le pagine dei contatti sono statiche;
 solo l’invio del modulo attiva una funzione.
 
+`vercel.json` imposta le funzioni in `fra1` (Francoforte), nella stessa regione
+del database Neon, al posto del default `iad1` negli Stati Uniti. Questo riduce
+la distanza per le query di admin e rigenerazioni; i contenuti statici continuano
+a essere distribuiti sulla CDN globale.
+
 Le letture pubbliche del CMS usano la Data Cache di Next e mantengono i controlli
 di accesso: vengono letti solo articoli pubblicati con data già raggiunta.
 Nessun dato autenticato viene messo nella cache pubblica.
