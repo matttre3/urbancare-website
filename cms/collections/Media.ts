@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 import { authenticated } from '../access'
+import { revalidateMedia, revalidateDeletedMedia } from '../hooks/revalidate'
 
 export const Media: CollectionConfig = {
   slug: 'media',
@@ -12,7 +13,7 @@ export const Media: CollectionConfig = {
     imageSizes: [{ name: 'card', width: 880, height: 560 }, { name: 'hero', width: 1600 }],
     adminThumbnail: 'card',
   },
-  hooks: { beforeOperation: [({ operation }) => {
+  hooks: { afterChange: [revalidateMedia], afterDelete: [revalidateDeletedMedia], beforeOperation: [({ operation }) => {
     if (process.env.VERCEL && !process.env.BLOB_READ_WRITE_TOKEN && (operation === 'create' || operation === 'update')) {
       throw new Error('Configura BLOB_READ_WRITE_TOKEN per gestire le immagini su Vercel.')
     }

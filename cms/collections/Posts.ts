@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 import { authenticated, published } from '../access'
+import { revalidatePost, revalidateDeletedPost } from '../hooks/revalidate'
 
 export const Posts: CollectionConfig = {
   slug: 'posts',
@@ -7,6 +8,7 @@ export const Posts: CollectionConfig = {
   admin: { useAsTitle: 'title', defaultColumns: ['title', 'category', '_status', 'publishedAt'] },
   access: { read: published, create: authenticated, update: authenticated, delete: authenticated },
   versions: { drafts: { autosave: true }, maxPerDoc: 30 },
+  hooks: { afterChange: [revalidatePost], afterDelete: [revalidateDeletedPost] },
   fields: [
     { name: 'title', label: 'Titolo', type: 'text', required: true },
     { name: 'slug', type: 'text', required: true, unique: true, index: true,

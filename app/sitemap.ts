@@ -1,7 +1,8 @@
 import type { MetadataRoute } from 'next'
 import { absoluteUrl } from '@/lib/site'
 import { getPosts } from '@/lib/cms'
-export const dynamic = 'force-dynamic'
+export const dynamic = 'force-static'
+export const revalidate = 300
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const routes=['/','/servizi','/servizi/gestione-contabile','/servizi/amministrazione-condominiale','/servizi/consulenza-condominiale','/servizi/condominio-online','/contatti','/lo-studio','/privacy-policy','/blog']
   return [

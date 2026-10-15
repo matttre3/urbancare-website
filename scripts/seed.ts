@@ -15,7 +15,7 @@ try {
     const found = await payload.find({ collection: 'posts', where: { slug: { equals: p.id } }, limit: 1, draft: true })
     if (found.totalDocs) continue
     const html = p.id === 'millesimi' ? prose : `<p>${p.x}</p><p>Bozza importata dal mock. Scrivere e verificare il contenuto completo prima della pubblicazione.</p>`
-    await payload.create({ collection: 'posts', draft: true, data: {
+    await payload.create({ collection: 'posts', draft: true, context: { disableRevalidation: true }, data: {
       title: p.t, slug: p.id, excerpt: p.x, category: p.cat as 'guide', illustration: p.v as 'facade',
       readTime: p.min, featured: p.featured || false, author: 'Noele Romano', publishedAt: p.date + 'T12:00:00.000Z',
       content: convertHTMLToLexical({ editorConfig, html, JSDOM }), _status: 'draft',

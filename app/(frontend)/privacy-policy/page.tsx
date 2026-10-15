@@ -1,6 +1,7 @@
 import { MockPage } from '@/components/design/MockPage';
 import { shell } from '@/lib/design/render';
-export const dynamic='force-dynamic';
+export const dynamic = 'force-static'
+export const revalidate = 3600;
 import React from "react";
 import { Text } from "@/components/Text";
 import { createPageMetadata } from "@/lib/metadata";

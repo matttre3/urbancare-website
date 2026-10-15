@@ -1,10 +1,12 @@
 import type { GlobalConfig } from 'payload'
 import { authenticated } from '../access'
 import { siteConfig } from '../../lib/site'
+import { revalidateSettings } from '../hooks/revalidate'
 
 export const SiteSettings: GlobalConfig = {
   slug: 'site-settings', label: 'Contatti dello studio',
   access: { read: () => true, update: authenticated },
+  hooks: { afterChange: [revalidateSettings] },
   fields: [
     { name: 'email', type: 'email', defaultValue: siteConfig.email, required: true },
     { name: 'pec', label: 'PEC', type: 'email', defaultValue: siteConfig.pec, required: true },
