@@ -7,7 +7,7 @@ export const siteConfig = {
   url: rawSiteUrl.replace(/\/$/, ""),
   description:
     "Amministratore condominiale a Milano e provincia. Gestione trasparente, strumenti digitali e supporto dedicato per il tuo condominio.",
-  email: "urbancaregest@gmail.com",
+  email: "info@urbancare-amministrazioni.com",
   pec: "urbancare@legalmail.it",
   phone: "+39 327 530 6234",
   phoneHref: "tel:+393275306234",

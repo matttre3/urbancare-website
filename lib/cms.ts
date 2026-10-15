@@ -46,5 +46,5 @@ export const getPost = cache(cachedPost)
 const cachedSettings = unstable_cache(async (): Promise<SiteSetting | undefined> => {
   if (!process.env.DATABASE_URL) return undefined
   return (await cms()).findGlobal({ slug: 'site-settings', overrideAccess: false })
-}, ['site-settings-v1', cacheNamespace], { tags: [SETTINGS_CACHE_TAG], revalidate: SETTINGS_REVALIDATE })
+}, ['site-settings-v2', cacheNamespace], { tags: [SETTINGS_CACHE_TAG], revalidate: SETTINGS_REVALIDATE })
 export const getSiteSettings = cache(cachedSettings)

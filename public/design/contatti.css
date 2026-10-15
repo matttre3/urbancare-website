@@ -216,7 +216,7 @@
     .c-card .ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:var(--brand-grad);color:#fff}
     .c-card .ic svg{width:22px}
     .c-card small{font:700 11px/1 var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
-    .c-card b{display:block;font:800 19px/1.2 var(--f-display);margin-top:8px;word-break:break-word}
+    .c-card b{display:block;font:800 19px/1.2 var(--f-display);margin-top:8px;word-break:normal;overflow-wrap:anywhere}
     .c-card .row{display:flex;gap:8px;margin-top:auto}
     .mini{border:1px solid var(--line);background:transparent;border-radius:10px;padding:9px 12px;font:700 12.5px/1 var(--f-display);cursor:pointer;transition:.2s;display:inline-flex;gap:6px;align-items:center}
     .mini:hover{border-color:var(--text)}

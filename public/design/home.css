@@ -181,13 +181,6 @@
     .scroll-cue{position:absolute;left:var(--pad);bottom:18px;z-index:8;display:flex;align-items:center;gap:12px;color:#74879f;font:650 10px/1 var(--f-display);letter-spacing:.18em;text-transform:uppercase}
     .scroll-cue::before{content:"";width:1px;height:50px;background:linear-gradient(#91a9c6,transparent)}
 
-    .marquee{overflow:hidden;background:var(--blue);color:white;border-block:1px solid rgba(255,255,255,.15)}
-    .marquee-track{display:flex;width:max-content;animation:marquee 24s linear infinite;padding:14px 0;font:700 12px/1 var(--f-display);letter-spacing:.15em;text-transform:uppercase}
-    .marquee-track span{padding:0 24px}
-    .marquee-track b{opacity:.5;padding:0 6px;display:inline-flex;align-items:center}
-    .marquee-track b svg{width:15px;height:15px}
-    @keyframes marquee{to{transform:translateX(-50%)}}
-
     section{padding:clamp(84px,10vw,150px) var(--pad)}
     .shell{max-width:var(--max);margin:auto}
     .section-top{display:grid;grid-template-columns:.65fr 1.35fr;gap:50px;margin-bottom:clamp(50px,6vw,86px);align-items:start}
@@ -442,6 +435,29 @@
     html[data-theme="light"] .panel.old h3,html[data-theme="light"] .panel.old .compare-row strong{color:#4a5566}
     @media (max-width:1050px){.compare{grid-template-columns:1fr}}
     @media (max-width:720px){.panel.new .compare-list{grid-template-columns:1fr}}
+
+    /* Compact laptop layout, including 13-inch screens at 1280–1440 CSS px. */
+    @media (min-width:1051px) and (max-width:1440px){
+      .contrast,.services{padding-block:60px}
+      .contrast .section-top,.services .section-top{gap:32px;margin-bottom:32px}
+      .contrast h2,.services h2{font-size:clamp(44px,4vw,56px)}
+      .contrast .lead,.services .lead{font-size:16px;margin-top:16px}
+      .compare{gap:18px}
+      .panel{padding:26px;min-height:0}
+      .panel.old h3{font-size:30px;margin:18px 0 24px}
+      .panel.new h3{font-size:42px;margin:20px 0 24px}
+      .compare-list{gap:12px}
+      .compare-row{grid-template-columns:28px 1fr;gap:10px;padding-top:12px}
+      .compare-row b{width:26px;height:26px}
+      .compare-row strong{font-size:16px}
+      .panel.new .compare-list{gap:10px}
+      .panel.new .compare-row{padding:12px;border-radius:14px}
+      .service-grid{gap:16px}
+      .service{min-height:280px;padding:24px}
+      .service h3{font-size:34px;margin-bottom:12px}
+      .service p{font-size:14px}
+      .service-arrow{width:38px;height:38px;right:22px;top:22px}
+    }
 
     /* method: a line that fills while you scroll, steps light up as it passes */
     .steps{position:relative}
