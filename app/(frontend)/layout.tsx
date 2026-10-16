@@ -8,10 +8,10 @@ import { getUmamiConfig } from '@/lib/umami'
 export const viewport: Viewport = { width: 'device-width', initialScale: 1, themeColor: '#08111f' }
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: { default: 'UrbanCare | Amministrazione condominiale Milano', template: '%s | UrbanCare' },
+  title: { default: 'Urbancare | Amministrazione condominiale a Garbagnate Milanese', template: '%s | Urbancare' },
   description: siteConfig.description,
   robots: process.env.VERCEL_ENV && process.env.VERCEL_ENV !== 'production' ? { index: false, follow: false } : { index: true, follow: true },
-  openGraph: { siteName: 'UrbanCare', locale: 'it_IT', type: 'website', images: [{ url: absoluteUrl('/opengraph-image'), width: 1200, height: 630 }] },
+  openGraph: { siteName: 'Urbancare', locale: 'it_IT', type: 'website', images: [{ url: absoluteUrl('/opengraph-image'), width: 1200, height: 630 }] },
   twitter: { card: 'summary_large_image' },
 }
 

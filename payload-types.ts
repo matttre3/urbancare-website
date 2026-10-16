@@ -226,6 +226,9 @@ export interface Post {
   };
   calculator?: boolean | null;
   seo?: {
+    /**
+     * Scrivi il titolo senza il brand: Urbancare viene aggiunto automaticamente.
+     */
     title?: string | null;
     description?: string | null;
   };

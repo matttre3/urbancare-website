@@ -37,7 +37,7 @@ try {
   build.stderr.on('data', b => { logs += b; process.stderr.write(b) })
   assert.equal(await new Promise(resolve => build.once('exit', resolve)), 0, 'Production build must pass')
   const manifest = JSON.parse(await readFile('.next/prerender-manifest.json', 'utf8'))
-  const paths = ['/', '/lo-studio', '/servizi', '/servizi/amministrazione-condominiale', '/servizi/consulenza-condominiale', '/servizi/condominio-online', '/servizi/gestione-contabile', '/contatti', '/privacy-policy', '/blog', '/blog/static-fixture', '/sitemap.xml']
+  const paths = ['/', '/lo-studio', '/servizi', '/servizi/amministrazione-condominiale', '/servizi/consulenza-condominiale', '/servizi/condominio-online', '/servizi/gestione-contabile', '/contatti', '/zone-servite', '/privacy-policy', '/blog', '/blog/static-fixture', '/sitemap.xml']
   for (const path of paths) assert.ok(manifest.routes[path], 'Prerendered: ' + path)
   assert.equal(manifest.routes['/blog/private-fixture'], undefined)
   assert.equal(manifest.routes['/blog/future-fixture'], undefined)
@@ -82,6 +82,7 @@ try {
   await mutate('/api/globals/site-settings', { phone: '+39 02 12345678' }, 'POST')
   assert.ok((await html('/')).text.includes('+39 02 12345678'), 'Settings invalidate home')
   assert.ok((await html('/contatti')).text.includes('+39 02 12345678'), 'Settings invalidate contacts')
+  assert.ok((await html('/')).text.includes('\"telephone\":\"+39 02 12345678\"'), 'Structured data uses the updated CMS phone too')
   assert.equal((await html('/blog/private-fixture')).res.status, 404)
   assert.equal((await html('/blog/future-fixture')).res.status, 404)
   assert.equal((await html('/admin/login')).res.headers.get('x-nextjs-cache'), null, 'Admin remains dynamic')

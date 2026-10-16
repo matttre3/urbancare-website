@@ -56,7 +56,7 @@ function PrivacyPolicyContent() {
           <hr className="my-6 border-border/60" />
 
           <Text
-            size="h3"
+            size="h2"
             weight="semibold"
             className="text-foreground text-urbancare-primary-blue"
           >
@@ -68,7 +68,7 @@ function PrivacyPolicyContent() {
             <a href={`mailto:${siteConfig.email}`} className="underline">
               {siteConfig.email}
             </a>
-            . Sede operativa: {siteConfig.location} ({siteConfig.region}). Il
+            . Area di attività principale: {siteConfig.location} ({siteConfig.region}). Il
             Titolare tratta i dati personali secondo i principi di liceità,
             correttezza, trasparenza, limitazione delle finalità e della
             conservazione, minimizzazione dei dati, esattezza, integrità e
@@ -76,7 +76,7 @@ function PrivacyPolicyContent() {
           </Text>
 
           {getUmamiConfig() && <>
-            <Text size="h3" weight="semibold" className="text-foreground mt-6 text-urbancare-primary-blue">
+            <Text size="h2" weight="semibold" className="text-foreground mt-6 text-urbancare-primary-blue">
               Statistiche di utilizzo del sito
             </Text>
             <Text size="p" className="text-sm">
@@ -94,7 +94,7 @@ function PrivacyPolicyContent() {
           </>}
 
           <Text
-            size="h3"
+            size="h2"
             weight="semibold"
             className="text-foreground mt-6 text-urbancare-primary-blue"
           >
@@ -121,7 +121,7 @@ function PrivacyPolicyContent() {
           </Text>
 
           <Text
-            size="h3"
+            size="h2"
             weight="semibold"
             className="text-foreground mt-6 text-urbancare-primary-blue"
           >
@@ -137,7 +137,7 @@ function PrivacyPolicyContent() {
           </Text>
 
           <Text
-            size="h3"
+            size="h2"
             weight="semibold"
             className="text-foreground mt-6 text-urbancare-primary-blue"
           >
@@ -155,7 +155,7 @@ function PrivacyPolicyContent() {
           </ul>
 
           <Text
-            size="h3"
+            size="h2"
             weight="semibold"
             className="text-foreground mt-6 text-urbancare-primary-blue"
           >
@@ -168,7 +168,7 @@ function PrivacyPolicyContent() {
           </Text>
 
           <Text
-            size="h3"
+            size="h2"
             weight="semibold"
             className="text-foreground mt-6 text-urbancare-primary-blue"
           >
@@ -184,7 +184,7 @@ function PrivacyPolicyContent() {
           </Text>
 
           <Text
-            size="h3"
+            size="h2"
             weight="semibold"
             className="text-foreground mt-6 text-urbancare-primary-blue"
           >
@@ -220,4 +220,4 @@ function PrivacyPolicyContent() {
   );
 }
 
-export default function PrivacyPolicyPage(){ return <MockPage page="articolo" shellOnly html={shell('<!--content-->')}><div className="legal"><PrivacyPolicyContent /></div></MockPage> }
+export default function PrivacyPolicyPage(){ return <MockPage page="articolo" seo="privacy" shellOnly html={shell('<!--content-->')}><div className="legal"><PrivacyPolicyContent /></div></MockPage> }

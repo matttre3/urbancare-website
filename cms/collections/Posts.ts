@@ -32,7 +32,7 @@ export const Posts: CollectionConfig = {
     { name: 'content', label: 'Contenuto', type: 'richText', required: true },
     { name: 'calculator', type: 'checkbox', defaultValue: false, admin: { hidden: true } },
     { name: 'seo', label: 'SEO', type: 'group', fields: [
-      { name: 'title', label: 'Titolo per i motori di ricerca', type: 'text' },
+      { name: 'title', label: 'Titolo per i motori di ricerca', type: 'text', admin: { description: 'Scrivi il titolo senza il brand: Urbancare viene aggiunto automaticamente.' } },
       { name: 'description', label: 'Descrizione', type: 'textarea', maxLength: 160 },
     ] },
   ],

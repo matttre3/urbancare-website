@@ -8,8 +8,10 @@ export const escapeHTML = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, c 
 export const fmtDate = (d: string) => new Date(d + 'T12:00:00').toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' })
 export const template = (page: DesignPage) => templates[page]
 export const shell = (content: string) => templates.articolo.slice(0, templates.articolo.indexOf('  <header class="a-head">')) + content + templates.articolo.slice(templates.articolo.indexOf('  <footer>'))
-export function cover(p: BlogPost, cls = '', wide = false) {
-  return `<div class="cover ${cls}" style="--c:${CATS[p.cat].c}">${p.cover ? `<img src="${escapeHTML(p.cover)}" alt="${escapeHTML(p.coverAlt || p.t)}" loading="lazy">` : coverSVG(p, wide)}</div>`
+export function cover(p: BlogPost, cls = '', wide = false, priority = false) {
+  const image = wide || priority ? p.cover : p.coverCard || p.cover
+  const responsive = p.coverCard && p.cover && p.coverCard !== p.cover ? ` srcset="${escapeHTML(p.coverCard)} 880w, ${escapeHTML(p.cover)} 1600w" sizes="${wide ? '(max-width: 900px) 100vw, 1100px' : priority ? '(max-width: 720px) 100vw, 50vw' : '(max-width: 720px) 100vw, (max-width: 1050px) 50vw, 33vw'}"` : ''
+  return `<div class="cover ${cls}" style="--c:${CATS[p.cat].c}">${image ? `<img src="${escapeHTML(image)}"${responsive} alt="${escapeHTML(p.coverAlt || p.t)}" ${priority ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"'} decoding="async">` : coverSVG(p, wide)}</div>`
 }
 export const chip = (p: BlogPost) => `<span class="chip" style="--c:${CATS[p.cat].c}">${escapeHTML(CATS[p.cat].name)}</span>`
 export function card(p: BlogPost) {
@@ -19,9 +21,9 @@ export function blogHTML(posts: BlogPost[]) {
   const feat = posts.find(p => p.featured) || posts[0]
   let html = templates.blog
   html = html.replace(/(<b id="statPosts">)\d+(<\/b>)/, (_, start, end) => `${start}${posts.length}${end}`)
-  const featured = feat ? `<a class="feat-card lit-on-hover enter" style="--d:.55s" href="/blog/${encodeURIComponent(feat.id)}">${cover(feat, 'feat-cover')}<div class="feat-body"><div><div class="tagline"><span class="badge">In evidenza</span>${chip(feat)}<span class="post-meta">${feat.min} min di lettura</span></div><h2>${escapeHTML(feat.t).replace('bene.', '<span class="accent">bene.</span>')}</h2><p>${escapeHTML(feat.x)}</p></div><div style="display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap"><div class="author"><span class="avatar"><svg viewBox="0 0 304 291"><path d="M22 112 L152 22 L282 112" fill="none" stroke="#fff" stroke-width="34"/><path d="M78 128 V206 a74 74 0 0 0 148 0 V116" fill="none" stroke="#fff" stroke-width="40"/></svg></span><div><b>${escapeHTML(feat.author || 'Noele Romano')}</b><span>${fmtDate(feat.date)}</span></div></div><span class="btn primary">Leggi l’articolo <span class="round">→</span></span></div></div></a>` : ''
+  const featured = feat ? `<a class="feat-card lit-on-hover enter" style="--d:.55s" href="/blog/${encodeURIComponent(feat.id)}">${cover(feat, 'feat-cover', false, true)}<div class="feat-body"><div><div class="tagline"><span class="badge">In evidenza</span>${chip(feat)}<span class="post-meta">${feat.min} min di lettura</span></div><h2>${escapeHTML(feat.t).replace('bene.', '<span class="accent">bene.</span>')}</h2><p>${escapeHTML(feat.x)}</p></div><div style="display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap"><div class="author"><span class="avatar"><svg viewBox="0 0 304 291"><path d="M22 112 L152 22 L282 112" fill="none" stroke="#fff" stroke-width="34"/><path d="M78 128 V206 a74 74 0 0 0 148 0 V116" fill="none" stroke="#fff" stroke-width="40"/></svg></span><div><b>${escapeHTML(feat.author || 'Noele Romano')}</b><span>${fmtDate(feat.date)}</span></div></div><span class="btn primary">Leggi l’articolo <span class="round">→</span></span></div></div></a>` : ''
   html = html.replace(/(<section class="featured" id="featured">)[\s\S]*?(<\/section>)/, () => `<section class="featured" id="featured">${featured}</section>`)
-  html = html.replace(/(<div class="empty"[^>]*>)/, (match) => posts.filter(p => p !== feat).map(card).join('') + match)
+  html = html.replace(/(<section class="grid" id="grid">)[\s\S]*?(<\/section>)/, (_, start, end) => start + posts.map(card).join('') + '<div class="empty"><b>Nessun articolo trovato.</b>Prova un’altra categoria o un’altra parola.</div>' + end)
   return html
 }
 export function articleHTML(p: BlogPost, posts: BlogPost[], content?: string) {
@@ -40,9 +42,10 @@ export function articleHTML(p: BlogPost, posts: BlogPost[], content?: string) {
   html = html.replace(/<time datetime="2026-09-24">.*?<\/time>/, `<time datetime="${p.date}">${fmtDate(p.date)}</time>`)
   html = html.replaceAll('7 min', `${p.min} min`).replaceAll('Noele Romano', escapeHTML(p.author || 'Noele Romano'))
   const caption = p.document?.cover && typeof p.document.cover === 'object' ? p.document.cover.caption || '' : 'Illustrazione generata · ogni articolo del Cortile ha la sua facciata'
-  html = html.replace(/(<figure[^>]*id="heroCover">)[\s\S]*?(<\/figure>)/, (_, a, b) => a + cover(p, 'big-cover', true) + `<figcaption>${escapeHTML(caption)}</figcaption>` + b)
+  html = html.replace(/(<figure[^>]*id="heroCover">)[\s\S]*?(<\/figure>)/, (_, a, b) => a + cover(p, 'big-cover', true, true) + `<figcaption>${escapeHTML(caption)}</figcaption>` + b)
   const preferred = p.id === 'millesimi' ? posts.filter(x => ['rendiconto', 'ascensore', 'assemblea'].includes(x.id)) : []
   const related = [...preferred, ...posts.filter(x => x.id !== p.id && !preferred.includes(x))].slice(0, 3)
   html = html.replace(/(<div[^>]*id="related">)[\s\S]*?(<\/div>)/, (_, a, b) => a + related.map(card).join('') + b)
+  if (!related.length) html = html.replace(/<section class="related">[\s\S]*?<\/section>/, '')
   return html
 }

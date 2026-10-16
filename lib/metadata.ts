@@ -6,18 +6,20 @@ type PageMetadataInput = {
   description: string;
   path: string;
   robots?: Metadata["robots"];
+  image?: { url: string; alt: string };
 };
 
 export function createPageMetadata({
   title,
   description,
   path,
+  image,
   robots = process.env.VERCEL_ENV && process.env.VERCEL_ENV !== "production" ? { index: false, follow: false } : { index: true, follow: true },
 }: PageMetadataInput): Metadata {
   const url = absoluteUrl(path);
 
   return {
-    title,
+    title: { absolute: `${title} | ${siteConfig.name}` },
     description,
     alternates: {
       canonical: url,
@@ -32,10 +34,9 @@ export function createPageMetadata({
       type: "website",
       images: [
         {
-          url: absoluteUrl("/opengraph-image"),
-          width: 1200,
-          height: 630,
-          alt: "Urbancare - Amministratore condominiale a Milano",
+          url: absoluteUrl(image?.url || "/opengraph-image"),
+          ...(!image ? { width: 1200, height: 630 } : {}),
+          alt: image?.alt || "Urbancare — amministrazione condominiale a Garbagnate Milanese",
         },
       ],
     },
@@ -43,7 +44,7 @@ export function createPageMetadata({
       card: "summary_large_image",
       title: `${title} | ${siteConfig.name}`,
       description,
-      images: [absoluteUrl("/opengraph-image")],
+      images: [{ url: absoluteUrl(image?.url || "/opengraph-image"), alt: image?.alt || "Urbancare — amministrazione condominiale a Garbagnate Milanese" }],
     },
   };
 }

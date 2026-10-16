@@ -3,9 +3,11 @@ import Script from 'next/script'
 import { template, type DesignPage, escapeHTML } from '@/lib/design/render'
 import { getSiteSettings, type BlogPost } from '@/lib/cms'
 import { siteConfig } from '@/lib/site'
+import { JsonLd } from '@/components/JsonLd'
+import { publicPages, siteStructuredData, type PublicPage } from '@/lib/seo'
 
 /** Only checked-in design HTML and escaped / Lexical-rendered CMS data enter this component. */
-export async function MockPage({ page, html, posts, shellOnly = false, children }: { page: DesignPage; html?: string; posts?: BlogPost[]; shellOnly?: boolean; children?: React.ReactNode }) {
+export async function MockPage({ page, html, posts, shellOnly = false, children, seo }: { page: DesignPage; html?: string; posts?: BlogPost[]; shellOnly?: boolean; children?: React.ReactNode; seo?: PublicPage | false }) {
   let markup = html || template(page)
   if (page !== 'home') markup = markup.replace('</nav>\n  </div>', '</nav>\n  </div><div class="nav-spacer" aria-hidden="true"></div>')
   markup = markup.replace(/(<div class="dd">)<a[^>]*>Servizi<\/a>/, '$1<button class="services-toggle" type="button" aria-expanded="false" aria-controls="services-menu">Servizi</button>')
@@ -18,8 +20,15 @@ export async function MockPage({ page, html, posts, shellOnly = false, children 
       .replaceAll('+393275306234', escapeHTML(phone)).replace(/(?:\+39\s*)?327 530 6234/g, () => escapeHTML(settings.phone))
       .replaceAll('Garbagnate Milanese', escapeHTML(settings.location)).replaceAll('https://condomini.baslab.it/auth/login/BAS20559', escapeHTML(settings.portalUrl))
   }
-  const data = posts?.map(p => ({ id:p.id, cat:p.cat, v:p.v, date:p.date, min:p.min, t:p.t, x:p.x, featured:p.featured, cover:p.cover, coverAlt:p.coverAlt }))
+  if (!children && !markup.includes('<main')) {
+    const start = markup.search(/<(?:header|section)\b/)
+    const end = markup.lastIndexOf('<footer>')
+    if (start >= 0 && end > start) markup = markup.slice(0, start) + '<main id="main-content">' + markup.slice(start, end) + '</main>' + markup.slice(end)
+  }
+  const seoPage = seo === false ? undefined : seo || (page in publicPages ? page as PublicPage : undefined)
+  const data = posts?.map(p => ({ id:p.id, cat:p.cat, v:p.v, date:p.date, min:p.min, t:p.t, x:p.x, featured:p.featured, cover:p.cover, coverCard:p.coverCard, coverAlt:p.coverAlt }))
   return <>
+    {seo !== false && <JsonLd data={siteStructuredData(settings, seoPage)} />}
     <link rel="stylesheet" href={`/design/${page}.css`} />
     <link rel="stylesheet" href="/design/navigation.css" />
     {data && <Script id="uc-post-data" strategy="afterInteractive">{`window.__UC_POSTS__=${JSON.stringify(data).replaceAll('<', '\\u003c')};`}</Script>}

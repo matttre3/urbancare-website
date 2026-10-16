@@ -1,6 +1,7 @@
+import { publicPages } from '@/lib/seo'
 import { MockPage } from '@/components/design/MockPage'
 import { createPageMetadata } from '@/lib/metadata'
 export const dynamic = 'force-static'
 export const revalidate = 3600
-export const metadata = createPageMetadata({'title': 'Contatti e preventivo', 'description': 'Contatta UrbanCare per informazioni o un preventivo per il tuo condominio.', 'path': '/contatti'})
+export const metadata = createPageMetadata(publicPages.contatti)
 export default function Page() { return <MockPage page="contatti" /> }

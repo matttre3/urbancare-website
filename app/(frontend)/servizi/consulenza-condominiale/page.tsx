@@ -1,6 +1,7 @@
+import { publicPages } from '@/lib/seo'
 import { MockPage } from '@/components/design/MockPage'
 import { createPageMetadata } from '@/lib/metadata'
 export const dynamic = 'force-static'
 export const revalidate = 3600
-export const metadata = createPageMetadata({'title': 'Consulenza condominiale', 'description': 'Supporto per dubbi e situazioni complesse nel tuo condominio.', 'path': '/servizi/consulenza-condominiale'})
+export const metadata = createPageMetadata(publicPages.consulenza)
 export default function Page() { return <MockPage page="consulenza" /> }

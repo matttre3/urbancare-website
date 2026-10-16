@@ -37,7 +37,7 @@
     {id:'ascensore',cat:'manutenzione',v:'stairs',date:'2026-08-20',min:4,
      t:'Ascensore fermo: chi paga, chi decide, quanto aspettare',x:'Dalla chiamata al manutentore alla ripartizione della spesa: cosa succede davvero quando l’ascensore si blocca.'},
     {id:'portale',cat:'digitale',v:'oculus',date:'2026-08-06',min:3,
-     t:'Il portale online del tuo condominio, passo passo',x:'Dove trovare verbali, rate e documenti, e come ricevere le comunicazioni senza cercarle nella cassetta della posta.'},
+     t:'Il portale online del tuo condominio, passo passo',x:'Come consultare le rate e ricevere le comunicazioni del condominio nell’area personale.'},
     {id:'morosita',cat:'normativa',v:'facade',date:'2026-07-23',min:6,
      t:'Morosità: cosa succede quando un condomino non paga',x:'I passaggi previsti, i tempi e perché intervenire presto conviene a tutto il condominio.'},
     {id:'regolamento',cat:'vita',v:'roofs',date:'2026-07-09',min:5,
@@ -122,7 +122,7 @@
   // 01 agenda: tasks tick themselves off, then the week starts again
   (function(){
     const el=document.getElementById('agenda');if(!el)return;
-    const tasks=[['Convocazione assemblea','Verbale e ordine del giorno · 14 ottobre','Assemblea'],['Aggiornamento regolamento','Bozza condivisa con i consiglieri','Regolamento'],['Rinnovo contratto pulizie','3 preventivi confrontati','Fornitori'],['Adempimenti fiscali','Versamenti e dichiarazioni in scadenza','Fisco'],['Perdita in cantina','Idraulico in arrivo entro 2 ore','Urgente']];
+    const tasks=[['Convocazione assemblea','Verbale e ordine del giorno · 14 ottobre','Assemblea'],['Redazione del rendiconto annuale','Verifica dei movimenti e preparazione del riepilogo','Contabilità'],['Rinnovo contratto pulizie','3 preventivi confrontati','Fornitori'],['Adempimenti fiscali','Versamenti e dichiarazioni in scadenza','Fisco'],['Intervento di manutenzione','Richiesta inviata al fornitore','Intervento']];
     el.innerHTML=tasks.map((t,i)=>`<div class="task${i===4?' urgent':''}"><span class="box">${CHECK}</span><div><b>${t[0]}</b><small>${t[1]}</small></div><em>${t[2]}</em></div>`).join('')+`<div class="agenda-foot"><span>Questa settimana</span><span class="bar"><i id="agendaBar"></i></span><span id="agendaCount">0/5</span></div>`;
     const rows=[...el.querySelectorAll('.task')],bar=document.getElementById('agendaBar'),cnt=document.getElementById('agendaCount');
     let n=0;const step=()=>{if(n>=rows.length){rows.forEach(r=>r.classList.remove('done'));n=0}else{rows[n].classList.add('done');n++}bar.style.width=(n/rows.length*100)+'%';cnt.textContent=`${n}/${rows.length}`};
@@ -136,7 +136,7 @@
       ['Conviene deliberare subito i lavori sul tetto?','Prima valutiamo preventivi, urgenza e fondi disponibili. Poi decidete in assemblea, con tutti i dati.'],
       ['Due condòmini discutono per il posto auto.','Partiamo dal regolamento e cerchiamo una soluzione condivisa, prima che diventi un contenzioso.'],
       ['Non capisco una norma del regolamento.','Te la spieghiamo con parole semplici e ti diciamo cosa comporta per il tuo caso.']];
-    const who=`<span class="who"><svg viewBox="0 0 304 291"><path d="M22 112 L152 22 L282 112" fill="none" stroke="currentColor" stroke-width="34"/><path d="M78 128 V206 a74 74 0 0 0 148 0 V116" fill="none" stroke="currentColor" stroke-width="40"/></svg>UrbanCare</span>`;
+    const who=`<span class="who"><svg viewBox="0 0 304 291"><path d="M22 112 L152 22 L282 112" fill="none" stroke="currentColor" stroke-width="34"/><path d="M78 128 V206 a74 74 0 0 0 148 0 V116" fill="none" stroke="currentColor" stroke-width="40"/></svg>Urbancare</span>`;
     let i=0;const add=html=>{el.insertAdjacentHTML('beforeend',html);while(el.children.length>6)el.firstElementChild.remove()};
     const cycle=()=>{const [q,a]=QA[i++%QA.length];add(`<div class="msg q"><span class="who-q">Condòmino</span>${q}</div>`);
       setTimeout(()=>add('<div class="typing"><i></i><i></i><i></i></div>'),900);
@@ -149,7 +149,7 @@
     const el=document.getElementById('phFeed');if(!el)return;
     const IC={doc:'<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5"/>',bell:'<path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 20h4"/>',send:'<path d="M21 3L3 11l7 3 3 7z"/>',chart:'<path d="M4 20V11M10 20V5M16 20v-6M21 20H3"/>'};
     const ic=k=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${IC[k]}</svg>`;
-    const items=[['doc','Bilancio consuntivo 2025','Documenti · consultabile ora',0],['bell','Avviso: pulizia scale spostata a giovedì','Avvisi · oggi',1],['send','La tua segnalazione è stata presa in carico','Segnalazioni · 10 min fa',2],['chart','Riparto spese aggiornato','Documenti · ieri',0],['bell','Assemblea ordinaria convocata','Avvisi · 14 ottobre',1],['send','Lampadina garage sostituita','Segnalazioni · risolta',2]];
+    const items=[['doc','Rata trimestrale disponibile','Rate · importo e scadenza',0],['bell','Avviso: pulizia scale spostata a giovedì','Avvisi · oggi',1],['send','La tua segnalazione è stata presa in carico','Segnalazioni · 10 min fa',2],['chart','Scadenza della prossima rata','Rate · aggiornata',0],['bell','Assemblea ordinaria convocata','Avvisi · 14 ottobre',1],['send','Lampadina garage sostituita','Segnalazioni · risolta',2]];
     const tabs=[...document.querySelectorAll('.ph-tabs span')];let i=0;
     const push=()=>{const [k,t,s,tab]=items[i++%items.length];el.insertAdjacentHTML('afterbegin',`<div class="ph-item"><span class="pi">${ic(k)}</span><div><b>${t}</b><small>${s}</small></div></div>`);while(el.children.length>5)el.lastElementChild.remove();tabs.forEach((x,j)=>x.classList.toggle('on',j===tab))};
     push();push();push();if(!REDUCE)setInterval(push,2400);

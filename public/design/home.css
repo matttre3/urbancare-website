@@ -388,21 +388,10 @@
     .city-fog{height:16%!important;bottom:-4%!important}
 
     /* page load */
-    :root{--load:1.05s}
-    .loader{position:fixed;inset:0;z-index:200;background:#060d18;display:grid;place-items:center;animation:loaderOut .75s cubic-bezier(.76,0,.24,1) .85s forwards;pointer-events:none}
-    html[data-theme="light"] .loader{background:#f3f4ef}
-    .loader svg{width:92px;height:auto;overflow:visible;animation:loaderMark .75s cubic-bezier(.76,0,.24,1) .85s forwards}
-    .loader path{fill:none;stroke:url(#loaderGrad);stroke-width:3;stroke-linejoin:round;stroke-dasharray:1;stroke-dashoffset:1;animation:loaderDraw .8s cubic-bezier(.6,.1,.3,1) forwards}
-    .loader path+path{animation-delay:.12s}
-    .loader .loader-fill{stroke:none;fill:url(#loaderGrad);opacity:0;animation:loaderFill .3s ease .62s forwards}
-    @keyframes loaderDraw{to{stroke-dashoffset:0}}
-    @keyframes loaderFill{to{opacity:1}}
-    @keyframes loaderMark{to{transform:translateY(-40px) scale(.9);opacity:0}}
-    @keyframes loaderOut{to{transform:translateY(-100%);visibility:hidden}}
-
+    :root{--load:0s}
     @keyframes enterUp{from{opacity:0;transform:translateY(34px);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
     @keyframes enterDown{from{opacity:0;transform:translateY(-24px)}to{opacity:1;transform:none}}
-    .enter{animation:enterUp .95s cubic-bezier(.2,.75,.2,1) both;animation-delay:calc(var(--load) + var(--d,0s))}
+    .enter{animation:enterUp .45s cubic-bezier(.2,.75,.2,1) both;animation-delay:calc(var(--load) + var(--d,0s))}
     .nav-wrap{animation:enterDown .8s cubic-bezier(.2,.75,.2,1) both;animation-delay:calc(var(--load) + .05s)}
     .topline{animation:enterDown .6s ease both;animation-delay:var(--load)}
     h1 .line1{display:inline-block}
@@ -559,3 +548,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
 @media print{.nav-wrap,.noise,.progress,.lift,.a-aside,.related,.cta-band,footer,.reactions{display:none!important}.prose,.a-layout{display:block;max-width:none}.reveal,.enter{opacity:1;transform:none}body{background:white;color:black}}
 
 .legal{max-width:960px;margin:auto;padding:170px var(--pad) 100px;font:400 16px/1.8 var(--f-body);color:var(--text)}.legal header{margin-bottom:50px}.legal h1{font-size:clamp(40px,6vw,70px);line-height:1.1;margin-bottom:20px}.legal h3{font:700 25px/1.3 var(--f-display);margin:35px 0 15px}.legal p,.legal ul{margin:15px 0}.legal a{text-decoration:underline}
+
+/* Descriptive H1 topic preserves the supplied headline treatment. */
+.hero-topic{display:block;font-size:clamp(17px,1.6vw,23px);font-weight:600;line-height:1.4;letter-spacing:0;margin-bottom:20px;max-width:560px}
+.service .service-title{font-size:clamp(32px,3.5vw,56px);line-height:.95;letter-spacing:-.025em;margin:0 0 15px;max-width:680px}
+@media(min-width:1051px) and (max-width:1440px){.service .service-title{font-size:34px;margin-bottom:12px}}

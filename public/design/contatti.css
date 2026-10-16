@@ -300,9 +300,9 @@
       --pv-ground:#cfd6e6;--pv-base:#e4e9f4;--pv-gdoor:#aab6d2;--pv-door:#56648a;--pv-lobby:#ffe0a0;--pv-tree:#6f9d7c;--pv-tree2:#94c1a0;box-shadow:0 40px 90px -40px rgba(40,70,160,.45)}
     .pv-head{padding:24px 26px 0;position:relative;z-index:2}
     .pv-head small{font:700 11px/1 var(--f-display);letter-spacing:.14em;text-transform:uppercase;color:var(--pv-sub)}
-    .pv-head h3{font:800 25px/1.12 var(--f-display);letter-spacing:-.02em;margin:10px 0 0;min-height:1.12em}
-    .pv-head h3 .c{background:linear-gradient(180deg,#fff,#c9d6ff);-webkit-background-clip:text;background-clip:text;color:transparent}
-    html[data-theme="light"] .pv-head h3 .c{background:var(--brand-grad);-webkit-background-clip:text;background-clip:text}
+    .pv-head .preview-title{font:800 25px/1.12 var(--f-display);letter-spacing:-.02em;margin:10px 0 0;min-height:1.12em}
+    .pv-head .preview-title .c{background:linear-gradient(180deg,#fff,#c9d6ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+    html[data-theme="light"] .pv-head .preview-title .c{background:var(--brand-grad);-webkit-background-clip:text;background-clip:text}
     .pv-who{display:block;margin-top:6px;font-size:13.5px;color:var(--pv-sub);min-height:1.2em;transition:opacity .3s}
 
     .pv-stage{position:relative;margin-top:4px}

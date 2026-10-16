@@ -37,7 +37,7 @@
     {id:'ascensore',cat:'manutenzione',v:'stairs',date:'2026-08-20',min:4,
      t:'Ascensore fermo: chi paga, chi decide, quanto aspettare',x:'Dalla chiamata al manutentore alla ripartizione della spesa: cosa succede davvero quando l’ascensore si blocca.'},
     {id:'portale',cat:'digitale',v:'oculus',date:'2026-08-06',min:3,
-     t:'Il portale online del tuo condominio, passo passo',x:'Dove trovare verbali, rate e documenti, e come ricevere le comunicazioni senza cercarle nella cassetta della posta.'},
+     t:'Il portale online del tuo condominio, passo passo',x:'Come consultare le rate e ricevere le comunicazioni del condominio nell’area personale.'},
     {id:'morosita',cat:'normativa',v:'facade',date:'2026-07-23',min:6,
      t:'Morosità: cosa succede quando un condomino non paga',x:'I passaggi previsti, i tempi e perché intervenire presto conviene a tutto il condominio.'},
     {id:'regolamento',cat:'vita',v:'roofs',date:'2026-07-09',min:5,

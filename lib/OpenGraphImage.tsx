@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { siteConfig } from "@/lib/site";
 
 export const runtime = "nodejs";
-export const alt = "Urbancare - Amministratore condominiale a Milano";
+export const alt = "Urbancare - Amministratore condominiale a Garbagnate Milanese";
 export const size = {
   width: 1200,
   height: 630,
@@ -52,10 +52,10 @@ export default function OpenGraphImage() {
             justifyContent: "space-between",
             alignItems: "center",
             fontSize: 28,
-            color: "#4364c7",
+            color: "#cbd5ff",
           }}
         >
-          <span>Milano e provincia</span>
+          <span>Garbagnate Milanese e dintorni</span>
           <span>{siteConfig.phone}</span>
         </div>
       </div>
