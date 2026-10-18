@@ -51,3 +51,18 @@ html[data-theme="light"] .nav-wrap nav{background:rgba(255,255,255,.94)}
 }
 @media(max-width:640px){.nav-wrap .nav-links,.nav-wrap.menu-open .nav-links{left:14px;right:14px}.nav-wrap nav{padding-inline:14px}}
 @media(prefers-reduced-motion:reduce){.nav-wrap .dd-menu,.nav-wrap .dd-menu a,.nav-wrap .nav-links,.nav-wrap .burger::before,.nav-wrap .burger::after,.nav-wrap .services-toggle::after{animation:none!important;transition:none!important}}
+
+/* Public service answers and guides share the existing theme tokens. */
+.seo-section{max-width:var(--max,1320px);margin-inline:auto;padding:clamp(40px,6vw,80px) var(--pad,24px);color:var(--text)}
+.seo-section>h2{font-size:clamp(28px,3.5vw,48px);line-height:1.15;margin:16px 0 24px;max-width:900px}
+.seo-section h3{font-size:24px;margin:28px 0 12px}
+.seo-section p{font-size:16px;line-height:1.8;max-width:850px;margin:14px 0;color:var(--muted)}
+.seo-section p a,.seo-faq a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.seo-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:28px 0}
+.seo-links>a{padding:24px;border:1px solid var(--line);border-radius:18px;background:var(--surface);font-weight:600;line-height:1.5}
+.seo-links>a:hover{border-color:var(--accent)}
+.seo-faq{margin:28px 0;border-top:1px solid var(--line)}
+.seo-faq details{border-bottom:1px solid var(--line);padding:18px 0}
+.seo-faq summary{cursor:pointer;font-weight:600;font-size:18px;line-height:1.5;padding-right:12px}
+.seo-faq details>div{padding:4px 0 0 22px}
+@media(max-width:640px){.seo-links{grid-template-columns:1fr}.seo-links>a{padding:20px}.seo-faq details>div{padding-left:0}}

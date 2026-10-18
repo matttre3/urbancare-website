@@ -1,0 +1,30 @@
+[
+  {
+    "userAgent": "Googlebot",
+    "status": 200,
+    "hasH1": true,
+    "bytes": 98485,
+    "hash": "067f8b418f3a90baea51e77f79219b8eba16ae5ce8d2d17bfb0a51cede8c4c7d"
+  },
+  {
+    "userAgent": "OAI-SearchBot",
+    "status": 200,
+    "hasH1": true,
+    "bytes": 98485,
+    "hash": "067f8b418f3a90baea51e77f79219b8eba16ae5ce8d2d17bfb0a51cede8c4c7d"
+  },
+  {
+    "userAgent": "PerplexityBot",
+    "status": 200,
+    "hasH1": true,
+    "bytes": 98485,
+    "hash": "067f8b418f3a90baea51e77f79219b8eba16ae5ce8d2d17bfb0a51cede8c4c7d"
+  },
+  {
+    "userAgent": "Claude-SearchBot",
+    "status": 200,
+    "hasH1": true,
+    "bytes": 98485,
+    "hash": "067f8b418f3a90baea51e77f79219b8eba16ae5ce8d2d17bfb0a51cede8c4c7d"
+  }
+]

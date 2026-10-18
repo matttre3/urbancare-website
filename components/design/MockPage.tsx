@@ -8,6 +8,7 @@ import { publicPages, siteStructuredData, type PublicPage } from '@/lib/seo'
 
 /** Only checked-in design HTML and escaped / Lexical-rendered CMS data enter this component. */
 export async function MockPage({ page, html, posts, shellOnly = false, children, seo }: { page: DesignPage; html?: string; posts?: BlogPost[]; shellOnly?: boolean; children?: React.ReactNode; seo?: PublicPage | false }) {
+  const seoPage = seo === false ? undefined : seo || (page in publicPages ? page as PublicPage : undefined)
   let markup = html || template(page)
   if (page !== 'home') markup = markup.replace('</nav>\n  </div>', '</nav>\n  </div><div class="nav-spacer" aria-hidden="true"></div>')
   markup = markup.replace(/(<div class="dd">)<a[^>]*>Servizi<\/a>/, '$1<button class="services-toggle" type="button" aria-expanded="false" aria-controls="services-menu">Servizi</button>')
@@ -25,7 +26,6 @@ export async function MockPage({ page, html, posts, shellOnly = false, children,
     const end = markup.lastIndexOf('<footer>')
     if (start >= 0 && end > start) markup = markup.slice(0, start) + '<main id="main-content">' + markup.slice(start, end) + '</main>' + markup.slice(end)
   }
-  const seoPage = seo === false ? undefined : seo || (page in publicPages ? page as PublicPage : undefined)
   const data = posts?.map(p => ({ id:p.id, cat:p.cat, v:p.v, date:p.date, min:p.min, t:p.t, x:p.x, featured:p.featured, cover:p.cover, coverCard:p.coverCard, coverAlt:p.coverAlt }))
   return <>
     {seo !== false && <JsonLd data={siteStructuredData(settings, seoPage)} />}

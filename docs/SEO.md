@@ -60,3 +60,23 @@ Non pubblicare automaticamente le bozze importate dal mock.
 Nessun ranking, volume, traffico o valore Core Web Vitals è attestato dai soli
 test del codice. Le metriche effettive vanno lette in Search Console e nei dati
 pubblici PageSpeed/CrUX, quando disponibili.
+
+## Interventi dopo il Full Audit del 18 ottobre 2026
+
+- `lib/design/seo-content.ts` aggiunge risposte visibili al preventivo e ai servizi,
+  collegamenti ai due articoli del Cortile e coerenza delle promesse del portale.
+- I contenuti su costo e cambio amministratore sono articoli del CMS nella
+  categoria **Guide**, disponibili a `/blog/costo-amministratore-condominio` e
+  `/blog/cambio-amministratore-condominio`, modificabili dall’admin.
+- La sezione autonoma `/guide` è stata rimossa. I vecchi indirizzi reindirizzano
+  permanentemente al blog e agli articoli corrispondenti. Non ci sono voci Guide
+  nel menu o nel footer, né URL Guide nella sitemap.
+- L’importazione idempotente è in `scripts/import-blog-guides.ts`, con contenuti
+  sorgente in `scripts/content/blog-guides.ts`: la modalità predefinita verifica
+  gli slug; `--publish` crea solo quelli mancanti, senza sovrascrivere articoli.
+  Si esegue caricando `.env.local`, che punta al CMS condiviso. Non ripubblicare
+  le altre bozze importate dal mock.
+- L’autore dei due nuovi articoli è Urbancare: il BlogPosting usa l’Organization
+  dello studio e la scheda autore è coerente con la redazione.
+- Restano da confermare con il proprietario qualifiche e casi pubblicabili;
+  l’articolo CMS sui millesimi è stato ritirato e conservato come bozza.

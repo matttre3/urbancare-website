@@ -1,0 +1,1111 @@
+[
+  {
+    "title": "Sintesi e decisioni",
+    "blocks": [
+      {
+        "p": "UrbanCare dispone di una buona base tecnica, ma il sito pubblico è ancora la versione precedente. Il progetto locale prepara già il posizionamento su Garbagnate Milanese, il blog e un grafo di entità più coerente. La leva principale è portare online questa base dopo la verifica del rilascio, poi sviluppare risposte utili su preventivo, costi e cambio amministratore."
+      },
+      {
+        "heads": [
+          "Dimensione",
+          "Pubblico",
+          "Rework locale",
+          "Valutazione"
+        ],
+        "rows": [
+          [
+            "SEO",
+            "6/10",
+            "8/10",
+            "Base tecnica buona; focus locale più forte nel rework."
+          ],
+          [
+            "GEO",
+            "5/10",
+            "7/10",
+            "Identità chiara; prove, fonti e coerenza da rafforzare."
+          ],
+          [
+            "AEO",
+            "4/10",
+            "6/10",
+            "Definizioni e liste presenti; domande commerciali poco coperte."
+          ],
+          [
+            "Totale",
+            "15/30",
+            "21/30",
+            "Giudizio editoriale, non misura delle classifiche."
+          ]
+        ],
+        "widths": [
+          1450,
+          1050,
+          1500,
+          5360
+        ]
+      },
+      {
+        "h": "Le tre priorità"
+      },
+      {
+        "p": "1. Allineare il sito pubblico al rework verificato. /blog e /zone-servite rispondono 404 online, pur essendo già presenti nel build locale. Non serve ricrearli."
+      },
+      {
+        "p": "2. Sviluppare il percorso di richiesta preventivo in /contatti e il contenuto sul cambio amministratore. Nel rework /preventivo è un redirect permanente previsto dalla configurazione, non una pagina da riempire."
+      },
+      {
+        "p": "3. Rafforzare l’affidabilità: uniformare le promesse sul portale, aggiungere fonti agli articoli e pubblicare qualifiche, casi e recensioni soltanto se verificati e autorizzati."
+      },
+      {
+        "h": "Il punto di forza"
+      },
+      {
+        "p": "Il metodo di presa in carico è già spiegato e attribuito a Noele Romano. Il rework aggiunge contenuto disponibile nell’HTML, collegamenti tra servizi, canonical e identità Organization/Person coerenti."
+      },
+      {
+        "p": "Ambito: Full Audit con le skill ai-seo e seo-geo-aeo. Nessuna modifica al sito, al CMS o alle campagne. Le raccomandazioni sono pronte per una successiva implementazione."
+      }
+    ]
+  },
+  {
+    "title": "Domanda di ricerca e priorità",
+    "blocks": [
+      {
+        "p": "Sono stati esportati due dataset da 687 keyword ciascuno dal Google Keyword Planner: Italia e Città metropolitana di Milano. Lingua Italian, rete Google, periodo 1 ottobre 2025 - 30 settembre 2026. I due set sono confronti geografici delle stesse idee, non 1.374 opportunità distinte."
+      },
+      {
+        "heads": [
+          "Query",
+          "Italia al mese",
+          "Milano al mese"
+        ],
+        "rows": [
+          [
+            "amministratore di condominio",
+            "10.000-100.000",
+            "1.000-10.000"
+          ],
+          [
+            "amministrazione condominiale",
+            "1.000-10.000",
+            "1.000-10.000"
+          ],
+          [
+            "amministratore condominio Garbagnate Milanese",
+            "10-100",
+            "10-100"
+          ],
+          [
+            "amministratore condominio Arese",
+            "10-100",
+            "10-100"
+          ],
+          [
+            "amministratore condominio Cesate",
+            "10-100",
+            "10-100"
+          ],
+          [
+            "amministratore condominio Milano",
+            "100-1.000",
+            "100-1.000"
+          ],
+          [
+            "amministratori di condominio vicino a me",
+            "100-1.000",
+            "100-1.000"
+          ],
+          [
+            "preventivo amministratore condominio",
+            "100-1.000",
+            "10-100"
+          ],
+          [
+            "cambio amministratore condominio",
+            "100-1.000",
+            "10-100"
+          ],
+          [
+            "costi amministratore condominio",
+            "100-1.000",
+            "10-100"
+          ],
+          [
+            "consulenza condominiale",
+            "100-1.000",
+            "10-100"
+          ]
+        ],
+        "widths": [
+          5260,
+          2050,
+          2050
+        ]
+      },
+      {
+        "h": "Come leggere i numeri"
+      },
+      {
+        "p": "La UI mostra fasce. Il CSV usa valori rappresentativi come 50, 500 e 5.000: non vengono trattati come conteggi puntuali. Le fasce del confronto sono ricondotte alla scala osservata nella UI. Le varianti strette possono sovrapporsi: non sommarle. La concorrenza indica competizione tra inserzionisti, non difficoltà SEO [S1]."
+      },
+      {
+        "p": "Per “preventivo amministratore condominio”, l’offerta Italia per la parte superiore della pagina è 0,80-5,49 €. È un indizio commerciale, non un CPC garantito o una previsione di conversione. “Consulenza gratuita”, software, portali e brand possono avere intento inadatto."
+      },
+      {
+        "p": "Sì, partire dalle keyword ha senso: la scelta finale combina servizio, territorio, intenzione e capacità di rispondere. Milano è un confronto di bacino; non misura la domanda dei soli sette comuni prioritari. Lainate, Bollate, Senago e Caronno richiedono un set esplicito aggiuntivo: la loro assenza nelle idee non dimostra volume zero."
+      }
+    ]
+  },
+  {
+    "title": "Pagine pubbliche esaminate",
+    "blocks": [
+      {
+        "p": "Crawl completo dei collegamenti interni e delle 10 URL nella sitemap pubblica: 9 pagine commerciali o istituzionali più la privacy, verificata per coerenza dei recapiti. Non risultano altri articoli o pagine informative nei percorsi scoperti. Il dominio di tutte le route sotto elencate è https://www.urbancare-amministrazioni.com."
+      },
+      {
+        "heads": [
+          "Percorso",
+          "Esito",
+          "Osservazione"
+        ],
+        "rows": [
+          [
+            "/",
+            "200",
+            "Title orientato a Milano; schema ProfessionalService."
+          ],
+          [
+            "/contatti",
+            "200",
+            "Canonical, un H1 e schema presenti; contenuto sintetico."
+          ],
+          [
+            "/servizi",
+            "200",
+            "Indice di quattro servizi."
+          ],
+          [
+            "/lo-studio",
+            "200",
+            "Biografia e metodo presenti."
+          ],
+          [
+            "/preventivo",
+            "200",
+            "Pagina autonoma, modulo e breve introduzione."
+          ],
+          [
+            "/servizi/condominio-online",
+            "200",
+            "Canonical, un H1 e schema presenti; contenuto sintetico."
+          ],
+          [
+            "/servizi/amministrazione-condominiale",
+            "200",
+            "Canonical, un H1 e schema presenti; contenuto sintetico."
+          ],
+          [
+            "/servizi/consulenza-condominiale",
+            "200",
+            "Canonical, un H1 e schema presenti; contenuto sintetico."
+          ],
+          [
+            "/servizi/gestione-contabile",
+            "200",
+            "Canonical, un H1 e schema presenti; contenuto sintetico."
+          ],
+          [
+            "/privacy-policy",
+            "200",
+            "Controllata per identità e recapiti; esclusa dal giudizio editoriale."
+          ]
+        ],
+        "widths": [
+          4000,
+          900,
+          4460
+        ]
+      },
+      {
+        "h": "File tecnici e verifiche di esistenza"
+      },
+      {
+        "heads": [
+          "Percorso",
+          "HTTP",
+          "Riscontro"
+        ],
+        "rows": [
+          [
+            "/robots.txt",
+            "200",
+            "Consente la scansione a tutti; sitemap dichiarata."
+          ],
+          [
+            "/sitemap.xml",
+            "200",
+            "XML leggibile; 10 URL pubbliche."
+          ],
+          [
+            "/blog",
+            "404",
+            "Non pubblicato sul dominio al momento del crawl."
+          ],
+          [
+            "/zone-servite",
+            "404",
+            "Non pubblicata sul dominio al momento del crawl."
+          ],
+          [
+            "/llms.txt",
+            "404",
+            "File opzionale assente; non blocca Google."
+          ]
+        ],
+        "widths": [
+          2200,
+          900,
+          6260
+        ]
+      },
+      {
+        "p": "I 404 aggiuntivi sono controlli sulle route note del progetto e sul file opzionale, non link rotti rilevati nella navigazione pubblica. La sitemap pubblica usa la stessa lastmod del 29 maggio 2026 per tutte le URL: non è stata verificata la corrispondenza con modifiche effettive."
+      }
+    ]
+  },
+  {
+    "title": "Rework locale e differenze dal pubblico",
+    "blocks": [
+      {
+        "p": "Esaminati 13 file HTML del build disponibile, datati 15 ottobre 2026: 11 pagine di contenuto, privacy e artefatto /preventivo. È uno snapshot locale, non un nuovo build e non prova di ciò che è stato distribuito. Letti anche sorgenti, configurazione e documentazione SEO."
+      },
+      {
+        "heads": [
+          "Percorso locale",
+          "Miglioramento o nota"
+        ],
+        "rows": [
+          [
+            "/blog/millesimi",
+            "Articolo con autore, data, BlogPosting e breadcrumb."
+          ],
+          [
+            "/blog",
+            "Indice SSR con un articolo nel build osservato."
+          ],
+          [
+            "/contatti",
+            "Contatti e preventivo nella stessa pagina."
+          ],
+          [
+            "/",
+            "Metadata, contenuti locali e grafo Organization/Person presenti."
+          ],
+          [
+            "/lo-studio",
+            "Biografia con esperienza dal 2020 e attività dal 2024."
+          ],
+          [
+            "/privacy-policy",
+            "Presente; verifica dei recapiti."
+          ],
+          [
+            "/servizi/amministrazione-condominiale",
+            "Metadata, contenuti locali e grafo Organization/Person presenti."
+          ],
+          [
+            "/servizi/condominio-online",
+            "Metadata, contenuti locali e grafo Organization/Person presenti."
+          ],
+          [
+            "/servizi/consulenza-condominiale",
+            "Metadata, contenuti locali e grafo Organization/Person presenti."
+          ],
+          [
+            "/servizi/gestione-contabile",
+            "Metadata, contenuti locali e grafo Organization/Person presenti."
+          ],
+          [
+            "/servizi",
+            "Metadata, contenuti locali e grafo Organization/Person presenti."
+          ],
+          [
+            "/zone-servite",
+            "Sette comuni dichiarati; pagina unica senza duplicati locali."
+          ]
+        ],
+        "widths": [
+          4000,
+          5360
+        ]
+      },
+      {
+        "h": "Il caso preventivo"
+      },
+      {
+        "p": "next.config.ts definisce /preventivo → /contatti#preventivo con redirect permanente. L’HTML residuo di /preventivo non ha H1, ma non viene classificato come pagina pubblica povera: prevale la configurazione di redirect. In produzione va verificato lo stato 308 e l’apertura della sezione corretta. La prima mappa keyword suggeriva /preventivo prima dell’ispezione tecnica; l’assegnazione finale è /contatti#preventivo."
+      },
+      {
+        "h": "Controlli eseguiti"
+      },
+      {
+        "p": "Passano scripts/test-seo.ts e scripts/test-seo-build.ts tramite node --import tsx. Verificano metadata, grafo, un H1/main sulle pagine previste, link, copertine e articolo del build. Il comando tsx diretto era bloccato dal socket IPC della sandbox; il caricamento con Node ha completato entrambi i controlli. Nessun test attesta ranking o conversioni."
+      }
+    ]
+  },
+  {
+    "title": "SEO tecnico e dati strutturati",
+    "blocks": [
+      {
+        "heads": [
+          "Segnale",
+          "Riscontro",
+          "Stato"
+        ],
+        "rows": [
+          [
+            "Title e description",
+            "Presenti e distinti sulle 10 URL live; “Contatti | Urbancare” è poco descrittivo. Il rework lo migliora.",
+            "Buono"
+          ],
+          [
+            "H1 e gerarchia",
+            "Un H1 in ciascuna pagina live. Alcuni sottotitoli sono ripetuti nelle pagine servizi live.",
+            "Da affinare"
+          ],
+          [
+            "Canonical e robots",
+            "Canonical coerenti e index, follow sulle 10 URL live. I 404 hanno noindex.",
+            "Buono"
+          ],
+          [
+            "Viewport e lingua",
+            "Viewport presente; contenuti in italiano.",
+            "Buono"
+          ],
+          [
+            "URL e link interni",
+            "Route leggibili; servizi raggiungibili da home e indice. Nessun errore sulle URL della sitemap.",
+            "Buono"
+          ],
+          [
+            "Immagini e social",
+            "Alt presenti; un alt vuoto in home da valutare come decorativo. OG e Twitter presenti.",
+            "Buono"
+          ],
+          [
+            "Robots e sitemap",
+            "Entrambi 200; 10 URL live. Il rework esclude /admin e /api e aggiunge blog e zone.",
+            "Buono"
+          ],
+          [
+            "JSON-LD live",
+            "Tipi specifici per pagina e Service; nessun errore di parsing JSON nei documenti osservati.",
+            "Buono"
+          ],
+          [
+            "Identità nel rework",
+            "Organization, Person, WebSite, Service e BreadcrumbList collegati con @id.",
+            "Buono"
+          ]
+        ],
+        "widths": [
+          1750,
+          6360,
+          1250
+        ]
+      },
+      {
+        "h": "Limiti e rifiniture"
+      },
+      {
+        "p": "Nessun test Rich Results o validatore semantico esterno è stato eseguito: JSON sintatticamente leggibile non significa idoneità a un risultato avanzato. Il live descrive ProfessionalService con sola località e senza via; il rework sceglie Organization per non inventare una sede. Non aggiungere un indirizzo fittizio."
+      },
+      {
+        "p": "La lunghezza dei title locali varia: home e amministrazione circa 62 caratteri, studio 68. È una verifica di resa, non un errore automatico. Lo stesso vale per description più brevi di 150 caratteri: meglio chiarezza e pertinenza rispetto a riempire una quota."
+      },
+      {
+        "p": "Core Web Vitals, velocità reale, indicizzazione Google, canonical scelto dal motore e comportamento mobile non sono misurati da questo crawl. Servono Search Console, PageSpeed/CrUX e un controllo visuale. Non viene attribuito un voto prestazionale inventato."
+      }
+    ]
+  },
+  {
+    "title": "SEO dei contenuti e mappa finale",
+    "blocks": [
+      {
+        "p": "Le pagine servizi pubbliche contengono spiegazioni brevi: circa 77-135 parole estratte nel contenuto principale. Il rework le amplia a circa 189-309. I conteggi sono indicativi perché markup, elementi nascosti e parole adiacenti influenzano l’estrazione. Non esiste qui una soglia minima di parole usata come fattore di ranking."
+      },
+      {
+        "heads": [
+          "Intenzione",
+          "Pagina proprietaria",
+          "Intervento utile"
+        ],
+        "rows": [
+          [
+            "Scegliere un amministratore locale",
+            "/",
+            "Consolidare Garbagnate, destinatari, metodo e invito al contatto."
+          ],
+          [
+            "Capire il servizio",
+            "/servizi/amministrazione-condominiale",
+            "Distinguere attività, presa in carico e casi di utilizzo."
+          ],
+          [
+            "Richiedere una proposta",
+            "/contatti#preventivo",
+            "Spiegare dati richiesti, proposta e fattori del compenso."
+          ],
+          [
+            "Cambiare amministratore",
+            "Servizio amministrazione + futura guida",
+            "Già presente un blocco nel rework; approfondire il percorso nella guida."
+          ],
+          [
+            "Capire i costi",
+            "Futura guida costi + /contatti",
+            "Spiegare fattori e voci; niente tariffari inventati."
+          ],
+          [
+            "Capire spese e rendiconto",
+            "/servizi/gestione-contabile + blog",
+            "Esempi illustrativi, documenti e distinzioni tra criteri."
+          ],
+          [
+            "Verificare la copertura",
+            "/zone-servite",
+            "Una pagina con comuni reali e modalità di presa in carico."
+          ],
+          [
+            "Accedere al portale",
+            "/servizi/condominio-online",
+            "Servizio per condomini già amministrati; separare dall’acquisizione."
+          ]
+        ],
+        "widths": [
+          2500,
+          3000,
+          3860
+        ]
+      },
+      {
+        "h": "Copertura e sovrapposizioni"
+      },
+      {
+        "p": "Home e pagina amministrazione possono convivere: la prima orienta la scelta dello studio, la seconda chiarisce il servizio. Senza dati Search Console non si può diagnosticare cannibalizzazione. L’indice /servizi può restare breve se porta bene alle quattro pagine di dettaglio."
+      },
+      {
+        "p": "Il build contiene un articolo sui millesimi, già attribuito a Noele Romano e collegato alla contabilità. Non risultano guide dedicate a costi e cambio nel build esaminato. I dati dimostrativi nel repository non sono conteggiati come articoli pubblicati; le bozze non vanno pubblicate automaticamente."
+      }
+    ]
+  },
+  {
+    "title": "GEO e affidabilità delle informazioni",
+    "blocks": [
+      {
+        "heads": [
+          "Segnale",
+          "Evidenza e conseguenza",
+          "Stato"
+        ],
+        "rows": [
+          [
+            "Identità del professionista",
+            "Noele Romano è nominato, con biografia e cronologia dell’esperienza.",
+            "Buono"
+          ],
+          [
+            "Qualifiche verificabili",
+            "Non rilevate attestazioni formative dettagliate o iscrizioni documentate nei testi esaminati. Chiedere evidenze reali prima di pubblicarle.",
+            "Da ampliare"
+          ],
+          [
+            "Fonti degli articoli",
+            "L’articolo locale sui millesimi non collega fonti normative primarie.",
+            "Da ampliare"
+          ],
+          [
+            "Prove di esperienza",
+            "Metodo descritto; non rilevati casi documentati o testimonianze verificabili nelle pagine esaminate.",
+            "Da ampliare"
+          ],
+          [
+            "Coerenza dei contatti",
+            "Telefono coerente; email live Gmail e dominio nel rework. Confermare il recapito operativo prima del rilascio.",
+            "Da verificare"
+          ],
+          [
+            "Entità collegate",
+            "Grafo locale collega studio, autore e servizi; non rilevati sameAs a profili ufficiali.",
+            "Da ampliare"
+          ]
+        ],
+        "widths": [
+          1950,
+          6160,
+          1250
+        ]
+      },
+      {
+        "h": "Una contraddizione da correggere"
+      },
+      {
+        "p": "Nel rework /servizi/condominio-online promette rate e comunicazioni. /lo-studio conserva invece la frase “Digitalizziamo tutta la contabilità e la documentazione condominiale, rendendola accessibile online ai condomini”. Il live promette anche documenti e bilanci. Allineare ogni pagina alle funzioni effettivamente confermate del portale."
+      },
+      {
+        "h": "Cosa rende il sito citabile"
+      },
+      {
+        "p": "Aggiungere risposte attribuite, fonti primarie accanto alle affermazioni normative, esempi originali dichiarati come illustrativi e date di revisione solo quando avviene una revisione reale. Il disclaimer dell’articolo è utile ma non sostituisce l’accuratezza. Le regole sui riparti vanno validate dal professionista prima di ampliare il testo."
+      },
+      {
+        "p": "Non inventare recensioni, quantità di condomini gestiti, tempi medi o garanzie di reperibilità. Le prove pubblicabili possono essere un caso anonimizzato con problema, intervento e risultato documentato. Nessuna percentuale di aumento delle citazioni è promessa."
+      }
+    ]
+  },
+  {
+    "title": "AEO e risposte alle domande",
+    "blocks": [
+      {
+        "p": "La base esiste: amministrazione e consulenza hanno definizioni, i servizi usano liste e l’articolo sui millesimi contiene sezioni esplicative. Manca soprattutto una copertura diretta delle domande che precedono il contatto."
+      },
+      {
+        "heads": [
+          "Segnale",
+          "Valutazione",
+          "Azione"
+        ],
+        "rows": [
+          [
+            "Risposte brevi",
+            "Definizioni presenti; poche domande commerciali esplicite.",
+            "Rispondere subito e approfondire nel seguito."
+          ],
+          [
+            "Passaggi ordinati",
+            "Metodo in quattro fasi già visibile.",
+            "Spiegare cosa succede nella richiesta e nella presa in carico."
+          ],
+          [
+            "Domande frequenti",
+            "Nessun blocco FAQ dedicato rilevato nei contenuti esaminati.",
+            "Aggiungere domande reali su preventivo, cambio e portale."
+          ],
+          [
+            "Tabelle comparative",
+            "Nessuna tabella di contenuto rilevata.",
+            "Usarle solo se chiariscono differenze o voci della proposta."
+          ],
+          [
+            "Linguaggio e località",
+            "Italiano naturale; rework preciso sui comuni.",
+            "Mantenere riferimenti utili senza ripetere keyword."
+          ],
+          [
+            "FAQPage e HowTo",
+            "Non rilevati, ma non sono una priorità per rich result.",
+            "Valutare markup solo coerente con contenuti visibili."
+          ]
+        ],
+        "widths": [
+          1900,
+          3700,
+          3760
+        ]
+      },
+      {
+        "h": "Esempi di domande da coprire"
+      },
+      {
+        "p": "Come si richiede un preventivo per il condominio? Quali informazioni servono? Da cosa dipende il compenso? Come si avvia il passaggio a un nuovo amministratore? In quali comuni opera Urbancare? Cosa posso consultare nell’area personale? Chi contatto per una segnalazione?"
+      },
+      {
+        "h": "Indicazioni aggiornate rispetto alle skill"
+      },
+      {
+        "p": "Google ha rimosso la documentazione FAQ rich result a giugno 2026 dopo il ritiro della funzione [S4]. Non viene raccomandato FAQPage per ottenere un’espansione in SERP. HowTo e Speakable non sono aggiunte obbligatorie per questo studio."
+      },
+      {
+        "p": "Le risposte devono essere comprensibili e complete. I 40-60 vocaboli suggeriti dalle skill sono un esercizio editoriale, non una quota tecnica né un requisito Google. Non frammentare artificialmente pagine utili per inseguire un formato [S2, S3]."
+      }
+    ]
+  },
+  {
+    "title": "AI SEO accesso e presenza locale",
+    "blocks": [
+      {
+        "h": "Accesso e scoperta"
+      },
+      {
+        "p": "La homepage restituisce HTTP 200 e lo stesso HTML con Googlebot, OAI-SearchBot, PerplexityBot e Claude-SearchBot. Il robots pubblico consente la scansione e la sitemap è leggibile. Sono prove da questa rete con user agent dichiarati: non certificano l’accesso dai veri IP dei provider o l’assenza di ogni regola WAF."
+      },
+      {
+        "p": "Il contenuto principale è presente nella risposta HTML, sia live sia nel build locale. /llms.txt restituisce 404 online; non è un requisito di Google e non è trattato come difetto critico. Un file opzionale può essere valutato più avanti, senza aspettative di aumento del ranking [S3]."
+      },
+      {
+        "p": "OAI-SearchBot riguarda la ricerca e GPTBot il possibile uso per addestramento: i controlli sono indipendenti [S5]. Non è necessario autorizzare l’addestramento per perseguire la reperibilità. Per gli altri provider va verificata la documentazione corrente prima di una nuova policy."
+      },
+      {
+        "h": "Confronto con due fonti locali"
+      },
+      {
+        "heads": [
+          "Studio",
+          "Evidenza sul suo sito",
+          "Indicazione per UrbanCare"
+        ],
+        "rows": [
+          [
+            "Studio Dott Micalizzi",
+            "Biografie, titoli di studio e iscrizione ANAMMI dichiarata con numero. [S8]",
+            "Pubblicare qualifiche reali e verificabili, se disponibili."
+          ],
+          [
+            "ENNECI",
+            "Attività dal 1981, servizio dettagliato, sede e orari dichiarati. [S9]",
+            "Spiegare la propria esperienza e il metodo con prove specifiche."
+          ]
+        ],
+        "widths": [
+          1600,
+          3980,
+          3780
+        ]
+      },
+      {
+        "p": "Sono osservazioni su siti dei diretti interessati, non verifica indipendente delle loro credenziali né prova che siano citati da un assistente. Non sono state misurate posizioni Google o quote di citazione. Il mancato accesso a Studio Lucato non è usato per valutarlo."
+      },
+      {
+        "h": "Google Business Profile"
+      },
+      {
+        "p": "Verificare se esiste già il profilo prima di crearne uno. Se l’attività soddisfa i requisiti e riceve i clienti presso di loro, valutare un profilo con area di servizio e indirizzo nascosto secondo le regole Google [S6, S7]. Non dedurre che il profilo manchi: non è stato ispezionato. Recapiti e descrizione devono essere coerenti con il sito."
+      }
+    ]
+  },
+  {
+    "title": "Portfolio di prompt e misurazione AI",
+    "blocks": [
+      {
+        "p": "La skill ai-seo richiede un controllo delle risposte su più motori. Questo audit completa accesso, contenuto, entità e confronto delle fonti; non include sessioni dirette ripetute su ChatGPT Search, Perplexity e Google AI Overviews. Il tasso di citazione iniziale resta non misurato, non zero. Le ricerche web usate per raccogliere fonti non equivalgono a quel test."
+      },
+      {
+        "heads": [
+          "Gruppo",
+          "Prompt da usare"
+        ],
+        "rows": [
+          [
+            "Locale",
+            "Quale amministratore di condominio posso contattare a Garbagnate Milanese?"
+          ],
+          [
+            "Locale",
+            "Cerco un amministratore per un condominio ad Arese"
+          ],
+          [
+            "Locale",
+            "Chi segue un condominio a Cesate?"
+          ],
+          [
+            "Preventivo",
+            "Come richiedo un preventivo per cambiare amministratore a Garbagnate?"
+          ],
+          [
+            "Preventivo",
+            "Quali informazioni servono per un preventivo condominiale?"
+          ],
+          [
+            "Costo",
+            "Da cosa dipende il compenso di un amministratore di condominio?"
+          ],
+          [
+            "Cambio",
+            "Come si avvia il cambio di amministratore condominiale?"
+          ],
+          [
+            "Cambio",
+            "Quali documenti servono al nuovo amministratore?"
+          ],
+          [
+            "Cambio",
+            "Cosa succede durante il passaggio di consegne?"
+          ],
+          [
+            "Contabilità",
+            "Come capire un rendiconto condominiale?"
+          ],
+          [
+            "Contabilità",
+            "Perché la mia quota condominiale è diversa da quella del vicino?"
+          ],
+          [
+            "Brand",
+            "Chi è Noele Romano di Urbancare?"
+          ],
+          [
+            "Brand",
+            "In quali comuni opera Urbancare?"
+          ],
+          [
+            "Brand",
+            "Come contatto Urbancare per un preventivo?"
+          ],
+          [
+            "Portale",
+            "Cosa posso consultare nel portale Urbancare?"
+          ]
+        ],
+        "widths": [
+          1350,
+          8010
+        ]
+      },
+      {
+        "p": "Protocollo proposto: eseguire ciascun prompt tre volte per piattaforma, registrando data, lingua, località dichiarata, motore, risposta, brand menzionato, URL citata e raccomandazione. Quindici prompt × tre esecuzioni × tre piattaforme = 135 osservazioni per ciclo. È un piano, non un’attività già completata."
+      },
+      {
+        "p": "Distinguere sito recuperato, fonte citata, brand menzionato e studio raccomandato. Confrontare nel tempo lo stesso campione e il numero di osservazioni. Usare solo le funzionalità effettivamente disponibili per paese/account e non interpretare una singola risposta come classifica stabile."
+      }
+    ]
+  },
+  {
+    "title": "Matrice delle raccomandazioni",
+    "blocks": [
+      {
+        "heads": [
+          "Priorità",
+          "Intervento",
+          "Dimensione",
+          "Sforzo",
+          "Impatto"
+        ],
+        "rows": [
+          [
+            "Alta",
+            "Allineare produzione e rework dopo verifica rilascio.",
+            "SEO/GEO",
+            "Medio",
+            "Alto"
+          ],
+          [
+            "Alta",
+            "Ampliare /contatti sul preventivo e collegamenti diretti.",
+            "SEO/AEO",
+            "Basso",
+            "Alto"
+          ],
+          [
+            "Alta",
+            "Uniformare le promesse del portale su tutte le pagine.",
+            "GEO",
+            "Basso",
+            "Alto"
+          ],
+          [
+            "Alta",
+            "Guida originale sul cambio amministratore con fonti.",
+            "SEO/AEO",
+            "Medio",
+            "Alto"
+          ],
+          [
+            "Alta",
+            "Guida sui fattori del compenso, senza prezzi inventati.",
+            "SEO/AEO",
+            "Medio",
+            "Alto"
+          ],
+          [
+            "Alta",
+            "Validare e documentare fonti nell’articolo millesimi.",
+            "GEO",
+            "Medio",
+            "Alto"
+          ],
+          [
+            "Media",
+            "Aggiungere risposte FAQ visibili ai servizi prioritari.",
+            "AEO",
+            "Basso",
+            "Medio"
+          ],
+          [
+            "Media",
+            "Qualifiche e uno o due casi reali autorizzati.",
+            "GEO",
+            "Medio",
+            "Alto"
+          ],
+          [
+            "Media",
+            "Verifica profilo Google e coerenza dei recapiti.",
+            "Locale",
+            "Medio",
+            "Alto"
+          ],
+          [
+            "Media",
+            "Secondo set di keyword per gli altri quattro comuni.",
+            "SEO",
+            "Basso",
+            "Medio"
+          ],
+          [
+            "Media",
+            "Baseline Search Console e misure prestazionali.",
+            "SEO",
+            "Medio",
+            "Alto"
+          ],
+          [
+            "Media",
+            "Monitoraggio citazioni con portfolio controllato.",
+            "GEO",
+            "Medio",
+            "Medio"
+          ],
+          [
+            "Opzionale",
+            "llms.txt essenziale, solo dopo i contenuti principali.",
+            "AI",
+            "Basso",
+            "Incerto"
+          ]
+        ],
+        "widths": [
+          1100,
+          4100,
+          1400,
+          1200,
+          1560
+        ]
+      },
+      {
+        "p": "Sforzo relativo: basso = intervento circoscritto; medio = contenuto o verifica con più passaggi. Impatto è una priorità strategica stimata, non una previsione numerica. Non sono stati rilevati blocchi critici generalizzati di scansione o noindex accidentali sulle pagine commerciali pubbliche."
+      },
+      {
+        "h": "Cosa evitare"
+      },
+      {
+        "p": "Non duplicare landing per sinonimi o comuni cambiando solo il nome. Non aggiungere schema senza fatti visibili. Non creare una pagina prezzi con tariffe inventate. Non pubblicare automaticamente le bozze CMS e non trattare le query di software come richieste di amministrazione. Non riscrivere la parte tecnica già corretta solo per accumulare interventi."
+      }
+    ]
+  },
+  {
+    "title": "Brief editoriali pronti per il lavoro",
+    "blocks": [
+      {
+        "h": "Preventivo nella pagina contatti"
+      },
+      {
+        "p": "Destinazione: /contatti#preventivo. Query guida: preventivo amministratore condominio. Aprire con i dati già richiesti dal modulo: comune, unità, box, ascensore, riscaldamento e situazione attuale. Spiegare come incidono sulla proposta e distinguere compenso di gestione e altre spese. Pubblicare inclusioni, eventuali esclusioni e tempi solo dopo conferma dello studio."
+      },
+      {
+        "p": "Bozza di risposta: “Per richiedere un preventivo a Urbancare, indica il comune del condominio, il numero di unità e le principali esigenze di gestione. Il modulo permette anche di segnalare ascensore, riscaldamento e situazione attuale. Queste informazioni aiutano lo studio a valutare la richiesta e preparare una proposta personalizzata.”"
+      },
+      {
+        "h": "Guida sul cambio amministratore"
+      },
+      {
+        "p": "Titolo proposto: Come cambiare amministratore di condominio. Collegare la guida al blocco già presente nella pagina amministrazione e al preventivo. Trattare valutazione della situazione, richiesta delle proposte, decisioni assembleari e consegna dei documenti. Per quorum, scadenze e casi speciali, verificare normativa vigente e revisione professionale; questo report non fornisce una procedura legale."
+      },
+      {
+        "p": "FAQ suggerite: quali informazioni inviare a un nuovo studio; come gestire un passaggio con documentazione incompleta; come chiedere una proposta prima di una decisione. Distinguere ciò che Urbancare fa da ciò che devono deliberare i condomini."
+      },
+      {
+        "h": "Guida sui costi"
+      },
+      {
+        "p": "Titolo proposto: Da cosa dipende il costo dell’amministratore di condominio. Spiegare unità, impianti, complessità, attività ordinarie e incarichi straordinari. Una tabella delle voci aiuta il confronto, senza importi se non approvati. La CTA rimanda al preventivo locale."
+      },
+      {
+        "h": "Revisione della guida sui millesimi"
+      },
+      {
+        "p": "Conservare autore, data e spiegazione accessibile. Aggiungere fonti primarie verificabili e precisare i limiti degli esempi relativi a proprietà, scale, ascensori e riscaldamento. Non estendere una regola generale a ogni spesa. La revisione va sostanziale prima di aggiornare la data."
+      },
+      {
+        "p": "Questi sono brief e una bozza di copy, non contenuti già pubblicati o approvati dal professionista."
+      }
+    ]
+  },
+  {
+    "title": "Piano di lavoro e risultati da misurare",
+    "blocks": [
+      {
+        "heads": [
+          "Fase",
+          "Lavoro",
+          "Verifica di completamento"
+        ],
+        "rows": [
+          [
+            "Prima del rilascio",
+            "Allineare email, promesse del portale, contenuti e fonti. Verificare build e redirect.",
+            "Nessuna contraddizione tra studio, servizi e contatti."
+          ],
+          [
+            "Rilascio del rework",
+            "Pubblicare con il normale processo del progetto e controllare le nuove route.",
+            "Home, blog, articolo e zone 200; /preventivo 308 alla destinazione prevista."
+          ],
+          [
+            "Contenuti prioritari",
+            "Preventivo, costi e cambio; link dai servizi e dalle guide.",
+            "Ogni intento ha una pagina proprietaria utile."
+          ],
+          [
+            "Presenza locale",
+            "Verificare profilo Google, contatti e prove autorizzate.",
+            "Informazioni coerenti e nessun profilo duplicato."
+          ],
+          [
+            "Misura nel tempo",
+            "Baseline SEO e AI, poi confronto su finestre omogenee.",
+            "Contatti qualificati e copertura delle query monitorati."
+          ]
+        ],
+        "widths": [
+          1700,
+          3900,
+          3760
+        ]
+      },
+      {
+        "h": "Metriche utili"
+      },
+      {
+        "p": "Search Console: impressioni, clic e query delle pagine prioritarie; separare brand, ricerche locali e informative. Controllare indicizzazione e canonical selezionato. Le fasce Google Ads descrivono domanda stimata: non sostituiscono le performance reali del dominio."
+      },
+      {
+        "p": "Conversioni: richieste di preventivo completate e contatti qualificati per comune; clic su telefono/email come segnali secondari. Distinguere click sul portale di clienti esistenti dalle opportunità commerciali. Gli invii effettivi dei moduli non sono stati testati per evitare messaggi reali allo studio."
+      },
+      {
+        "p": "AI: URL citate, menzioni e raccomandazioni nel campione controllato; referral rilevabili e richieste che dichiarano una scoperta tramite assistente. Un aumento di traffico diretto non viene attribuito automaticamente all’AI."
+      },
+      {
+        "h": "Criteri per il prossimo controllo"
+      },
+      {
+        "p": "Dopo il rilascio: crawl delle route effettive, conferma sitemap e redirect, ispezione URL in Search Console e controllo mobile. Dopo l’indicizzazione e una finestra utile di dati: confrontare risultati con la baseline, tenendo conto della stagionalità. Nessuna data di posizionamento o numero di lead è garantito."
+      }
+    ]
+  },
+  {
+    "title": "Punti di forza metodo e limiti",
+    "blocks": [
+      {
+        "h": "Cosa funziona già"
+      },
+      {
+        "p": "Il sito pubblico è leggibile e navigabile, con URL chiare, metadata specifici, HTTPS, canonical e un H1 per pagina. Non è stato riscontrato un sito tecnicamente invisibile."
+      },
+      {
+        "p": "Il professionista è identificato e il metodo di lavoro spiegato. Le quattro pagine servizio esistono già. Il rework aggiunge un grafo di entità collegato, il territorio prioritario, un articolo attribuito e collegamenti tra servizi."
+      },
+      {
+        "p": "L’assenza di una sede pubblica non è stata compensata con dati inventati. Il percorso preventivo è stato analizzato secondo il redirect configurato, evitando un falso problema sul suo HTML."
+      },
+      {
+        "h": "Come sono assegnati i voti"
+      },
+      {
+        "p": "I punteggi sono giudizi motivati su una scala 1-10 della skill seo-geo-aeo. Per SEO si valutano accessibilità tecnica, metadata, architettura, territorio e contenuto; per GEO identità, coerenza, fonti, prove ed estrazione; per AEO definizioni, domande, passaggi, chiarezza e copertura dell’intento. Non sono output di uno strumento Google."
+      },
+      {
+        "p": "Il rework ottiene un giudizio migliore sul materiale esaminato, ma non viene considerato già online. Nessun voto extra viene assegnato per llms.txt, FAQPage, Speakable o numero di parole. Non sono previste penalizzazioni o aumenti di citazioni numerici."
+      },
+      {
+        "h": "Limiti espliciti"
+      },
+      {
+        "p": "Non consultati: dati Search Console, profilo Google gestito, backlink/autorità, analytics di conversione, CrUX e log del CDN. Non completati: audit visuale mobile e campione ripetuto di risposte AI. Sono quindi non misurati, non mancanti o negativi."
+      },
+      {
+        "p": "Il build locale è quello disponibile del 15 ottobre; non è stata ricostruita l’app e non sono stati interrogati o modificati contenuti privati del database. Un solo articolo risulta nell’HTML generato esaminato. Il crawl segue sitemap e link scoperti: non può garantire l’assenza di URL orfane sconosciute."
+      },
+      {
+        "h": "Glossario"
+      },
+      {
+        "p": "SEO: rendere le pagine comprensibili e reperibili nella ricerca. GEO: migliorare la chiarezza e l’affidabilità delle informazioni che i motori generativi possono consultare e citare. AEO: rispondere bene alle domande delle persone, con formati chiari e navigabili."
+      }
+    ]
+  },
+  {
+    "title": "Fonti e tracciabilità",
+    "blocks": [
+      {
+        "p": "Fonti consultate il 18 ottobre 2026. La documentazione ufficiale aggiornata prevale su indicazioni temporali o generalizzazioni delle skill. I siti concorrenti sono usati esclusivamente come fonti delle loro dichiarazioni."
+      },
+      {
+        "heads": [
+          "Rif",
+          "Fonte e indirizzo",
+          "Uso nel report"
+        ],
+        "rows": [
+          [
+            "S1",
+            "Google Ads\nhttps://support.google.com/google-ads/answer/3022575?hl=it",
+            "Definizioni di volumi, varianti e concorrenza."
+          ],
+          [
+            "S2",
+            "Google AI features\nhttps://developers.google.com/search/docs/appearance/ai-features",
+            "Requisiti e misurazione delle funzioni AI di Search."
+          ],
+          [
+            "S3",
+            "Google AI optimization\nhttps://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+            "SEO di base e file AI opzionali."
+          ],
+          [
+            "S4",
+            "Google Search updates\nhttps://developers.google.com/search/updates",
+            "Giugno 2026: rimozione documentazione FAQ rich result."
+          ],
+          [
+            "S5",
+            "OpenAI crawlers\nhttps://developers.openai.com/api/docs/bots",
+            "Distinzione ricerca, addestramento e recupero utente."
+          ],
+          [
+            "S6",
+            "Business Profile\nhttps://support.google.com/business/answer/3038177?hl=it",
+            "Idoneità e rappresentazione dell’attività."
+          ],
+          [
+            "S7",
+            "Google aree di servizio\nhttps://support.google.com/business/answer/9157481?hl=it",
+            "Gestione di attività con area di servizio."
+          ],
+          [
+            "S8",
+            "Studio Dott Micalizzi\nhttps://www.idomica.it/chi-siamo4912bc9c",
+            "Informazioni dichiarate dallo studio."
+          ],
+          [
+            "S9",
+            "ENNECI\nhttps://www.enneciamministrazionecondomini.it/servizi",
+            "Servizi e presenza locale dichiarati."
+          ]
+        ],
+        "widths": [
+          600,
+          5500,
+          3260
+        ]
+      },
+      {
+        "p": "Evidenze locali: docs/seo/2026-10-18/evidence contiene HTML pubblici, live-audit.json, local-build-audit.json e bot-probes.json. I CSV originali Google Ads e keyword-map.csv sono nella cartella superiore. La mappa completa è preliminare e automatica; le assegnazioni definitive per gli intenti prioritari sono riportate in questo report."
+      },
+      {
+        "p": "Sorgenti principali verificate: lib/seo.ts, lib/metadata.ts, lib/site.ts, lib/design/templates.json, app/robots.ts, app/sitemap.ts, next.config.ts e route blog. Riferimenti di framework letti dalla documentazione Next.js 16.4 installata nel progetto."
+      }
+    ]
+  }
+]

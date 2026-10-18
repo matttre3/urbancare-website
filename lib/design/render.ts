@@ -1,4 +1,5 @@
 import templates from './templates.json'
+import { enhancePageTemplate } from './seo-content'
 import { coverSVG } from './cover-generator'
 import { CATS } from './demo-data'
 import type { BlogPost } from '../cms'
@@ -6,7 +7,7 @@ import type { BlogPost } from '../cms'
 export type DesignPage = keyof typeof templates
 export const escapeHTML = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!)
 export const fmtDate = (d: string) => new Date(d + 'T12:00:00').toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' })
-export const template = (page: DesignPage) => templates[page]
+export const template = (page: DesignPage) => enhancePageTemplate(page, templates[page])
 export const shell = (content: string) => templates.articolo.slice(0, templates.articolo.indexOf('  <header class="a-head">')) + content + templates.articolo.slice(templates.articolo.indexOf('  <footer>'))
 export function cover(p: BlogPost, cls = '', wide = false, priority = false) {
   const image = wide || priority ? p.cover : p.coverCard || p.cover
@@ -24,7 +25,7 @@ export function blogHTML(posts: BlogPost[]) {
   const featured = feat ? `<a class="feat-card lit-on-hover enter" style="--d:.55s" href="/blog/${encodeURIComponent(feat.id)}">${cover(feat, 'feat-cover', false, true)}<div class="feat-body"><div><div class="tagline"><span class="badge">In evidenza</span>${chip(feat)}<span class="post-meta">${feat.min} min di lettura</span></div><h2>${escapeHTML(feat.t).replace('bene.', '<span class="accent">bene.</span>')}</h2><p>${escapeHTML(feat.x)}</p></div><div style="display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap"><div class="author"><span class="avatar"><svg viewBox="0 0 304 291"><path d="M22 112 L152 22 L282 112" fill="none" stroke="#fff" stroke-width="34"/><path d="M78 128 V206 a74 74 0 0 0 148 0 V116" fill="none" stroke="#fff" stroke-width="40"/></svg></span><div><b>${escapeHTML(feat.author || 'Noele Romano')}</b><span>${fmtDate(feat.date)}</span></div></div><span class="btn primary">Leggi l’articolo <span class="round">→</span></span></div></div></a>` : ''
   html = html.replace(/(<section class="featured" id="featured">)[\s\S]*?(<\/section>)/, () => `<section class="featured" id="featured">${featured}</section>`)
   html = html.replace(/(<section class="grid" id="grid">)[\s\S]*?(<\/section>)/, (_, start, end) => start + posts.map(card).join('') + '<div class="empty"><b>Nessun articolo trovato.</b>Prova un’altra categoria o un’altra parola.</div>' + end)
-  return html
+  return enhancePageTemplate('blog', html)
 }
 export function articleHTML(p: BlogPost, posts: BlogPost[], content?: string) {
   // Earlier CMS imports contain the instructions for the retired calculator.
@@ -41,6 +42,10 @@ export function articleHTML(p: BlogPost, posts: BlogPost[], content?: string) {
   }
   html = html.replace(/<time datetime="2026-09-24">.*?<\/time>/, `<time datetime="${p.date}">${fmtDate(p.date)}</time>`)
   html = html.replaceAll('7 min', `${p.min} min`).replaceAll('Noele Romano', escapeHTML(p.author || 'Noele Romano'))
+  if (p.author === 'Urbancare') {
+    html = html.replace('Amministratore, Urbancare', 'Redazione Urbancare')
+      .replace('Amministratore di condominio in Provincia di Milano. Scrive nel Cortile per rendere leggibili le cose che di solito restano scritte in piccolo.', 'Approfondimenti di Urbancare per orientarsi nella gestione del condominio e preparare il confronto con lo studio.')
+  }
   const caption = p.document?.cover && typeof p.document.cover === 'object' ? p.document.cover.caption || '' : 'Illustrazione generata · ogni articolo del Cortile ha la sua facciata'
   html = html.replace(/(<figure[^>]*id="heroCover">)[\s\S]*?(<\/figure>)/, (_, a, b) => a + cover(p, 'big-cover', true, true) + `<figcaption>${escapeHTML(caption)}</figcaption>` + b)
   const preferred = p.id === 'millesimi' ? posts.filter(x => ['rendiconto', 'ascensore', 'assemblea'].includes(x.id)) : []

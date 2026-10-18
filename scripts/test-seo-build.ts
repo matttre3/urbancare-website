@@ -33,9 +33,17 @@ for (const page of Object.values(publicPages)) {
   }
   if (page.path === '/zone-servite') for (const town of ['Cesate', 'Arese', 'Lainate', 'Bollate', 'Senago', 'Caronno Pertusella']) assert.ok(document.body.textContent?.includes(town))
 }
-const article = new JSDOM(await readFile('.next/server/app/blog/millesimi.html', 'utf8')).window.document
-assert.ok(article.title.includes('Millesimi condominiali'))
-assert.ok(!article.querySelector('.prose')?.textContent?.includes('Ecco un esempio con quattro unità'))
-assert.ok(!article.querySelector('.prose')?.textContent?.includes('calcola la tua quota'))
-assert.ok(article.querySelector('.prose a[href="/servizi/gestione-contabile"]'))
-console.log('Built SEO checks passed: all public pages have unique branded titles, canonicals, one H1/main, truthful schema, geographic copy and crawlable links; CMS article cleanup confirmed.')
+const blog = new JSDOM(await readFile('.next/server/app/blog.html', 'utf8')).window.document
+const articlePaths = [...new Set([...blog.querySelectorAll('#grid a.post-card')].map(link => link.getAttribute('href')!))]
+for (const path of articlePaths) {
+  const article = new JSDOM(await readFile('.next/server/app' + path + '.html', 'utf8')).window.document
+  assert.equal(article.querySelectorAll('h1').length, 1, 'Single article H1: ' + path)
+  assert.ok(article.querySelector('.prose')?.textContent?.trim(), 'Published article body: ' + path)
+  if (path === '/blog/millesimi') {
+    assert.ok(article.title.includes('Millesimi condominiali'))
+    assert.ok(!article.querySelector('.prose')?.textContent?.includes('Ecco un esempio con quattro unità'))
+    assert.ok(!article.querySelector('.prose')?.textContent?.includes('calcola la tua quota'))
+    assert.ok(article.querySelector('.prose a[href="/servizi/gestione-contabile"]'))
+  }
+}
+console.log('Built SEO checks passed: public metadata, schema, geographic copy, links and published CMS articles.')

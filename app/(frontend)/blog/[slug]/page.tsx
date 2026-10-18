@@ -35,7 +35,7 @@ export default async function Page({ params }: Props) {
   const author = post.author || 'Noele Romano'
   return <>
     <JsonLd data={{ '@context': 'https://schema.org', '@graph': [
-      { '@type': 'BlogPosting', '@id': absoluteUrl(path + '#article'), headline: post.t, description: post.x, datePublished: post.document?.publishedAt || post.date, dateModified: post.document?.updatedAt || post.date, author: author === 'Noele Romano' ? { '@id': absoluteUrl('/lo-studio#noele-romano') } : { '@type': 'Person', name: author }, publisher: { '@id': absoluteUrl('/#organization') }, inLanguage: 'it-IT', isAccessibleForFree: true, mainEntityOfPage: absoluteUrl(path), ...(post.cover ? { image: absoluteUrl(post.cover) } : {}) },
+      { '@type': 'BlogPosting', '@id': absoluteUrl(path + '#article'), headline: post.t, description: post.x, datePublished: post.document?.publishedAt || post.date, dateModified: post.document?.updatedAt || post.date, author: author === 'Urbancare' ? { '@id': absoluteUrl('/#organization') } : author === 'Noele Romano' ? { '@id': absoluteUrl('/lo-studio#noele-romano') } : { '@type': 'Person', name: author }, publisher: { '@id': absoluteUrl('/#organization') }, inLanguage: 'it-IT', isAccessibleForFree: true, mainEntityOfPage: absoluteUrl(path), ...(post.cover ? { image: absoluteUrl(post.cover) } : {}) },
       breadcrumbSchema([{ name: 'Home', path: '/' }, { name: 'Il Cortile', path: '/blog' }, { name: post.t, path }]),
     ] }} />
     <MockPage page="articolo" posts={posts} html={articleHTML(post, posts, content)} />
