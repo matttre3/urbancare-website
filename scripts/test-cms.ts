@@ -9,9 +9,10 @@ const server = new PGLiteSocketServer({ db, port: 0, host: '127.0.0.1', maxConne
 await server.start()
 process.env.DATABASE_URL = 'postgres://postgres:postgres@' + server.getServerConn() + '/postgres'
 process.env.PAYLOAD_SECRET = randomBytes(32).toString('hex')
-delete process.env.BLOB_READ_WRITE_TOKEN
-delete process.env.RESEND_API_KEY
-delete process.env.VERCEL
+// Keep explicit empty values: next start must not reload real service tokens from .env.local.
+process.env.BLOB_READ_WRITE_TOKEN = ''
+process.env.RESEND_API_KEY = ''
+process.env.VERCEL = ''
 const { getPayload } = await import('payload')
 const { default: config } = await import('../payload.config')
 const payload = await getPayload({ config })
@@ -25,12 +26,14 @@ try {
   const { JSDOM } = await import('jsdom')
   const editorConfig = await editorConfigFactory.default({ config: payload.config })
   const content = convertHTMLToLexical({ editorConfig, JSDOM, html: '<h2>Test heading</h2><p>Hello <strong>CMS</strong>.</p>' })
-  const data = { author: 'Noele Romano', title: 'Published example', slug: 'published-example', excerpt: 'An example', category: 'guide' as const, readTime: 5, publishedAt: '2026-01-01T00:00:00.000Z', content }
+  // ISR persists generated routes across runs; each temporary DB needs a unique article URL.
+  const testSlug = 'published-example-' + randomBytes(8).toString('hex')
+  const data = { author: 'Noele Romano', title: 'Published example', slug: testSlug, excerpt: 'An example', category: 'guide' as const, readTime: 5, publishedAt: '2026-01-01T00:00:00.000Z', content }
   const published = await payload.create({ collection: 'posts', context: { disableRevalidation: true }, data: { ...data, _status: 'published' } })
   await payload.create({ collection: 'posts', context: { disableRevalidation: true }, draft: true, data: { ...data, title: 'Private draft', slug: 'private-draft', _status: 'draft' } })
   await payload.create({ collection: 'posts', context: { disableRevalidation: true }, data: { ...data, slug: 'future-post', publishedAt: '2099-01-01T00:00:00.000Z', _status: 'published' } })
   const publicPosts = await payload.find({ collection: 'posts', context: { disableRevalidation: true }, overrideAccess: false })
-  assert.deepEqual(publicPosts.docs.map(p => p.slug), ['published-example'])
+  assert.deepEqual(publicPosts.docs.map(p => p.slug), [testSlug])
   const privateDraft = await payload.find({ collection: 'posts', context: { disableRevalidation: true }, overrideAccess: false, draft: true, where: { slug: { equals: 'private-draft' } } })
   assert.equal(privateDraft.totalDocs, 0)
   await assert.rejects(() => payload.create({ collection: 'posts', context: { disableRevalidation: true }, overrideAccess: false, data: { ...data, slug: 'anonymous' } }))
@@ -71,12 +74,16 @@ try {
     await page.screenshot({path:'/private/tmp/urbancare-review/admin-editor.png'})
     assert.equal((await fetch('http://127.0.0.1:3101/api/subscribers')).status, 403)
     const apiPosts = await (await fetch('http://127.0.0.1:3101/api/posts')).json() as {docs:{slug:string}[]}
-    assert.deepEqual(apiPosts.docs.map(p=>p.slug), ['published-example'])
-    await page.goto('http://127.0.0.1:3101/blog/published-example')
+    assert.deepEqual(apiPosts.docs.map(p=>p.slug), [testSlug])
+    await page.goto('http://127.0.0.1:3101/blog/' + testSlug)
     assert.equal(await page.locator('h1').textContent(), 'Updated from CMS')
     await page.locator('#heroCover img').waitFor()
     assert.equal(await page.locator('#heroCover img').getAttribute('alt'), 'CMS test cover')
-    assert.ok(await page.locator('#heroCover img').evaluate((img: HTMLImageElement)=>img.complete && img.naturalWidth>0))
+    await page.locator('#heroCover img').scrollIntoViewIfNeeded()
+    await page.waitForFunction(() => {
+      const image = document.querySelector<HTMLImageElement>('#heroCover img')
+      return Boolean(image?.complete && image.naturalWidth > 0)
+    }, undefined, { timeout: 10000 })
     await page.waitForTimeout(1500)
     assert.deepEqual(errors, [])
     await payload.delete({collection:'media',context:{disableRevalidation:true},id:media.id})
