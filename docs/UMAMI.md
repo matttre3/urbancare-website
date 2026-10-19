@@ -35,7 +35,7 @@ Non servono API key, credenziali dell'account, nuovi database o SDK. URL e websi
   dello script Umami e nessuna pageview prima dell’accettazione.
 - La preferenza è salvata in `localStorage` (`urbancare-privacy-v1`) per 180 giorni,
   come MATTTRE Studio. Valori mancanti, malformati o scaduti richiedono una nuova scelta.
-- “Preferenze privacy” rimane disponibile in basso su tutte le pagine pubbliche.
+- “Preferenze privacy” è nel footer accanto alla Privacy Policy su tutte le pagine pubbliche, senza pulsanti flottanti sulle CTA.
   Il pannello consente di revocare o rinnovare il consenso.
 - La revoca blocca anche l’invio da un tracker già caricato, senza ricaricare la pagina;
   la modifica si propaga alle altre schede. Il controllo viene ripetuto prima di ogni invio.

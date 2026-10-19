@@ -39,10 +39,19 @@ export function PrivacyConsent({ config }: { config?: Config }) {
     }
     const storage = (event: StorageEvent) => { if (event.key === privacyStorageKey || event.key === null) restore() }
     const refresh = () => restore()
+    const openPreferences = (event: MouseEvent) => {
+      const button = event.target instanceof Element ? event.target.closest<HTMLButtonElement>('[data-privacy-settings]') : null
+      if (!button) return
+      trigger.current = button
+      setOpen(true)
+      dialog.current?.showModal()
+    }
+    document.addEventListener('click', openPreferences)
     window.addEventListener('storage', storage)
     window.addEventListener('focus', refresh)
     return () => {
       window.urbancareUmamiBeforeSend = () => false
+      document.removeEventListener('click', openPreferences)
       window.removeEventListener('storage', storage)
       window.removeEventListener('focus', refresh)
     }
@@ -75,8 +84,7 @@ export function PrivacyConsent({ config }: { config?: Config }) {
       <p>Usiamo memorie tecniche per il funzionamento del sito e le tue preferenze. Solo con il tuo consenso misuriamo le visite con Umami, senza cookie di analisi. Puoi rifiutare e continuare a navigare.</p>
       {actions}<a href="/privacy-policy">Leggi l’informativa privacy</a>
     </section>}
-    <button ref={trigger} className="uc-privacy-settings" type="button" onClick={() => { setOpen(true); dialog.current?.showModal() }}>Preferenze privacy</button>
-    <dialog ref={dialog} aria-labelledby="uc-preferences-title" onClose={() => { setOpen(false); trigger.current?.focus() }}>
+    <dialog id="uc-privacy-dialog" ref={dialog} aria-labelledby="uc-preferences-title" onClose={() => { setOpen(false); trigger.current?.focus() }}>
       <button className="uc-privacy-close" type="button" aria-label="Chiudi preferenze privacy" onClick={() => dialog.current?.close()}>×</button>
       <h2 id="uc-preferences-title">Preferenze privacy</h2>
       <p>Le memorie tecniche sono necessarie al sito. Le statistiche Umami sono facoltative e partono solo se le accetti.</p>

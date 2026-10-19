@@ -15,10 +15,11 @@ assert.equal(readPrivacyChoice(JSON.stringify(createPrivacyChoice(false, now)), 
 assert.equal(minimiseAnalyticsPayload('event', { name: 'contact', data: { email: 'private' } }, 'https://example.test'), false)
 assert.deepEqual(minimiseAnalyticsPayload('event', { url: '/page?email=private#secret', referrer: 'https://other.test/path?token=secret', data: { email: 'private' } }, 'https://example.test'), { url: '/page', referrer: 'https://other.test/path' })
 
-const dom = new JSDOM('<div id="root"></div>', { url: 'https://www.urbancare-amministrazioni.com' })
-Object.assign(globalThis, { window: dom.window, document: dom.window.document, location: dom.window.location, localStorage: dom.window.localStorage, React, IS_REACT_ACT_ENVIRONMENT: true })
+const dom = new JSDOM('<footer><button type="button" data-privacy-settings>Preferenze privacy</button></footer><div id="root"></div>', { url: 'https://www.urbancare-amministrazioni.com' })
+Object.assign(globalThis, { window: dom.window, document: dom.window.document, location: dom.window.location, localStorage: dom.window.localStorage, React, Element: dom.window.Element, IS_REACT_ACT_ENVIRONMENT: true })
 Object.defineProperty(globalThis, 'navigator', { configurable: true, value: dom.window.navigator })
-Object.defineProperty(dom.window.HTMLDialogElement.prototype, 'close', { value() { this.removeAttribute('open') } })
+Object.defineProperty(dom.window.HTMLDialogElement.prototype, 'showModal', { value() { this.setAttribute('open', '') } })
+Object.defineProperty(dom.window.HTMLDialogElement.prototype, 'close', { value() { this.removeAttribute('open'); this.dispatchEvent(new dom.window.Event('close')) } })
 const root = createRoot(document.getElementById('root')!)
 const config = { scriptUrl: 'https://analytics.example.test/script.js', websiteId: '00000000-0000-0000-0000-000000000000', domains: location.hostname }
 const click = async (text: string) => {
@@ -29,7 +30,12 @@ const click = async (text: string) => {
 await act(async () => root.render(<PrivacyConsent config={config} />))
 assert.equal(document.querySelectorAll('#umami-tracker').length, 0, 'No tracker before consent')
 assert.ok(document.querySelector('.uc-privacy-banner'))
+await click('Preferenze privacy')
+assert.ok(document.querySelector('dialog[open]'), 'Footer control opens preferences')
+assert.equal(document.querySelector('.uc-privacy-settings'), null, 'No floating control')
 await click('Rifiuta')
+assert.equal(document.querySelector('dialog[open]'), null, 'Choosing closes preferences')
+assert.equal(document.activeElement?.textContent, 'Preferenze privacy', 'Focus returns to footer trigger')
 assert.equal(document.querySelectorAll('#umami-tracker').length, 0, 'Reject never downloads tracker')
 assert.equal(readPrivacyChoice(localStorage.getItem(privacyStorageKey))?.analytics, false)
 await click('Accetta')
