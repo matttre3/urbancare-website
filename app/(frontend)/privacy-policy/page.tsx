@@ -75,13 +75,15 @@ function PrivacyPolicyContent() {
             riservatezza.
           </Text>
 
+          <Text size="h2" weight="semibold" className="text-foreground mt-6 text-urbancare-primary-blue">Preferenze del browser</Text>
+          <Text size="p" className="text-sm">Il sito salva localmente la preferenza del tema e, per sei mesi, la scelta sulle statistiche. Il pulsante “Preferenze privacy” permette di modificarla o revocarla. Le statistiche sono disattivate finché non scegli “Accetta” e restano disattivate negli ambienti di anteprima.</Text>
           {getUmamiConfig() && <>
             <Text size="h2" weight="semibold" className="text-foreground mt-6 text-urbancare-primary-blue">
               Statistiche di utilizzo del sito
             </Text>
             <Text size="p" className="text-sm">
               Utilizziamo Umami Cloud, fornito da Umami Software, Inc., per misurare
-              le visite e migliorare il sito. Le statistiche comprendono pagine
+              le visite e migliorare il sito, solo dopo il tuo consenso nel banner. Puoi rifiutare o revocare il consenso dal pulsante “Preferenze privacy”, sempre disponibile sul sito. La scelta è salvata nel browser per sei mesi. Le statistiche comprendono pagine
               visitate, sito di provenienza, browser, dispositivo e paese di
               provenienza. Il tracker non utilizza cookie e non riceve nomi,
               email, dati inseriti nei moduli o identificativi degli account.
@@ -106,7 +108,7 @@ function PrivacyPolicyContent() {
           </Text>
           <ul className="list-disc pl-6 text-sm">
             <li>consentire il corretto funzionamento tecnico del sito;</li>
-            {getUmamiConfig() && <li>misurare l’utilizzo del sito mediante statistiche aggregate per migliorarne i contenuti e la navigazione.</li>}
+            {getUmamiConfig() && <li>previo consenso facoltativo, misurare l’utilizzo del sito mediante statistiche aggregate per migliorarne i contenuti e la navigazione.</li>}
             <li>
               gestire le richieste di informazioni inviate dagli utenti tramite
               il modulo di contatto o tramite email.

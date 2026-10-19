@@ -1,0 +1,68 @@
+import assert from 'node:assert/strict'
+import React, { act } from 'react'
+import { createRoot } from 'react-dom/client'
+import { JSDOM } from 'jsdom'
+import { PrivacyConsent } from '../components/PrivacyConsent'
+import { consentLifetime, createPrivacyChoice, minimiseAnalyticsPayload, privacyStorageKey, readPrivacyChoice } from '../lib/privacy'
+
+const now = Date.now()
+assert.equal(readPrivacyChoice(null), null)
+assert.equal(readPrivacyChoice('{bad'), null)
+assert.equal(readPrivacyChoice(JSON.stringify({ version: 1, analytics: 'true', savedAt: now })), null)
+assert.equal(readPrivacyChoice(JSON.stringify(createPrivacyChoice(true, now - consentLifetime))), null)
+assert.equal(readPrivacyChoice(JSON.stringify(createPrivacyChoice(true, now + 1000)), now), null)
+assert.equal(readPrivacyChoice(JSON.stringify(createPrivacyChoice(false, now)), now)?.analytics, false)
+assert.equal(minimiseAnalyticsPayload('event', { name: 'contact', data: { email: 'private' } }, 'https://example.test'), false)
+assert.deepEqual(minimiseAnalyticsPayload('event', { url: '/page?email=private#secret', referrer: 'https://other.test/path?token=secret', data: { email: 'private' } }, 'https://example.test'), { url: '/page', referrer: 'https://other.test/path' })
+
+const dom = new JSDOM('<div id="root"></div>', { url: 'https://www.urbancare-amministrazioni.com' })
+Object.assign(globalThis, { window: dom.window, document: dom.window.document, location: dom.window.location, localStorage: dom.window.localStorage, React, IS_REACT_ACT_ENVIRONMENT: true })
+Object.defineProperty(globalThis, 'navigator', { configurable: true, value: dom.window.navigator })
+Object.defineProperty(dom.window.HTMLDialogElement.prototype, 'close', { value() { this.removeAttribute('open') } })
+const root = createRoot(document.getElementById('root')!)
+const config = { scriptUrl: 'https://analytics.example.test/script.js', websiteId: '00000000-0000-0000-0000-000000000000', domains: location.hostname }
+const click = async (text: string) => {
+  const buttons = [...document.querySelectorAll('button')].filter(button => button.textContent === text)
+  assert.ok(buttons.length)
+  await act(async () => buttons[0].click())
+}
+await act(async () => root.render(<PrivacyConsent config={config} />))
+assert.equal(document.querySelectorAll('#umami-tracker').length, 0, 'No tracker before consent')
+assert.ok(document.querySelector('.uc-privacy-banner'))
+await click('Rifiuta')
+assert.equal(document.querySelectorAll('#umami-tracker').length, 0, 'Reject never downloads tracker')
+assert.equal(readPrivacyChoice(localStorage.getItem(privacyStorageKey))?.analytics, false)
+await click('Accetta')
+assert.equal(document.querySelectorAll('#umami-tracker').length, 1, 'Acceptance loads tracker once')
+assert.deepEqual(window.urbancareUmamiBeforeSend?.('event', { url: '/blog?q=private' }), { url: '/blog' })
+await click('Rifiuta')
+assert.equal(window.urbancareUmamiBeforeSend?.('event', { url: '/blog' }), false, 'Withdrawal stops already-loaded tracker')
+let views = 0
+window.umami = { track: () => { views++ } }
+await click('Accetta')
+assert.equal(document.querySelectorAll('#umami-tracker').length, 1, 'Renewed consent reuses script')
+assert.equal(views, 1)
+localStorage.setItem(privacyStorageKey, JSON.stringify(createPrivacyChoice(false)))
+await act(async () => window.dispatchEvent(new dom.window.StorageEvent('storage', { key: privacyStorageKey })))
+assert.equal(window.urbancareUmamiBeforeSend?.('event', { url: '/blog' }), false, 'Cross-tab withdrawal stops sending')
+await act(async () => root.unmount())
+document.getElementById('umami-tracker')?.remove()
+localStorage.setItem(privacyStorageKey, JSON.stringify(createPrivacyChoice(true)))
+Object.defineProperty(navigator, 'doNotTrack', { configurable: true, value: '1' })
+const dntRoot = createRoot(document.getElementById('root')!)
+await act(async () => dntRoot.render(<PrivacyConsent config={config} />))
+assert.equal(document.querySelectorAll('#umami-tracker').length, 0, 'DNT prevents download despite consent')
+assert.equal(window.urbancareUmamiBeforeSend?.('event', { url: '/' }), false)
+await act(async () => dntRoot.unmount())
+Object.defineProperty(navigator, 'doNotTrack', { configurable: true, value: null })
+Object.defineProperty(navigator, 'globalPrivacyControl', { configurable: true, value: true })
+const gpcRoot = createRoot(document.getElementById('root')!)
+await act(async () => gpcRoot.render(<PrivacyConsent config={config} />))
+assert.equal(document.querySelectorAll('#umami-tracker').length, 0, 'GPC prevents download')
+await act(async () => gpcRoot.unmount())
+Object.defineProperty(navigator, 'globalPrivacyControl', { configurable: true, value: false })
+const previewRoot = createRoot(document.getElementById('root')!)
+await act(async () => previewRoot.render(<PrivacyConsent />))
+assert.equal(document.querySelectorAll('#umami-tracker').length, 0, 'No config means no tracker in preview')
+await act(async () => previewRoot.unmount())
+console.log('Privacy checks passed: consent gate, rejection, withdrawal, persistence, expiry, cross-tab sync, DNT/GPC, preview disabled and URL minimisation.')
