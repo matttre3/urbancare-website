@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props) {
   if (!post) notFound()
   const meta = createPageMetadata({
     title: post.document?.seo?.title?.trim() || post.t,
-    description: shortDescription(post.document?.seo?.description?.trim() || post.x),
+    description: post.document?.seo?.description?.trim() || shortDescription(post.x),
     path: '/blog/' + post.id,
     ...(post.cover ? { image: { url: post.cover, alt: post.coverAlt || post.t } } : {}),
   })

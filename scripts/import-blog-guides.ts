@@ -3,7 +3,6 @@ import { convertHTMLToLexical, editorConfigFactory } from '@payloadcms/richtext-
 import { JSDOM } from 'jsdom'
 import config from '../payload.config'
 import { guides } from './content/blog-guides'
-import { shortDescription } from '../lib/seo'
 
 if (!process.env.DATABASE_URL || !process.env.PAYLOAD_SECRET) throw new Error('CMS non configurato')
 const publish = process.argv.includes('--publish')
@@ -28,7 +27,7 @@ try {
         illustration: slug.startsWith('costo') ? 'blocks' : 'facade',
         author: 'Urbancare', readTime, featured: false, publishedAt: new Date().toISOString(),
         content: convertHTMLToLexical({ editorConfig, html, JSDOM }),
-        seo: { title: guide.title, description: shortDescription(guide.intro) }, _status: 'published',
+        seo: { title: guide.title, description: guide.description }, _status: 'published',
       } })
       console.log(`Pubblicato: ${post.slug} (${post._status})`)
     }

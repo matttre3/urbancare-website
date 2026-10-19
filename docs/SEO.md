@@ -80,3 +80,14 @@ pubblici PageSpeed/CrUX, quando disponibili.
   dello studio e la scheda autore è coerente con la redazione.
 - Restano da confermare con il proprietario qualifiche e casi pubblicabili;
   l’articolo CMS sui millesimi è stato ritirato e conservato come bozza.
+
+## Testi approvati del 19 ottobre 2026
+
+I due articoli sono stati sostituiti con i Word forniti dall’amministratore.
+La trascrizione esatta (titoli, introduzioni, corpo e meta description) è in
+`scripts/content/approved-blog-guides.json`. Le descrizioni SEO esplicite del CMS
+non sono troncate; il campo ammette 320 caratteri per conservare quelle approvate.
+`scripts/update-approved-blog-guides.ts` controlla la fedeltà della conversione
+Word/HTML → Lexical e aggiorna solo i due slug esistenti con `--publish`.
+Date di pubblicazione, autore, copertine e URL restano invariati.
+`test-approved-blog-build.ts` verifica che i testi pubblicati corrispondano alla fonte.
