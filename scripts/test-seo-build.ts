@@ -21,6 +21,8 @@ for (const page of Object.values(publicPages)) {
   assert.ok(graph.every(node => !node.address && !node.openingHours), 'No invented address or hours')
   assert.ok(document.querySelector('footer a[href="/zone-servite"]'))
   assert.ok(document.querySelector('footer a[href="/privacy-policy"]'))
+  assert.equal(document.querySelectorAll('footer button[data-privacy-settings]').length, 1, 'Privacy preferences in footer: ' + page.path)
+  assert.equal(document.querySelectorAll('.uc-privacy-settings').length, 0, 'No floating privacy control: ' + page.path)
   if (page.path.startsWith('/servizi/')) {
     assert.ok(document.querySelector('h1')?.textContent?.includes('Garbagnate Milanese'))
     assert.ok(graph.some(node => node['@type'] === 'Service'))

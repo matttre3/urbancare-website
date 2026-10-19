@@ -14,7 +14,7 @@ export async function MockPage({ page, html, posts, shellOnly = false, children,
   markup = markup.replace(/(<div class="dd">)<a[^>]*>Servizi<\/a>/, '$1<button class="services-toggle" type="button" aria-expanded="false" aria-controls="services-menu">Servizi</button>')
     .replace('<div class="dd-menu">', '<div class="dd-menu" id="services-menu" inert>')
     .replace('<div class="nav-links">', '<div class="nav-links" id="navigation-links">')
-  markup = markup.replace(/(<a\b[^>]*href="\/privacy-policy"[^>]*>Privacy Policy<\/a>)/, '$1 · <button type="button" class="footer-privacy-settings" data-privacy-settings aria-haspopup="dialog" aria-controls="uc-privacy-dialog">Preferenze privacy</button>')
+  markup = markup.replace(/<footer>[\s\S]*?<\/footer>/, footer => footer.replace(/(<a\b[^>]*href="\/privacy-policy"[^>]*>Privacy Policy<\/a>)/, '$1 · <button type="button" class="footer-privacy-settings" data-privacy-settings aria-haspopup="dialog" aria-controls="uc-privacy-dialog">Preferenze privacy</button>'))
   const settings = await getSiteSettings()
   if (settings) {
     const phone = settings.phone.replace(/[^+\d]/g, '')
