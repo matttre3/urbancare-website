@@ -4,10 +4,18 @@ Il tracker è nel layout del sito pubblico, separato dal layout Payload. Si cari
 
 ## Stato del collegamento (19 ottobre 2026)
 
-Il codice con consenso è implementato. Nell’account Umami EU attualmente aperto,
-l’aggiunta di Urbancare restituisce “Website limit reached”. Nessun sito è stato
-creato e nessun identificativo di MATTTRE viene riutilizzato. Per attivare la
-raccolta occorre un posto disponibile e il website ID dedicato a Urbancare.
+Production su Vercel aveva già `UMAMI_SCRIPT_URL=https://cloud.umami.is/script.js`
+e il website ID `b8cc84d9-a61f-4992-9855-647781f9ddda`, configurati l’8 ottobre.
+La precedente verifica del solo account MATTTRE e dell’ambiente locale era incompleta:
+non dimostrava l’assenza della configurazione Production né di un altro account.
+
+Il proprietario ha fornito il nuovo website ID dell’account dedicato a Urbancare:
+`555dd40f-82e5-4b65-9e44-6f3d1555f747`. Il valore è stato salvato e verificato
+nella variabile `UMAMI_WEBSITE_ID` di **Production**; l’URL script è invariato.
+Le nuove variabili si applicano al prossimo deploy Production. Nessun merge in
+`main` o redeploy Production è stato eseguito con questo aggiornamento.
+Il branch di preview contiene il caricamento subordinato al consenso.
+La ricezione di pageview nel nuovo account resta da verificare dopo il rilascio.
 
 ## Attivazione
 
