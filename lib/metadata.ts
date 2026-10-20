@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { absoluteUrl, siteConfig } from "@/lib/site";
+import { socialImage } from "@/lib/social-image";
 
 type PageMetadataInput = {
   title: string;
@@ -34,9 +35,9 @@ export function createPageMetadata({
       type: "website",
       images: [
         {
-          url: absoluteUrl(image?.url || "/opengraph-image"),
+          url: absoluteUrl(image?.url || socialImage.path),
           ...(!image ? { width: 1200, height: 630 } : {}),
-          alt: image?.alt || "Urbancare — amministrazione condominiale a Garbagnate Milanese",
+          alt: image?.alt || socialImage.alt,
         },
       ],
     },
@@ -44,7 +45,7 @@ export function createPageMetadata({
       card: "summary_large_image",
       title: `${title} | ${siteConfig.name}`,
       description,
-      images: [{ url: absoluteUrl(image?.url || "/opengraph-image"), alt: image?.alt || "Urbancare — amministrazione condominiale a Garbagnate Milanese" }],
+      images: [{ url: absoluteUrl(image?.url || socialImage.path), alt: image?.alt || socialImage.alt }],
     },
   };
 }

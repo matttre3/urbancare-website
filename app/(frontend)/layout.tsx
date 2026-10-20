@@ -5,6 +5,7 @@ import { siteConfig, absoluteUrl } from '@/lib/site'
 import { PrivacyConsent } from '@/components/PrivacyConsent'
 import '@/components/privacy-consent.css'
 import { getUmamiConfig } from '@/lib/umami'
+import { socialImage } from '@/lib/social-image'
 
 export const viewport: Viewport = { width: 'device-width', initialScale: 1, themeColor: '#08111f' }
 export const metadata: Metadata = {
@@ -12,8 +13,8 @@ export const metadata: Metadata = {
   title: { default: 'Urbancare | Amministrazione condominiale a Garbagnate Milanese', template: '%s | Urbancare' },
   description: siteConfig.description,
   robots: process.env.VERCEL_ENV && process.env.VERCEL_ENV !== 'production' ? { index: false, follow: false } : { index: true, follow: true },
-  openGraph: { siteName: 'Urbancare', locale: 'it_IT', type: 'website', images: [{ url: absoluteUrl('/opengraph-image'), width: 1200, height: 630 }] },
-  twitter: { card: 'summary_large_image' },
+  openGraph: { siteName: 'Urbancare', locale: 'it_IT', type: 'website', images: [{ url: absoluteUrl(socialImage.path), width: socialImage.width, height: socialImage.height, alt: socialImage.alt }] },
+  twitter: { card: 'summary_large_image', images: [{ url: absoluteUrl(socialImage.path), alt: socialImage.alt }] },
 }
 
 export default function Layout({ children }: { children: React.ReactNode }) {
