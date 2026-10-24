@@ -313,20 +313,20 @@
     function setTxt(id,txt){const el=document.getElementById(id);if(lastTxt[id]!==undefined&&lastTxt[id]!==txt){const tile=el.closest('.pv-stat');tile.classList.remove('bump');void tile.offsetWidth;tile.classList.add('bump')}lastTxt[id]=txt;el.textContent=txt}
     function stats(st,L){
       const totF=L.floors.reduce((a,b)=>a+b,0);
-      count(document.getElementById('pvUnits'),st.units);
+      if(document.getElementById('qUnits').value==='')document.getElementById('pvUnits').textContent='—';else count(document.getElementById('pvUnits'),st.units);
       setTxt('pvUnitsS',st.units?`su ${totF} ${totF===1?'piano':'piani'}${L.blocks>1?` · ${L.blocks} scale`:''}`:'aggiungi le unità');
-      count(document.getElementById('pvBox'),st.box);
-      setTxt('pvBoxS',st.box?'box e posti auto':'nessun box');
-      setTxt('pvLiftV',st.lift?'Sì':'No');setTxt('pvLiftS',st.lift?'in servizio':'non presente');
-      setTxt('pvHeatV',st.heat?'Centralizzato':'Autonomo');setTxt('pvHeatS',st.heat?'centrale termica':'caldaie singole');
+      if(document.getElementById('qBox').value==='')document.getElementById('pvBox').textContent='—';else count(document.getElementById('pvBox'),st.box);
+      setTxt('pvBoxS',document.getElementById('qBox').value===''?'box da indicare':st.box?'box e posti auto':'nessun box');
+      setTxt('pvLiftV',q.querySelector('[name="Ascensore"]:checked')?(st.lift?'Sì':'No'):'Da indicare');setTxt('pvLiftS',st.lift?'in servizio':'ascensore');
+      setTxt('pvHeatV',q.querySelector('[name="Riscaldamento centralizzato"]:checked')?(st.heat?'Centralizzato':'Autonomo'):'Da indicare');setTxt('pvHeatS','riscaldamento');
     }
 
     // ---- title, name, progress ----
-    const REQ=[()=>q.querySelector('[name="Nome e cognome"]').value.trim(),()=>/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(q.querySelector('[name="Email"]').value),()=>q.querySelector('[name="Telefono"]').value.trim(),()=>q.querySelector('#qComune').value.trim(),()=>q.querySelector('[name="Situazione attuale"]:checked'),()=>q.querySelector('[name="privacy"]').checked];
+    const REQ=[()=>q.querySelector('[name="Nome e cognome"]').value.trim(),()=>/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(q.querySelector('[name="Email"]').value),()=>q.querySelector('[name="Telefono"]').value.trim(),()=>q.querySelector('#qComune').value.trim(),()=>q.querySelector('[name="Situazione attuale"]:checked'),()=>q.querySelector('[name="privacy"]').checked,()=>q.querySelector('[name="Ascensore"]:checked'),()=>q.querySelector('[name="Riscaldamento centralizzato"]:checked')];
     const send=document.getElementById('pvSend');
     function head(st){
       document.getElementById('pvTitle').innerHTML=st.comune?`Un condominio a <span class="c">${esc(st.comune)}</span>`:`Il tuo condominio a <span class="c">Milano e provincia</span>`;
-      document.getElementById('pvWho').textContent=st.name?`Preventivo per ${st.name}`:'Compila il modulo e guardalo prendere forma.';
+      document.getElementById('pvWho').textContent=st.name?`Preventivo per ${st.name}`:'Illustrazione indicativa: prende forma con i dati del modulo.';
       const n=REQ.filter(f=>f()).length, left=REQ.length-n;
       document.getElementById('pvBar').style.width=(n/REQ.length*100)+'%';
       document.getElementById('pvProg').innerHTML=left?`<span><b>${n}</b> di ${REQ.length} campi obbligatori</span><span>${Math.round(n/REQ.length*100)}%</span>`:`<span><b>Tutto pronto</b> ✓</span><span>100%</span>`;

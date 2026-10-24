@@ -11,8 +11,11 @@ for(const path of paths) test(`renders ${path} without runtime errors`,async({pa
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1)).toBe(true)
   await expect(page.locator('iframe')).toHaveCount(0)
 })
-test('theme persists across document navigation',async({page})=>{
-  await page.goto('/');await page.locator('.theme-toggle').click()
+test('theme persists across document navigation',async({page,isMobile})=>{
+  await page.goto('/')
+  await page.getByRole('button',{name:'Rifiuta',exact:true}).click()
+  if(isMobile)await page.locator('.burger').click()
+  await page.locator('.theme-toggle').click()
   const theme=await page.locator('html').getAttribute('data-theme')
   await page.goto('/lo-studio');await expect(page.locator('html')).toHaveAttribute('data-theme',theme!)
 })

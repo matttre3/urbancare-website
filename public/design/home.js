@@ -239,7 +239,7 @@
       const h=document.documentElement.scrollHeight-innerHeight;
       progress.style.width=(h?y/h*100:0)+'%';
       const heroH=document.querySelector('.hero').offsetHeight;
-      if(y<heroH*1.2){
+      if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&y<heroH*1.2){
         layers.forEach((el,i)=>{
           const d=parseFloat(el.dataset.depth||0);
           const lift=y*d*.11;

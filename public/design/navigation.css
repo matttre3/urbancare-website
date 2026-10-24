@@ -66,3 +66,20 @@ html[data-theme="light"] .nav-wrap nav{background:rgba(255,255,255,.94)}
 .seo-faq summary{cursor:pointer;font-weight:600;font-size:18px;line-height:1.5;padding-right:12px}
 .seo-faq details>div{padding:4px 0 0 22px}
 @media(max-width:640px){.seo-links{grid-template-columns:1fr}.seo-links>a{padding:20px}.seo-faq details>div{padding-left:0}}
+
+/* Shared refinement keeps the imported palette and composition intact. */
+.nav-wrap .theme-toggle{width:44px;height:44px;flex-shrink:0}
+.c-card .mini,.tabs button,.seg span{min-height:44px;align-items:center}
+.stepper button{flex:0 0 46px}
+.stepper input{min-width:0}
+.stepper input::placeholder{font:400 12px var(--f-body);color:var(--muted)}
+.f>label{font:700 12px/1 var(--f-display);letter-spacing:.06em;color:var(--muted)}
+.information-mode{grid-template-columns:minmax(0,1fr)}
+.information-mode>div{width:100%;max-width:800px}
+.preview[hidden]{display:none}
+.pv-send:disabled,.submit-row button:disabled{opacity:.65;cursor:wait}
+.f .msg,.check.err{color:#ffaaa7}
+html[data-theme="light"] .f .msg,html[data-theme="light"] .check.err{color:#aa302d}
+html[data-theme="light"]{--faint:#5c6675}
+.building-layer,.service{will-change:auto}
+@media(prefers-reduced-motion:reduce){.building-layer{transform:none!important}}

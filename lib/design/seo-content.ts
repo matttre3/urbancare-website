@@ -1,3 +1,5 @@
+import { enhanceContactTemplate } from './contact-template'
+
 /** Editorial additions kept separate from imported design templates. */
 const quote = '/contatti#preventivo'
 export const articlePaths = {
@@ -39,6 +41,7 @@ const sections: Record<string, string> = {
 }
 
 export function enhancePageTemplate(page: string, html: string) {
+  if (page === 'contatti') html = enhanceContactTemplate(html)
   // Align the studio's method with the confirmed portal features everywhere.
   html = html.replaceAll('Digitalizziamo tutta la contabilità e la documentazione condominiale, rendendola accessibile online ai condomini.', 'Organizziamo la contabilità e la documentazione del condominio. Nell’area personale sono disponibili le rate e le comunicazioni; per consultare altri documenti puoi rivolgerti allo studio.')
   const content = sections[page]

@@ -73,6 +73,17 @@ for key, html in pages.items():
   body=body.replace('<div class="done"','<p id="formStatus" role="status" aria-live="polite"></p><div class="done"')
   body=body.replace('</form>','<input name="website" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true"></form>')
   runtime += "\nif(location.hash==='#preventivo')document.querySelector('[data-tab=\"quote\"]').click();"
+ # Preserve reviewed contact states and reduced-motion behavior on re-import.
+ if key=='contatti':
+  runtime=runtime.replace('()=>q.querySelector(\'[name="privacy"]\').checked];', '()=>q.querySelector(\'[name="privacy"]\').checked,()=>q.querySelector(\'[name="Ascensore"]:checked\'),()=>q.querySelector(\'[name="Riscaldamento centralizzato"]:checked\')];')
+  runtime=runtime.replace("setTxt('pvLiftV',st.lift?'Sì':'No');setTxt('pvLiftS',st.lift?'in servizio':'non presente');", 'setTxt(\'pvLiftV\',q.querySelector(\'[name="Ascensore"]:checked\')?(st.lift?\'Sì\':\'No\'):\'Da indicare\');setTxt(\'pvLiftS\',st.lift?\'in servizio\':\'ascensore\');')
+  runtime=runtime.replace("setTxt('pvHeatV',st.heat?'Centralizzato':'Autonomo');setTxt('pvHeatS',st.heat?'centrale termica':'caldaie singole');", 'setTxt(\'pvHeatV\',q.querySelector(\'[name="Riscaldamento centralizzato"]:checked\')?(st.heat?\'Centralizzato\':\'Autonomo\'):\'Da indicare\');setTxt(\'pvHeatS\',\'riscaldamento\');')
+  runtime=runtime.replace("count(document.getElementById('pvUnits'),st.units);", "if(document.getElementById('qUnits').value==='')document.getElementById('pvUnits').textContent='—';else count(document.getElementById('pvUnits'),st.units);")
+  runtime=runtime.replace("count(document.getElementById('pvBox'),st.box);", "if(document.getElementById('qBox').value==='')document.getElementById('pvBox').textContent='—';else count(document.getElementById('pvBox'),st.box);")
+  runtime=runtime.replace("setTxt('pvBoxS',st.box?'box e posti auto':'nessun box');", "setTxt('pvBoxS',document.getElementById('qBox').value===''?'box da indicare':st.box?'box e posti auto':'nessun box');")
+  runtime=runtime.replace("'Compila il modulo e guardalo prendere forma.'", "'Illustrazione indicativa: prende forma con i dati del modulo.'")
+ if key=='home':
+  runtime=runtime.replace('if(y<heroH*1.2){', "if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&y<heroH*1.2){")
  # Native anchors intentionally perform document navigation, isolating the original page animations.
  result[key]=rewrite(body)
  (root/'public/design'/f'{key}.css').write_text(css+'\n'+(root/'scripts/design-enhancements.css').read_text())
