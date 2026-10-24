@@ -83,3 +83,11 @@ html[data-theme="light"] .f .msg,html[data-theme="light"] .check.err{color:#aa30
 html[data-theme="light"]{--faint:#5c6675}
 .building-layer,.service{will-change:auto}
 @media(prefers-reduced-motion:reduce){.building-layer{transform:none!important}}
+
+/* Article elevator: long section names must not resize the floor display. */
+.lift .lift-display{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;height:100px}
+.lift-display>div:first-child{min-width:0}
+.lift-display #liftName{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;margin-top:5px;font:600 12px/1.35 var(--f-display);letter-spacing:0;text-transform:none;color:#c4cfde;overflow-wrap:anywhere}
+.lift-display>div:last-child{flex-shrink:0}
+.lift-pill #pillNum{flex-shrink:0}
+.lift-pill #pillName{min-width:0;overflow:hidden;text-overflow:ellipsis}
